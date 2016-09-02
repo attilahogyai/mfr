@@ -1,0 +1,27 @@
+<?page id="bottom"?>
+<zk xmlns:n="http://www.zkoss.org/2005/zk/native">
+<html>
+<div id="footer">
+<ul>
+<li>
+ <a href="http://${domain}/${lang_}/_contact" id="contact">${c:l('contact')}</a>
+</li>
+<li>
+<a href="http://${domain}/${lang_}/_license" id="license">${c:l('license')}</a>
+</li>
+<li if="${language=='HU'}">
+<a href="http://${domain}/${lang_}/_adatvedelem" id="datasecurity">${c:l('adatvedelem')}</a>
+</li>
+<li>
+© 2013 myFotoRoom.com, version 2.7
+</li>
+</ul>
+</div>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57925c309dc8bbbf"></script>
+
+</html> 
+
+
+
+</zk>

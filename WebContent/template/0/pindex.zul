@@ -1,0 +1,68 @@
+<zk xmlns:w="client" xmlns:n="http://www.zkoss.org/2005/zk/native">
+<include src="${headerPage}" id="inc_header"></include>
+<n:div class="page-content" id="contentPage">
+<n:div class="container">
+<div class="row" apply="${portfolioIndexComposer}">
+
+<div sclass="twelvecol">
+<n:div id="mainImageContainer" >
+<div style="background-size:auto 400px;background-image: url(/img/icon2/portfolio_main.png);" id="mainImage" zclass="mainimage"></div>
+<a onClick="$composer.createAlbumSelectorWindow(1,true,true)" if="${isEditable}" zclass="action_button" >
+<n:img src="${iconurl}edit_t.png" />
+</a>
+</n:div>
+</div>
+<div sclass="twelvecol welcomebox">
+<html unless="${isEditable}">
+	${site.description}
+</html>
+<n:form>
+<ckeditor id="welcometext" width="100%"
+								onSave="$composer.saveWelcomeText()" if="${isEditable}"
+								customConfigurationsPath="/js/cke_config.js">
+								<attribute name="value">
+									${site.description}
+								</attribute>
+							</ckeditor>
+							</n:form>
+</div>
+<div sclass="twelvecol">
+<div id="albums1" sclass="albums">
+
+</div>
+<a if="${isEditable}" onClick="$composer.createAlbumSelectorWindow(2,false,false)" >
+<n:image src="${iconurl}add.png" class="action_button" />
+</a>
+</div>
+<template name="albums1Template">
+<n:div class="albumcontainer">
+<html>
+<div class="polaroid">
+<a zclass="link-font" href="_pgallery_album_${my:getAsUrl(category.name)}?albumid=${category.id}">
+<h1>${category.name}</h1>
+<div style="background-image: url(/mimg/prev/id/${each.id});" class="coverimage"/>
+<span>${category.description}</span>
+</a>
+</div>
+
+</html>
+<a onClick='$composer.removeCategoryFromSite(2,self.getAttribute("catid"));$composer.refreshImages()' if="${isEditable}" zclass="action_button">
+<n:img src="${iconurl}trash.png" />
+<custom-attributes catid="${category.id}"/>
+</a>
+<a onClick='$composer.createMainImageSelectorWindow(self.getAttribute("catid"));' if="${isEditable}" zclass="action_button2">
+<n:img src="${iconurl}cover.png"  />
+<custom-attributes catid="${category.id}"/>
+</a>
+
+
+
+</n:div>
+
+</template>
+
+</div>
+</n:div>
+</n:div>
+<include src="comp/bottom.zul"></include>
+</zk>

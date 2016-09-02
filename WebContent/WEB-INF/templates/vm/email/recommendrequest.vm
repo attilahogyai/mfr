@@ -1,0 +1,5 @@
+$!user.getUserName()($!user.getUserId())
+ szeretné kérni, hogy fõoldalon legyen a: $category.getName()($category.getId()) nevû albuma.
+
+email: $!user.getEmail() 
+

@@ -1,0 +1,83 @@
+- rendezze a képeket dátum szerint
+kész
+- album megosztásnál a címzett neve legyen
+kész
+- email cím emlékesztetõ
+kész
+- kép elõnézet a képfeltöltés oldaon
+kész
+- törlés mindenhonnan és törlés albumból
+kész
+- albumnézegetõben ha a megtekintésre katt nem jön fel az album nézet
+kész
+- véletleneszerû fõoldal?
+kész
+- alapértelmezett legyen a legfelsõ az album kategóriáknál
+kész
+- album szerkesztés ablak miután jóváhagytam csukodjon be
+kész
+- jelszóemlékesztetõ,
+kész
+- fõoldalon ha nincs egy albumban egyetlen kép sem ne rakja ki a publikusok közé
+kész
+- a publikus albumoknál irja ki a tulajdonost
+kész
+- galléria oldalon irja ki, hogy ki a tulajdonos
+kész
+- ha nincs kép egy albumba a képkezelõnél írja ki, hogy nincs itt kép
+kész, ki - kép dátumát kitenni a részletes listárarja, hogy hány kép van az albumba
+- publikusnak jelõlt albumokról kapjak emailt ahol megtekinthetem és engedélyezhetem, hogy publikus legyen
+kész
+- google statot beépteni
+kész
+- hibabejelentés
+kész
+- A jelszoemlekeztetonel: Kerjen újat. (egy j-vel irdd).
+kész
+- A kepkezelonel: Itt toltheti fel kepeit. (nem kell az ugy).
+kész
+- A kepkezelonel a muveleteknel az albumba mozgat es hozzaadhoz irdd at a "default"-ot alapertelmezett-re.
+kész
+
+- User name az elkuldott emailben.
+kész
+
+- A kilepes nem mukodik, az az oldal jon be, ami bejelentkezes utan. Es ha uj lapon probalom behozni a kezdooldalt, akkor is beleptetve jon be.
+nem áll elõ
+- A kepnezegetoben az egyszeru nezetben nem egyforma a kepek merete.
+nem értem 
+
+- galéria fejléc szélességét behatárolni
+kész
+
+- fejléc nem tetszik ahogy most van a linkek helyett valami fémes jellegû gomb kellene
+kész
+
+
+
+- A jelszoemlekeztetonel is feher a hatter, nem tudtam a szoveget elolvasni.
+kész
+- A publikusnak jelolt albumbol is hoz fel kepeket a fooldalon.
+kész
+- Uj album letrehozasanal jon fel az a szoveg, hogy ha publikussa teszed az albumot, rovid idon belul valaszt kapsz.
+kész
+- Album megosztasnal feher hatteren feher szoveg jon fel.
+kész
+
+- A kepkezeloben az albumban talalhato kepek szama nem frissul, ha valtozik benne a kepszam.
+kész
+
+- A kepfeltoltesnel a megszakitas gomb kicsit mas, mint a tobbi, felul is van feher-narancs sav.
+- A kepeket a kepkezelo nem rendezi idosorrendbe. Amugy a reszletes adatoknal nem fer be meg valahova a datum is?
+- A kepkezelonel a "rendezze kepeit" kicsit feljebb van, mint a muveletek es elrendezes.
+- Album szerkesztesnel: Ha kiveszi a pipat, ujbol ...
+- A kapcsolatnal a sorok hosszusaga legyen azonos, a beirando szovege ugyanakkora, mint a felette levo 2 sor. Uzenet elkuldese gomb megint furcsa.
+- A fotokrol szerintem vedd le a regisztracio gombot. Ha bejelentkezve rakattintok, ures oldal jon fel.
+- A regisztracional nem irja ki az û betut. A regisztracio gomb megint mas a kerdoiv aljan.
+
+
+- Publikusok között irja ki, hogy hány kép van az albumba
+- képek sorrendjét egy albumban kézzel is lehessen változtatni
+- keresés: album és felhasználó névre
+- a véletlenszerûen hozott képeknél irja ki, hogy ki a tulajdonos
+- képet lehessen értékelni

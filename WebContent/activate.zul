@@ -1,0 +1,54 @@
+<?page title="${c:l('activate')}"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk xmlns:n="http://www.zkoss.org/2005/zk/native">
+<include src="template/head.zul"/>
+<zscript><![CDATA[
+String privateCode=Executions.getCurrent().getParameter("privatecode");
+//String privateCode=request.getParameter("privatecode");
+boolean activated=false;
+if(privateCode!=null){
+	org.mfr.data.Useracc userAcc=useraccDao.findByPrivateCode(privateCode);
+	if(userAcc!=null){
+		userAcc.setStatus(1);
+		try{
+			useraccDao.merge(userAcc);
+		}catch(Exception e){}
+		activated=true;
+	}
+}
+                  
+]]></zscript>
+<include src="comp/header.zul"></include>
+<div sclass="page-content" >
+<n:div class="container">
+<n:div class="row">
+<html><![CDATA[<h1>${c:l('activate')}</h1>]]></html>
+<div style="text-align:left;" 
+xmlns:n="http://www.zkoss.org/2005/zk/native" if="${language=='HU'}">
+<label>
+Sikeresen regisztrált!
+A regisztrációban megadott email címmel és jelszóval jelentkezhet be fiókjába. </label><n:br></n:br><n:br></n:br>
+<a href="http://www.myfotoroom.com" zclass="link-font">Bejelentkezés.</a>
+<n:br></n:br><n:br></n:br>
+<label zclass="colored-label">
+Köszönjük, hogy a myFotoRoom.com - ot választotta!
+</label>
+</div>
+<div style="text-align:left;margin-top:5px;" 
+xmlns:n="http://www.zkoss.org/2005/zk/native" if="${language=='EN'}">
+<label>
+Your registration was successful! 
+You can login to page with email address and password pair provided during registration.</label><n:br></n:br><n:br></n:br>
+<a href="/index.zul" zclass="link-font">Click here for Login!</a> 
+<n:br></n:br><n:br></n:br>
+<label zclass="colored-label">
+Thank you for your registration! Enjoy your myFotoRoom.com account.
+</label>
+</div>
+</n:div>
+</n:div>
+<n:br/><n:br/>
+
+</div>
+<include src="comp/bottom.zul" zclass="bottom-panel"></include>
+</zk>

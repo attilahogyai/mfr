@@ -1,0 +1,14 @@
+<?variable-resolver class="org.mfr.web.action.portfolio.PortfolioVariableResolver"?>
+<?init class="org.mfr.web.action.GalleryComposer"?>
+<?page title="${c:l('private.gallery')}" id="pblog"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?taglib uri="/WEB-INF/tld/my.tld" prefix="my"?>
+<?link rel="stylesheet" type="text/css" href="photoswipe/photoswipe.css"?>
+<?meta name="apple-mobile-web-app-capable" content="yes"?>
+<?meta name="description" content="${pageDesc}"?>
+<zk xmlns:w="client" xmlns:n="http://www.zkoss.org/2005/zk/native">
+<zscript><![CDATA[                  
+Component comp=Executions.createComponents(org.mfr.web.action.portfolio.PortfolioVariableResolver.resolveBlog(), null, null);               
+]]>
+</zscript>
+</zk>

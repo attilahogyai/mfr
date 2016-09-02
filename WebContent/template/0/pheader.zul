@@ -1,0 +1,81 @@
+<?page id="header"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk xmlns:n="http://www.zkoss.org/2005/zk/native" >
+<n:div id="header" apply="org.mfr.web.action.portfolio.PortfolioHeaderComposer">
+<n:div class="displayDesktop">
+<n:div class="menu-header">
+
+<n:ul>
+<n:li id="logo"><a href="_pindex"><html>
+${site.getName()}
+</html></a></n:li>
+<n:li id="account">
+<n:div id="accountbox">
+<a href="http://${domain}">${c:l('myfotoroom.main')}</a>
+<n:span if="${loggedIn}">|</n:span>
+<n:span if="${loggedIn}" class="hiddenmobile ">${user.getUserName()}<a href="#" id="logout" if="${loggedIn}" apply="org.mfr.web.action.LogoutComposer" ><n:img src="img/icon2/logout.png" style="vertical-align:middle;padding-left:5px;height:17px;"/></a></n:span>
+</n:div>
+<n:div id="logoutbox">
+<a if="${loggedIn}" href="http://${domain}" zclass="button3">${c:l('back.to.account')}</a>
+<a id="view" if="${loggedIn}" zclass="button2">${$composer.getViewButtonText()}</a>
+</n:div>
+</n:li>
+</n:ul>
+</n:div>
+</n:div>
+
+<n:div id="headerMobile" class="menu-header displayMobile">
+<n:img src="img/icon2/menu.png" style="float:left;" id="menuButton"/>
+<n:div id="logo">
+<n:a href="_pindex">
+${site.getName()}
+</n:a>
+</n:div>
+<n:a style="float:right;" href="http://${domain}">${c:l('myfotoroom.main')}</n:a>
+</n:div>
+
+
+
+
+<n:div id="menu" >
+<n:div id="navigation" class="displayDesktop">
+<n:ul id="menuil">
+<n:li forEach="${menu}" if="${access[forEachStatus.index]}">
+<a href="${each}">
+<attribute name="zclass" if="${path==each}">active-menu</attribute>
+${c:l(menuNames[forEachStatus.index])}</a>
+</n:li>
+</n:ul>
+</n:div>
+
+
+<n:div id="navigationMobile" class="displayMobile">
+<n:ul>
+<n:li forEach="${menu}" if="${access[forEachStatus.index]}" class="${menuClasses[forEachStatus.index]}">
+<n:a href="${each}">
+<attribute name="class" if="${path==each}">active-menu</attribute>
+${c:l(menuNames[forEachStatus.index])}</n:a>
+</n:li>
+<n:li if="${loggedIn}">
+${user.getUserName()}
+</n:li>
+</n:ul>
+</n:div>
+</n:div>
+
+</n:div>
+
+
+<script type="text/javascript" defer="true">
+<![CDATA[
+$(document).ready(function(){
+    $("#menuButton").click( function(){
+    	$("#navigationMobile").slideToggle();
+    } );
+});
+
+]]>
+</script>
+
+
+</zk>

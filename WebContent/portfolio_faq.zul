@@ -1,0 +1,119 @@
+<?page title="${c:l('license')}"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk xmlns:n="http://www.zkoss.org/2005/zk/native">
+<style>
+.title{
+	font-size:16px;
+	font-weight:bold;
+	line-height:35px;
+}
+</style>
+<style>
+.subtitle{
+	font-size:14px;
+	font-weight:bold;
+	line-height:25px;
+}
+</style>
+
+<include src="template/head.zul"/>
+<include src="comp/header.zul"></include>
+<div sclass="page-content" >
+<n:div class="container">
+<n:div class="row">
+<html><h1>${c:l('adatvedelem')}</h1>
+<div style="text-align: justify;margin-top:5px;" zclass="advertisment" xmlns:n="http://www.zkoss.org/2005/zk/native">
+<label class="title">
+Mi is az a portfólió?
+</label>
+<br/>
+Ez egy 
+<label class="subtitle">
+saját weboldal
+</label>
+, ahol csak a te képeid jelennek meg, albumokba rendezve. 
+<br/>
+Biztosítunk számodra egy könnyen kezelhető felületet, ahol nincs reklám, nincs felesleges tartalom, csak amit te feltöltessz.
+<br/>
+Lesz egy bemutatkozó főoldalad és egy galéria oldalad, saját internetes címmel. És mindez teljesen ingyen!
+<br/> 
+<label class="title">
+Kinek és mikor érdemes portfóliót használni?
+</label>
+<br/>
+Bárki létrehozhat egy ilyen bemutatkozó oldalt, akinek már van néhány képe feltöltve, albumokba rendezve. 
+<br/>
+Lehetsz fotós, modell, iskolai csoport vagy természetjáró, itt a lényeg a kép! Természetesen lehetőséget biztosítunk bemutatkozó szöveg megírására, illetve a képekhez is mellékelhetsz leírást.
+<br/>
+Ha csak egy eseményt akarsz megmutatni, akkor inkább válaszd az albumod megosztását, amit egyénileg tudsz email címre ajánlani.
+A portfóliód bárki számára látható és elérhető lesz.
+<br/>
+<label class="title">
+Hogyan tudom létrehozni?
+</label>
+<br/>
+Ha teljesen új felhasználó vagy, akkor a <a class="detail-link" href="_signup"> regisztráció </a> után fel kel töltened a képeidet, albumokba rendezve. Ezekből az albumokból válogathatsz majd a portfólió oldaladra. 
+Ehhez nyújt segítséget neked a <a class="detail-link" href="_signup"> Hogyan használd? </a> oldal.
+<br/>
+Ha már megvannak az albumaid, kattints a főoldaladon a 
+<label class="subtitle">
+Portfólió létrehozása
+</label>
+gombra.
+
+<br/> <br/>
+<img src="img/faq/port_szerk.png" width="350px"/>
+<br/> <br/>
+Az oldalad címe így fog kinézni:  
+<label class="subtitle">
+http://enoldalam.myfotoroom.com
+</label>
+, ahol az „enoldalam” általad megadott szöveg.
+<br/>
+Ha meggondolod magad, bármikor inaktívvá teheted, ekkor nem lesz többet elérhető az interneten. 
+<br/>
+<label class="title">
+Hogyan szerkesszem a portfólió oldalamat?
+</label>
+<br/>
+Az első oldal a 
+<label class="subtitle">
+Főoldal
+</label>
+, ahol kiválaszthatod a borítóképet, megadhatsz egy bemutatkozó szöveget magadról, majd feltölthetsz néhány albumot. 
+<br/>
+Az albumaidat bármikor megváltoztathatod, törölheted, nekik is tudsz borítóképet választani.
+<br/> <br/>
+<img src="img/faq/port_boritokep.png" width="240px" style="float:left;padding-right:15px;"/>
+<img src="img/faq/port_szoveg.png" width="285px" style="float:left;padding-right:15px;"/>
+<img src="img/faq/port_albumvalaszto.png" width="285px"/>
+<br/> <br/>
+A második oldal a 
+<label class="subtitle">
+Galéria.
+</label>
+<br/>
+Erre az oldalra töltheted fel azokat az albumokat, amiket meg szeretnél mutatni. Ugyanúgy borítóképet választhatsz nekik, és bármikor törölheted, lecserélheted.
+<br/> <br/>
+<img src="img/faq/port_galeria.png" width="600px"/>
+<br/> <br/>
+Íme egy általunk létrehozott minta portfólió oldal: <a class="detail-link" href="_signup"> http://portfolio.myfotoroom.com </a> 
+
+
+
+
+
+
+<br/>
+<br/>
+
+
+</div>
+</html>
+
+
+</n:div>
+</n:div>
+</div>
+<include src="comp/bottom.zul"></include>
+</zk>

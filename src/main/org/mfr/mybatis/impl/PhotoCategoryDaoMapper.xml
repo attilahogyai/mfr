@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+	  'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+	<mapper namespace="org.mfr.mybatis.impl.PhotoCategoryDaoMapper">
+
+	<cache eviction="LRU" flushInterval="60000" size="512" readOnly="true" />
+
+	<resultMap id="PhotoResult" type="MPhoto" autoMapping="true">
+		<association property="useracc" javaType="MUseracc">
+			<id property="id" column="useracc" />
+		</association>
+		<association property="useracc" javaType="MExifData">
+			<id property="photo" column="photoId" />
+		</association>		
+	</resultMap>
+
+	<!-- ////// FIND ONE CATEGORY -->
+	
+	<select id="findPhotosByCategoryId" resultMap="PhotoResult" parameterType="long">
+	select pc.photo as photoId,* from photo_category pc left join exif_data ed on pc.photo=ed.photo join photo on pc.photo=photo.id where pc.category=#{id}  order by ${sortOrder} ${sortDirection}
+	</select>
+	
+	<update id="incrementAccessCount" keyProperty="id" keyColumn="id" parameterType="MCategory">
+		update category set access_count=COALESCE (1, access_count+1) where id=#{id}
+	</update>	
+<!-- 	<update id="incrementAnswerCount" keyProperty="id" keyColumn="id" parameterType="long"> -->
+<!-- 		update question set -->
+<!-- 		last_answered=now(), -->
+<!-- 		answer_count=(select COALESCE (answer_count,0)+1) -->
+<!-- 		where id=#{id} -->
+<!-- 	</update>	 -->
+		
+</mapper>
+	

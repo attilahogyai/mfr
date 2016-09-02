@@ -1,0 +1,33 @@
+<?page title="${c:l('add.image.to.share')}"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk xmlns:n="http://www.zkoss.org/2005/zk/native">
+<include src="template/head.zul"/>
+<include src="comp/header.zul"></include>
+<div sclass="page-content" >
+<n:div class="container">
+<n:div class="row">
+<n:h1>${c:l('manage.albums')}</n:h1>
+<n:div width="100%" align="left" style="padding-left:10px">
+${c:l('album.info')}
+</n:div>
+<n:div class="fourcol spacingbutton-vertical">
+<a zclass="link1" onClick="$composer.createAlbumDetailWindow(null)">
+<image src="img/icon/PNG-24/Add.png" zclass="button-image"/>${c:l('album.new')}
+</a>
+</n:div>
+<zscript><![CDATA[
+List sites=$composer.getSites();                  
+]]></zscript>                  
+<div width="100%" align="left" style="float:left;">
+<listbox mold="select" id="siteSelector" width="177px" onSelect="$composer.albumOnChange()">
+<listitem label="${c:l('select.portfolio')}" selected="true"/>
+<listitem forEach="${sites}" label="${each.name} - ${c:l('portfolio')}" value="${each.id}"/>
+</listbox>
+</div>
+</n:div>
+
+</n:div>
+<n:br/><n:br/>
+</div>
+<include src="comp/bottom.zul" zclass="bottom-panel"></include>
+</zk>

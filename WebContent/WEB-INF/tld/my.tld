@@ -1,0 +1,62 @@
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee web-jsptaglibrary_2_0.xsd"
+    version="2.0">
+    
+    
+    
+ <function>
+        <name>getCategoryOwnerName</name>
+        <function-class>org.mfr.manager.CategoryManager</function-class>
+        <function-signature>
+    java.lang.String getCategoryOwnerName(org.mfr.data.Category)
+        </function-signature>
+        <description>
+    Returns owner name
+        </description>
+    </function>
+    
+    <function>
+        <name>getMapValue</name>
+        <function-class>org.mfr.util.ZkUtil</function-class>
+        <function-signature>
+    java.lang.Object getMapValue(java.util.Map,java.lang.Object)
+        </function-signature>
+        <description>
+    Returns a key value of a map
+        </description>
+    </function>
+    <function>
+        <name>getCategoryName</name>
+        <function-class>org.mfr.manager.CategoryManager</function-class>
+        <function-signature>
+    java.lang.String getCategoryName(org.mfr.data.Category)
+        </function-signature>
+        <description>
+    Returns category name
+        </description>
+    </function>
+    <function>
+        <name>getAsUrl</name>
+        <function-class>org.mfr.util.HttpHelper</function-class>
+        <function-signature>
+    java.lang.String replacetoAsciiChars(java.lang.String)
+        </function-signature>
+        <description>
+    Returns string as URL
+        </description>
+    </function>   
+    <function>
+        <name>getAlbumUrl</name>
+        <function-class>org.mfr.util.HttpHelper</function-class>
+        <function-signature>
+    java.lang.String getAlbumUrl(java.lang.String)
+        </function-signature>
+        <description>
+    Returns string as URL
+        </description>
+    </function>   
+    
+    
+    <!-- any number of functions are allowed -->
+</taglib>

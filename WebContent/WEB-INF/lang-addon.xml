@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language-addon>
+	<language-name>xul/html</language-name>
+	<stylesheet href="css/pst.css" type="text/css" />
+</language-addon>

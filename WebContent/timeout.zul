@@ -1,0 +1,23 @@
+<?page title="Timeout"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk xmlns:n="http://www.zkoss.org/2005/zk/native">
+<include src="template/head.zul"/>
+<include src="comp/header.zul"></include>
+<div sclass="page-content" >
+<n:div class="container">
+<n:div class="row">
+<div style="text-align: justify;margin-top:5px;" zclass="advertisment" xmlns:n="http://www.zkoss.org/2005/zk/native" if="${language=='HU'}">
+<html><h1>Idő túllépés</h1></html>
+Lejárt a munkamenet időkorlátja, frissítse újra a főoldalat vagy jelentkezzen be újra.
+</div>
+<div style="text-align: justify;margin-top:5px;" zclass="advertisment" xmlns:n="http://www.zkoss.org/2005/zk/native" unless="${language=='HU'}">
+<html><h1>Timeout</h1></html>
+The page or component you request is no longer available.
+This is normally caused by timeout, opening too many Web pages, or rebooting
+the server.
+</div>
+</n:div>
+</n:div>
+</div>
+<include src="comp/bottom.zul" zclass="bottom-panel"></include>
+</zk>

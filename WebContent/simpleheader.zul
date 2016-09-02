@@ -1,0 +1,23 @@
+<?page id="header"?>
+<?taglib uri="/WEB-INF/tld/my.tld" prefix="my"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk xmlns:n="http://www.zkoss.org/2005/zk/native">
+<n:div id="header">
+<n:div class="menu-header">
+<n:ul style="list-style: none;">
+<n:li id="logo">
+<a href="index.zul"><image src="img/fotologo2.png"/></a>
+</n:li>
+<n:li id="simpleaccount" style="list-style: none;">
+<n:div>
+
+</n:div>
+<n:div>
+<a href="index.zul">${c:l('mainpage')}</a> <span if="${loggedIn}" zclass="hiddenmobile"> | </span> <a href="album.zul" if="${loggedIn}" sclass="hiddenmobile">${c:l('manage.albums')}</a>
+</n:div>
+</n:li>
+
+</n:ul>
+</n:div>
+</n:div>
+</zk>

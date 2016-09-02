@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+	  'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+	<mapper namespace="org.mfr.mybatis.impl.CategoryDaoMapper">
+
+	<cache eviction="LRU" flushInterval="60000" size="512" readOnly="true" />
+
+	<resultMap id="CategoryResult" type="MCategory" autoMapping="true">
+<!-- 		<id property="id" column="qid" /> -->
+<!-- 		<result property="color" column="color"/> -->
+<!-- 		<result property="sessionCode" column="session"/> -->
+<!-- 		<association property="targetLocation" javaType="LocationData"> -->
+<!-- 			<id property="id" column="target_location" /> -->
+<!-- 			<result property="cityName" column="location_name" /> -->
+<!-- 		</association> -->
+<!-- 		<collection property="options" ofType="Option" notNullColumn="opid"> -->
+<!-- 			<id property="id" column="opid"/> -->
+<!-- 			<result property="text" column="optext"/> -->
+<!-- 			<result property="style" column="opstyle"/> -->
+<!-- 			<result property="ord" column="oporder"/> -->
+<!-- 			<association property="question" javaType="Question"> -->
+<!-- 				<id property="id" column="qid" /> -->
+<!-- 			</association>		 -->
+<!-- 		</collection> -->
+	</resultMap>
+	
+	<!-- ////// FIND ONE CATEGORY -->
+	
+	<select id="findById" resultMap="CategoryResult" parameterType="long">
+	    select * from category c where c.id=#{id}
+	</select>
+	
+	<update id="incrementAccessCount" keyProperty="id" keyColumn="id" parameterType="MCategory">
+		update category set access_count=COALESCE (1, access_count+1) where id=#{id}
+	</update>	
+<!-- 	<update id="incrementAnswerCount" keyProperty="id" keyColumn="id" parameterType="long"> -->
+<!-- 		update question set -->
+<!-- 		last_answered=now(), -->
+<!-- 		answer_count=(select COALESCE (answer_count,0)+1) -->
+<!-- 		where id=#{id} -->
+<!-- 	</update>	 -->
+		
+</mapper>
+	

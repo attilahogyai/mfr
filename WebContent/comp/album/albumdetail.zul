@@ -1,0 +1,78 @@
+<?page title="${c:l('album.create.header')}"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<window id="newAlbum" border="none" sizable="false" zclass="popup"  
+closable="true" apply="org.mfr.web.action.AlbumDetailComposer" xmlns:w="client" xmlns:n="http://www.zkoss.org/2005/zk/native" width="${popupwidth}px">
+<grid width="100%">
+<columns>
+<column width="100px"></column>
+<column/>
+</columns>
+		<rows>
+			<row zclass="fr-row">
+				<label value="${c:l('album.name')}" /><textbox id="name" maxlength="32" width="95%" constraint="/.{1,}/:${c:l('album.name.error')}"/>
+			</row>
+			<row zclass="fr-row">
+				<label value="${c:l('album.desc')}" /><textbox id="desc" rows="5" width="95%" height="100px"/>
+			</row>
+
+			<!-- row zclass="fr-row" spans="2" id="mainpagerequestrow">
+			<n:div>
+			<n:div>
+			<checkbox id="recommend"/> <label value="${c:l('album.setrecommend')}" if="${arg.category == null or arg.category.recommend==0 or arg.category.recommend==1}"/>
+			<label value="${c:l('album.isrecommend')}" if="${arg.category.recommend==2}"/>
+			</n:div>
+			<n:div>
+			<label value="${c:l('album.setrecommend.desc')}" zclass="small-font" if="${arg.category == null or arg.category.recommend==0 or arg.category.recommend==1}"/>
+			</n:div>				
+			
+			</n:div>	
+			</row-->
+			<row zclass="fr-row" spans="2" id="publicRow" unless="${arg.category.ispublic==-1}">
+			<div>
+			<div>
+			<checkbox id="disablePublic"/> <label value="${c:l('album.setpublic')}" if="${arg.category == null or arg.category.ispublic==0}"/><label value="${c:l('album.ispublic')}" if="${arg.category.ispublic==2}"/>
+			</div>				
+			</div>	
+			</row>
+			<row zclass="fr-row" spans="2">
+			<n:div>
+				<checkbox id="blog"/> <label value="${c:l('album.blog')}"/>
+			</n:div>				
+			</row>
+			
+			<row zclass="fr-row" spans="2">
+			<n:div>
+				<checkbox id="allowDownload" /> <label value="${c:l('allow.download')}"/>
+			</n:div>				
+			</row>
+			<row zclass="fr-row" spans="2">
+			<n:div>
+				<checkbox id="showComment" /> <label value="${c:l('allow.comment')}"/> <image src="/img/icon2/exc.png"/>
+			</n:div>				
+			</row>
+            
+			<row valign="top" spans="2" zclass="fr-row-title" ><label value="${c:l('sort.selector')}"/></row>            
+			<row zclass="fr-row" spans="2">
+			<listbox mold="select" id="sortModeSelector">
+				<listitem forEach="${$composer.sortModes}" value="${each}">
+				<attribute name="label">${c:l(c:cat('sort.',each))}</attribute>
+				</listitem>	
+			</listbox>
+			</row>
+            <row zclass="fr-row" spans="2">
+			<listbox mold="select" id="sortDirSelector">
+				<listitem forEach="${$composer.sortDir}" value="${each}">
+				<attribute name="label">${c:l(c:cat('sort.dir.',each))}</attribute>
+				</listitem>	
+			</listbox>
+			</row>
+            
+            <row zclass="fr-row">
+                <button label="${c:l('delete')}" id="deleteButton" zclass="button1"/>
+                    <button label="${c:l('save')}" zclass="button1" id="saveButton"/>                  
+            </row>
+            			
+		</rows>
+	</grid>
+ </window>

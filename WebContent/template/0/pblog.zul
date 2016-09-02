@@ -1,0 +1,43 @@
+<zk xmlns:w="client" xmlns:n="http://www.zkoss.org/2005/zk/native">
+<style src="css/${css}/pblog.css"></style>
+<div id="maincontainer" apply="org.mfr.web.action.GalleryComposer">
+<include src="photoswipe/code.zul" if="${$composer.display and not $composer.emptyData}"></include>
+<include src="${headerPage}" id="inc_header"></include>
+<div sclass="page-content" id="contentPage">
+<n:div class="container">
+<n:div class="row">
+<n:div class="segment-header">
+<n:div if="${$composer.display}">
+<html unless="${allowDownload}">
+<![CDATA[<h1>${my:getCategoryName(category)} <span style="font-size:14px;color:#AAAAAA;"> (${my:getCategoryOwnerName(category)})</span></h1>]]>
+<div class="blog-description">${category.description}</div>
+</html>
+</n:div>
+
+<n:div class="categories-header" unless="${$composer.display}">
+<span style="font-size:14px;">${c:l('access.denied')}</span></n:div>
+</n:div>
+
+
+<n:div id="Gallery" if="${$composer.display}">
+<n:div forEach="${$composer.imageData}" class="segment-container">
+<n:div class="image-container">
+<n:a href="/mimg/medium/id/${each.id}" >
+<n:div>
+${httpHelper.setImageAccessForPublic(each.id,each.imageName,each.imageRealPath)}
+<n:img src="/mimg/prev/id/${each.id}" alt="${each.exifDataObject.imageWidth} x ${each.exifDataObject.imageHeight}, iso${each.exifDataObject.iso} f${each.exifDataObject.fnumber}, t${each.exifDataObject.exposureTime}" title="${each.imageName}"/>
+<n:p class="image-name" style="position:relative">${each.imageName}</n:p>
+</n:div>
+<!-- n:p class="image-detail">(${each.exifDataObject.imageWidth} x ${each.exifDataObject.imageHeight}, iso${each.exifDataObject.iso} f${each.exifDataObject.fnumber}, t${each.exifDataObject.exposureTime})</n:p-->
+</n:a>
+</n:div>
+${each.photo.description}
+</n:div>
+</n:div>
+</n:div>
+<include id="comment" src="comp/comment.zul" zclass="comment-panel" comments="${$composer.comments}" if="${$composer.allowComments}" ></include>
+</n:div>
+</div>
+</div>
+<include src="comp/bottom.zul" zclass="bottom-panel"></include>
+</zk>

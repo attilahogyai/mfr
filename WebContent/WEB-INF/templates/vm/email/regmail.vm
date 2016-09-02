@@ -1,0 +1,39 @@
+#if($language.equals("HU"))
+Kedves $!user.getName()!<br>
+<br>
+Üdvözöljük a myFotoRoom.com - on!<br>
+<br>
+Ön a következő adatokkal regisztrált:<br>
+	Név: $!user.getName()<br>
+	Email cím: $!user.getEmail()<br>
+	<br>	
+	<br>
+Az alábbi linkre kattintva megerősítheti regisztrációját:<br>
+	<a href="http://myfotoroom.com/activate.zul?privatecode=$!user.getPrivateCode()">http://myfotoroom.com/_activate</a><br>
+<br>
+Az oldalra a regisztációnál megadott adatokkal jelentkezhet be.<br>		
+<br>		
+Kellemes és hasznos időtöltést kívánunk.<br>
+Ha kérdése van, küldje az info@myfotoroom.com email címre.<br> 
+<br>
+Köszönettel,<br>
+a fejlesztő csapat<br>
+#else
+Dear $!user.getName()!<br>
+<br>
+Welcome to myFotoRoom.com!<br>
+<br>
+You are registered with the following data:<br>
+	Name: $!user.getName()<br>
+	Email address: $!user.getEmail()<br>
+	<br>	
+	<br>
+Click on the link below to confirm your registration:<br>
+	<a href="http://www.myfotoroom.com/activate.zul?privatecode=$!user.getPrivateCode()">http://www.myfotoroom.com/activate.zul</a><br>
+<br><br>
+We hope you enjoy your visit, and find that using our service is productive, easy and fun.<br>		
+If you have any question regarding myFotoRoom.com, send it to info@myfotoroom.com email address.<br> 
+<br>
+Best regards,<br>
+development team<br>
+#end

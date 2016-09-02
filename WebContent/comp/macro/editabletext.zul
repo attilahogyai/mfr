@@ -1,0 +1,6 @@
+<zk>
+<html unless="${isEditable}" zclass="${arg.hclass}">
+${arg.text}
+</html>
+<textbox id="editbox" if="${isEditable}" value="${arg.text}" zclass="${arg.hclass}" multiline="true"/>
+</zk>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+	<context:annotation-config />
+    <context:component-scan base-package="org.mfr" />
+        
+   <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
+      <property name="persistenceUnitName" value="psDB"/>
+   </bean>
+
+ 	<bean id="transactionManager"
+		class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory">
+			<ref bean="entityManagerFactory" />
+ 		</property>
+ 		<property name="jpaDialect" ref="jpaDialect"/>
+ 	</bean>
+  <bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"/>
+  <aop:config>
+  	<aop:pointcut id="productServiceMethods" expression="execution(* org.mfr.data.*.*(..))"/>
+    <aop:pointcut id="productServiceMethods2" expression="execution(* org.mfr.manager.*.*(..))"/>
+    <aop:advisor advice-ref="transactionManagerAdvice" pointcut-ref="productServiceMethods"/>
+    <aop:advisor advice-ref="transactionManagerAdvice" pointcut-ref="productServiceMethods2"/>
+  </aop:config>   
+  <tx:advice id="transactionManagerAdvice" transaction-manager="transactionManager">
+    <tx:attributes>
+    	<tx:method name="persist" propagation="REQUIRED"/>
+    	<tx:method name="merge" propagation="REQUIRED"/>
+    	<tx:method name="remove" propagation="REQUIRED"/>
+        <tx:method name="*" propagation="REQUIRED" read-only="true"/>
+    </tx:attributes>
+  </tx:advice> 
+   
+  <!-- bean post-processor for JPA annotations -->
+  <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+
+  
+  <bean id="useraccDao" class="org.mfr.data.UseraccDao"/>   
+  <bean id="photoCategoryDao" class="org.mfr.data.PhotoCategoryDao"></bean>
+  <bean id="categoryDao" class="org.mfr.data.CategoryDao"/>
+  <bean id="photoDao" class="org.mfr.data.PhotoDao"/>
+  <bean id="exifDataDao" class="org.mfr.data.ExifDataDao"/>
+  <bean id="useraccDataDao" class="org.mfr.data.UseraccDataDao"/>
+  <bean id="permissionDao" class="org.mfr.data.PermissionDao"/>
+  <bean id="siteDao" class="org.mfr.data.SiteDao"/>
+  <bean id="siteGalleriesDao" class="org.mfr.data.SiteGalleriesDao"/>
+  <bean id="dictionaryDao" class="org.mfr.data.DictionaryDao"/>
+  <bean id="styleConfigDao" class="org.mfr.data.StyleConfigDao"/>
+  <bean id="categoryCssDao" class="org.mfr.data.CategoryCssDao"/>
+  <bean id="cssDao" class="org.mfr.data.CssDao"/>
+  <bean id="commentDao" class="org.mfr.data.CommentDao"/>
+  <bean id="useraccPrefsDao" class="org.mfr.data.UseraccPrefsDao"/>
+  <bean id="siteCssDao" class="org.mfr.data.SiteCssDao"/>
+  
+  
+  <bean id="imageDataManager" class="org.mfr.manager.ImageDataManager" autowire="byName"/>
+  <bean id="categoryManager" class="org.mfr.manager.CategoryManager" autowire="byName"/>
+  <bean id="permissionManager" class="org.mfr.manager.PermissionManager" autowire="byName"/>
+  <bean id="userManager" class="org.mfr.manager.UserManager" autowire="byName">
+  <property name="oAuthServiceMap">
+  <map>
+  <entry key="google" value-ref="googleOAuthService"></entry>
+  <entry key="facebook" value-ref="facebookOAuthService"></entry>
+  </map>
+  </property>
+  </bean>
+  <bean id="bgManager" class="org.mfr.manager.BackgroundResizeHandler" init-method="start"/>
+  <bean id="googleDriveManager" class="org.mfr.manager.GoogleDriveManager" />
+  
+  
+  <bean id="googleOAuthService" class="org.mfr.manager.oauth.GoolgeOAuthServices"></bean>
+  <bean id="facebookOAuthService" class="org.mfr.manager.oauth.FacebookOAuthService"></bean>
+  
+  <!-- SERVICES -->
+  <bean class="org.mfr.service.GalleryService"></bean>
+  
+  
+<!-- COMPOSERS   -->
+  <bean id="loginComposer" class="org.mfr.web.action.LoginComposer" scope="prototype"></bean>
+  <bean id="signupComposer" class="org.mfr.web.action.SignUpComposer" scope="prototype"></bean>
+  <bean id="contactComposer" class="org.mfr.web.action.ContactComposer" scope="prototype"></bean>
+  
+  <bean id="imageHandlerComposer" class="org.mfr.web.action.ImageHandlerComposer" scope="session" lazy-init="true" init-method="init">
+  <aop:scoped-proxy />
+  </bean>
+  <bean id="photoDetailComposer" class="org.mfr.web.action.PhotoDetailComposer" scope="prototype"/>
+  <bean id="albumSelectorComposer" class="org.mfr.web.action.AlbumSelectorComposer"  scope="prototype"/>
+  <bean id="portfolioIndexComposer" class="org.mfr.web.action.PortfolioIndexComposer" scope="prototype"/>
+  <bean id="portfolioAboutComposer" class="org.mfr.web.action.PortfolioAboutComposer" scope="prototype"/>
+  <bean id="portfolioContactComposer" class="org.mfr.web.action.PortfolioContactComposer" scope="prototype"/>
+  <bean id="portfolioPortfolioComposer" class="org.mfr.web.action.PortfolioPortfolioComposer" scope="prototype"/>
+  <bean id="albumComposer" class="org.mfr.web.action.AlbumComposer" scope="prototype"/>
+
+
+
+
+
+
+
+
+
+
+<!-- mybatis -->
+
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="java:/comp/env/jdbc/mfrDB"/>
+    </bean>
+	
+	<bean id="vendorProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+	    <property name="properties">
+	        <props>
+	            <prop key="SQL Server">sqlserver</prop>
+	            <prop key="Oracle">oracle</prop>
+	        </props>
+	    </property>
+	</bean>
+	
+	<bean id="databaseIdProvider" class="org.apache.ibatis.mapping.VendorDatabaseIdProvider">
+	    <property name="properties" ref="vendorProperties"/>
+	</bean>
+
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	  <property name="dataSource" ref="dataSource" />
+	  <property name="databaseIdProvider" ref="databaseIdProvider"></property>
+	  <property name="configLocation" value="classpath:org/mfr/mybatis/impl/mybatis-config.xml" />
+	  <property name="transactionFactory">
+	  	<bean class="org.apache.ibatis.transaction.managed.ManagedTransactionFactory" />
+	  </property> 
+	  <property name="typeHandlersPackage" value="org.mfr.mybatis.typehandler" />
+	</bean>
+	
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	  <property name="basePackage" value="org.mfr.mybatis.impl" />
+	</bean>
+
+  
+</beans>

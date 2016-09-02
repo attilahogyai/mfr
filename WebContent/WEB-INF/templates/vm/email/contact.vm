@@ -1,0 +1,8 @@
+Kapcsolat email<br><br>
+$!user<br><br>
+
+Tárgy: $subject<br>
+Email: $contactEmail
+<br><br>
+Üzenet:<br>
+$message

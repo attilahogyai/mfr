@@ -1,0 +1,66 @@
+<?page title="${c:l2('portfolio.contact',siteArray)}"?>
+<?taglib uri="/WEB-INF/tld/my.tld" prefix="my"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk xmlns:w="client" xmlns:n="http://www.zkoss.org/2005/zk/native">
+	<style>
+		.fourcol{ margin:0px; } .row{ padding-top:40px;
+		padding-bottom:40px; }
+	</style>
+	<include src="comp/pheader.zul" id="inc_header"></include>
+<div sclass="page-content" >
+<n:div class="container">
+<div class="row" apply="${portfolioContactComposer}" >
+<div sclass="sevencol">
+<grid >
+   <columns>
+   <column width="140px"></column>
+   <column ></column>
+   </columns>
+   <rows>
+       <row zclass="fr-row"><label value="${c:l('subject')}"/>
+       <listbox id="subject" mold="select">
+       <listitem label="${c:l('info.request')}" selected="true"/>
+       <listitem label="${c:l('error.report')}"/>
+       <listitem label="${c:l('other.comment')}"/>
+       </listbox>
+       </row>
+       <row zclass="fr-row"><label value="${c:l('my.email.address')}" width="150px"/><textbox id="contactEmail" constraint="/.+@.+\.[a-z]+/: ${labels.check.email}"/></row>
+       <row zclass="fr-row"><label value="${c:l('message')}" width="150px"/><textbox id="message" rows="10" cols="43"  /></row>
+       <row zclass="fr-row">
+       <space></space>
+       <button label="${c:l('send.message')}" id="sendmessage" zclass="button1"/>
+       </row>
+   </rows>
+</grid>
+</div>
+
+
+				<n:div class="fourcol welcometext" >
+					<n:form>
+						<div>
+							<html if="${!siteowner and language=='HU'}">
+								${site.contact}
+							</html>
+							<html if="${!siteowner and language!='HU'}">
+								${site.contactEn}
+							</html>
+							<ckeditor id="contacttext" width="100%"
+								onSave="$composer.saveContactText()" if="${siteowner}"
+								customConfigurationsPath="/js/cke_config.js">
+								<attribute name="value" if="${language=='HU'}">
+									${site.contact}
+								</attribute>
+								<attribute name="value" unless="${language=='HU'}">
+									${site.contactEn}
+								</attribute>
+							</ckeditor>
+						</div>
+					</n:form>
+				</n:div>
+
+</div>
+</n:div>
+<n:br/><n:br/>
+</div>
+<include src="comp/bottom.zul"></include>
+</zk>

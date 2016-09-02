@@ -1,0 +1,10 @@
+<?page title="comment"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<window id="commentPopup" border="none" sizable="false" 
+xmlns:n="http://www.zkoss.org/2005/zk/native"
+xmlns:w="http://www.zkoss.org/2005/zk/client"
+closable="true" zclass="popup" width="${popupwidth}px">
+<include src="comp/popupheader.zul" windowName="commentListPopup" label="${c:l('history')}"></include>
+<include id="commentHistory" src="comp/comment.zul" zclass="comment-panel" comments="${arg.comments}" parentId="${arg.parent}" showHideButton="false" hideHistory="true" style="padding:0px 10px;"></include>
+</window>

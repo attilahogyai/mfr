@@ -1,0 +1,5 @@
+$!user.getUserName()($!user.getUserId()) 
+publikusnak jelőlte a: $category.getName()($category.getId()) nevű albumot.
+
+email: $!user.getEmail() 
+

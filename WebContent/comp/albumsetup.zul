@@ -1,0 +1,40 @@
+<?page title="${c:l('album.selector')}"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<window id="albumSetup" border="none" sizable="false" zclass="popup" 
+width="${popupwidth}px" closable="true" xmlns:w="client" xmlns:n="http://www.zkoss.org/2005/zk/native" >
+<script type="text/JavaScript" defer="true" ><![CDATA[
+function closeWindow(){
+	var window=zk.Widget.$('newAlbum');
+	alert("- "+window);
+	jq('$newAlbum').close();
+}
+]]>
+</script>
+<div sclass="categories-header-tabs">
+<label zclass="categories-header-text-msg" id="titleText" if="${not empty arg.category}">${arg.category.name}</label>
+<label zclass="categories-header-text-msg" if="${empty arg.category}">${c:l("album.new")}</label>
+<a onClick='Events.postEvent("onClose",albumSetup,null);'>
+<image src="img/icon2/exit.png" align="right" zclass="button-image2" style="padding-right:10px;" id="close"/>
+</a>
+</div>
+<tabbox id="tbox" panelSpacing="0">
+    <tabs id="tabs">
+    <tab id="albumDetail" label="${c:l('properties')}" image="/img/icon2/edit3.png"/>
+    <tab id="albumShare" label="${c:l('share')}" if="${not empty arg.category}" image="/img/icon2/share3.png"/>
+    <tab id="styleSelector" label="${c:l('css.selector')}" if="${not empty arg.category}" image="/img/icon2/style.png"/>
+    </tabs>
+   <tabpanels>
+<tabpanel fulfill="=comp/album/albumdetail.zul">
+
+</tabpanel>
+   
+<tabpanel fulfill="=comp/album/accessdetail.zul" if="${not empty arg.category}">
+</tabpanel>
+<tabpanel fulfill="=comp/album/cssselector.zul" if="${not empty arg.category}">
+</tabpanel>
+</tabpanels>
+</tabbox>	
+
+        
+ </window>

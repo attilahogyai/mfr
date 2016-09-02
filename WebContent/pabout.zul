@@ -1,0 +1,50 @@
+<?page title="${c:l2('portfolio.about',siteArray)}"?>
+<?taglib uri="/WEB-INF/tld/my.tld" prefix="my"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk xmlns:w="client" xmlns:n="http://www.zkoss.org/2005/zk/native">
+	<style>
+		.fourcol{ margin:0px; } .row{ padding-top:40px;
+		padding-bottom:40px; }
+	</style>
+	<include src="comp/pheader.zul" id="inc_header"></include>
+	<n:div class="container page-content" id="contentPage">
+		<div class="row" apply="${portfolioAboutComposer}">
+			<div sclass="sixcol welcometext">
+				<n:div>
+					<n:form>
+						<div>
+							<html if="${!siteowner and language=='HU'}">
+								${site.about}
+							</html>
+							<html if="${!siteowner and language!='HU'}">
+								${site.aboutEn}
+							</html>
+							<ckeditor id="abouttext" width="100%"
+								onSave="$composer.saveAboutText()" if="${siteowner}"
+								customConfigurationsPath="/js/cke_config.js">
+								<attribute name="value" if="${language=='HU'}">
+									${site.about}
+								</attribute>
+								<attribute name="value" unless="${language=='HU'}">
+									${site.aboutEn}
+								</attribute>
+							</ckeditor>
+						</div>
+					</n:form>
+				</n:div>
+			</div>
+
+			<n:div id="mainImageContainer" class="fivecol">
+				<image src="img/about.png"
+					id="aboutImage">
+				</image>
+				<image src="img/icon2/small_edit.png" zclass="action_button"
+					onClick="$composer.createAlbumSelectorWindow(3,true)" if="${siteowner}">
+				</image>
+			</n:div>
+
+		</div>
+
+	</n:div>
+	<include src="comp/bottom.zul"></include>
+</zk>

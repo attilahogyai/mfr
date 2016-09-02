@@ -1,0 +1,42 @@
+<?component name="mfrimagelist" macroURI="/comp/macro/imagelist.zul" class="org.mfr.zul.comp.ImageList"?>
+<zk xmlns:w="client" xmlns:n="http://www.zkoss.org/2005/zk/native" >
+<div id="galleryHidden" style="display:none"></div>
+<div id="maincontainer" apply="org.mfr.web.action.GalleryComposer">
+<include src="photoswipe/code.zul" if="${$composer.display and not $composer.emptyData}"></include>
+<include src="${headerPage}" id="inc_header"></include>
+<div sclass="page-content" id="contentPage">
+<n:div class="container">
+<n:div class="row">
+<n:div class="row" if="${$composer.display}" style="padding-bottom:10px;">
+
+<html>
+<h1>${my:getCategoryName($composer.category)} <span style="font-size:14px;color:#AAAAAA;"> (${my:getCategoryOwnerName($composer.category)})</span>
+<a href="/download/album/${$composer.albumId}" style="float:right;" class="link_light" if="${$composer.allowDownload}">${c:l('download.all.original')}</a>
+</h1>
+${$composer.category.description}
+</html>
+
+</n:div>
+
+<n:div unless="${$composer.display}" >
+<n:br/>
+<span style="font-size:14px;">${c:l('access.denied')}</span></n:div>
+<n:div if="${$composer.emptyData}">
+<span style="font-size:14px;">${c:l('album.is.empty')}</span></n:div>
+
+
+
+<mfrimagelist imageData="${$composer.imageData}" showTitle="true"  if="${$composer.display and not $composer.emptyData}" 
+style="text-align:center;" showAuthor="false" allowDownload="${$composer.allowDownload}"/>
+
+
+</n:div>
+
+<include id="comment" src="comp/comment.zul" zclass="comment-panel" comments="${$composer.comments}" if="${$composer.allowComments}" ></include>
+
+</n:div>
+<n:br/>
+</div>
+<include src="comp/bottom.zul" zclass="bottom-panel"></include>
+</div>
+</zk>

@@ -1,0 +1,33 @@
+<?page title="Css selector"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<window id="cssDetail" border="none" sizable="false" 
+xmlns:n="http://www.zkoss.org/2005/zk/native"
+xmlns:w="http://www.zkoss.org/2005/zk/client"
+apply="org.mfr.web.action.css.CssSelectorComposer"
+closable="true" zclass="popup" width="${popupwidth}px">
+<grid width="100%">
+		<rows id="styles">
+		<row zclass="fr-row-title">
+		${c:l('css.selector.desc')}
+		</row>
+		</rows>
+</grid>
+<grid width="100%">
+<rows >
+<row zclass="fr-row">
+	<a label="${c:l('apply')}" zclass="link1" id="applyStyle"/>
+</row>
+</rows>
+</grid>	
+<template name="availableCss">
+<row zclass="fr-row">
+<listbox mold="select">
+	<listitem forEach="${cssGroup}" value="${each.id}" selected="${$composer.isSelected(each.group,each.id)}">
+	<attribute name="label">${each.name}</attribute>
+	</listitem>
+	<custom-attributes group="${groupId}"/>	
+</listbox></row>
+</template>
+
+</window>

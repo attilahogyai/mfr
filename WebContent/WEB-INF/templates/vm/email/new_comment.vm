@@ -1,0 +1,88 @@
+#if($language.equals("HU"))
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<title>$albumname</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<meta http-equiv="Content-Language" content="hu">
+</head>
+<body>
+<table width="600" bgcolor="#eeeeee">
+<tr><td colspan="3" height="20"><img src="cid:t.png" width="1" height="20" border="0" style="display:block" alt=""></td></tr>
+<tr>
+<td bgcolor="#eeeeee" width="20"><img src="cid:t.png" width="20" height="1" border="0" style="display:block" alt=""></td>
+<td style="font-family:arial;font-size:12px;color:#666666;text-align:justify">
+<h1 style="font-size:16px;font-family:arial;color:#04A5FD;margin:0 0 3px 0;padding:0">
+Kedves $recipientName!
+</h1>
+#if($reply)
+<a href="$albumlink" style="color:#04A5FD;">$albumname</a> album alatt $senderName választ küldött a hozzászólásodra.
+#else
+<a href="$albumlink" style="color:#04A5FD;">$albumname</a> albumhoz $senderName hozzászolt.
+#end
+<hr>
+<table cellspacing="5" cellpadding="5">
+<tr>
+<td>$comment</td>
+</tr>
+</table>
+</td>
+<td bgcolor="#eeeeee" width="20"><img src="cid:t.png" width="20" height="1" border="0" style="display:block" alt=""></td>
+</tr>
+<tr>
+<td bgcolor="#eeeeee" width="20"><img src="cid:t.png" width="20" height="1" border="0" style="display:block" alt=""></td>
+<td style="font-family:arial;font-size:12px;color:#666666;text-align:justify">
+<a href="$albumlink" style="font-family:arial;font-size:12px;color:#04A5FD;">Ugrás az albumhoz.</a>
+</td>
+<td bgcolor="#eeeeee" width="20"><img src="cid:t.png" width="20" height="1" border="0" style="display:block" alt=""></td>
+</tr>
+#parse("email/comp/bottom.vm")
+</table>
+
+</body>
+</html>
+
+#else
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<title>$albumname</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<meta http-equiv="Content-Language" content="hu">
+</head>
+<body>
+<table width="600" bgcolor="#eeeeee">
+<tr><td colspan="3" height="20"><img src="cid:t.png" width="1" height="20" border="0" style="display:block" alt=""></td></tr>
+<tr>
+<td bgcolor="#eeeeee" width="20"><img src="cid:t.png" width="20" height="1" border="0" style="display:block" alt=""></td>
+<td style="font-family:arial;font-size:12px;color:#666666;text-align:justify">
+<h1 style="font-size:16px;font-family:arial;color:#04A5FD;margin:0 0 3px 0;padding:0">
+Dear $recipientName!
+</h1>
+You've got a new #if($reply)reply#else comment#end from $senderName for <a href="$albumlink" style="color:#04A5FD;">$albumname</a> album.
+<hr>
+<table cellspacing="5" cellpadding="5">
+<tr>
+<td>$comment</td>
+</tr>
+</table>
+</td>
+<td bgcolor="#eeeeee" width="20"><img src="cid:t.png" width="20" height="1" border="0" style="display:block" alt=""></td>
+</tr>
+<tr>
+<td bgcolor="#eeeeee" width="20"><img src="cid:t.png" width="20" height="1" border="0" style="display:block" alt=""></td>
+<td style="font-family:arial;font-size:12px;color:#666666;text-align:justify">
+<a href="$albumlink" style="font-family:arial;font-size:12px;color:#04A5FD;">Jump to your album.</a>
+</td>
+<td bgcolor="#eeeeee" width="20"><img src="cid:t.png" width="20" height="1" border="0" style="display:block" alt=""></td>
+</tr>
+#parse("email/comp/bottom_EN.vm")
+</table>
+
+</body>
+</html>
+
+
+#end

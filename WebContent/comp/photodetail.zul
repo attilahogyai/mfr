@@ -1,0 +1,61 @@
+<?page title="${c:l('album.create.header')}"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<window id="photoDetail" border="none" sizable="false" zclass="popup" 
+closable="true" apply="org.mfr.web.action.PhotoDetailComposer" xmlns:w="client"  xmlns:n="native" width="${popupwidth}px">
+<script type="text/JavaScript" ><![CDATA[
+function closeWindow(){
+	alert(jq('$photoDetail'));
+	jq('$photoDetail').close();
+}
+]]>
+</script>
+<div sclass="categories-header">
+<label zclass="categories-header-text-msg" id="titleText">${c:l('photo.edit')}</label>
+<image src="img/icon2/exit.png" align="right" zclass="button-image2" style="padding-right:10px;" onClick='Events.sendEvent("onClose", photoDetail, null);'></image>
+</div>
+
+<grid width="100%">
+<rows>
+<row zclass="fr-row">
+<div>
+<textbox id="name" maxlength="64" cols="32" placeholder="${c:l('photo.name')}"/>
+<a zclass="link_light" style="vertical-align:top">
+<attribute name="onClick"><![CDATA[
+desc.setVisible(!desc.isVisible());                           
+]]>
+</attribute>
+${c:l('photo.desc')}
+</a>
+<ckeditor id="desc" width="100%" customConfigurationsPath="/js/cke_config.js">
+<attribute name="value"><![CDATA[
+]]></attribute>
+</ckeditor>
+</div>
+</row>
+<row zclass="fr-row" align="center">
+<n:div style="text-align:center">
+<image id="image" style="max-width:${popupwidth-20}px;"></image>
+</n:div>
+</row>
+			<row zclass="fr-row">
+				<div>	
+			<div style="float:right">
+<a zclass="link_light" id="normalize">
+<attribute name="onClick"><![CDATA[
+$composer.normalizeImage();                           
+]]>
+</attribute>
+Optimize
+</a>
+</div>
+			<button label="${c:l('save')}" zclass="button1" id="photoSaveButton" style="float:left"/>
+			</div>                  
+            </row>	
+            
+<row>
+<div><n:p forEach="${$composer.exifData}" if="${not empty each.value}" class="label1">${each.key} : ${each.value}</n:p></div>
+</row>            		
+		</rows>
+	</grid>
+ </window>

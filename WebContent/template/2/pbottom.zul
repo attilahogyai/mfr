@@ -1,0 +1,7 @@
+<?component name="et" macroURI="/comp/macro/editabletext.zul" class="org.mfr.zul.comp.EditableText"?>
+<?page id="bottom"?>
+<zk xmlns:n="http://www.zkoss.org/2005/zk/native">
+<n:div id="footer">
+<et key="site.footer.text" id="copyright" hclass="copyright"/> 
+</n:div> 
+</zk>

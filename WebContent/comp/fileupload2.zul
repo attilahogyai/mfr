@@ -1,0 +1,140 @@
+<?page title="File upload"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+<window id="fileupload" zclass="popup"  border="none" xmlns:wc="client"
+action="show: slideDown;hide: slideUp" xmlns:w="client">
+<script><![CDATA[
+$('#fileupload').fileupload({
+    filesContainer: $('#upload_files_container'),
+    uploadTemplateId: null,
+    downloadTemplateId: null,
+    uploadTemplate: function (o) {
+        var rows = $();
+        $.each(o.files, function (index, file) {
+            var row = $('<tr class="template-upload fade">' +
+                '<td class="preview"><span class="fade"></span></td>' +
+                '<td class="name"></td>' +
+                '<td class="size"></td>' +
+                (file.error ? '<td class="error" colspan="2"></td>' :
+                        '<td><div class="progress">' +
+                            '<div class="bar" style="width:0%;"></div></div></td>' +
+                            '<td class="start"><button>Start</button></td>'
+                ) + '<td class="cancel"><button>Cancel</button></td></tr>');
+            row.find('.name').text(file.name);
+            row.find('.size').text(o.formatFileSize(file.size));
+            if (file.error) {
+                row.find('.error').text(
+                    locale.fileupload.errors[file.error] || file.error
+                );
+            }
+            rows = rows.add(row);
+        });
+        return rows;
+    },
+    downloadTemplate: function (o) {
+        var rows = $();
+        $.each(o.files, function (index, file) {
+            var row = $('<tr class="template-download fade">' +
+                (file.error ? '<td></td><td class="name"></td>' +
+                    '<td class="size"></td><td class="error" colspan="2"></td>' :
+                        '<td class="preview"></td>' +
+                            '<td class="name"><a></a></td>' +
+                            '<td class="size"></td><td colspan="2"></td>'
+                ) + '<td class="delete"><button>Delete</button> ' +
+                    '<input type="checkbox" name="delete" value="1" class="toggle"></td></tr>');
+            row.find('.size').text(o.formatFileSize(file.size));
+            if (file.error) {
+                row.find('.name').text(file.name);
+                row.find('.error').text(
+                    locale.fileupload.errors[file.error] || file.error
+                );
+            } else {
+                row.find('.name a').text(file.name);
+                if (file.thumbnail_url) {
+                    row.find('.preview').append('<a><img></a>')
+                        .find('img').prop('src', file.thumbnail_url);
+                    row.find('a').prop('rel', 'gallery');
+                }
+                row.find('a').prop('href', file.url);
+                row.find('.delete')
+                    .attr('data-type', file.delete_type)
+                    .attr('data-url', file.delete_url);
+            }
+            rows = rows.add(row);
+        });
+        return rows;
+    }
+});
+
+]]></script>
+<zscript><![CDATA[
+void closeWindow(){
+	Events.postEvent("onClose",fileupload,null);
+}
+]]></zscript>
+<div sclass="categories-header">
+<label zclass="categories-header-text-msg">${c:l('fileupload.title')}</label>
+<image src="img/icon2/exit.png" align="right" zclass="button-image2" style="padding-right:10px;" onClick="closeWindow()"></image>
+</div>
+<div sclass="popup-content" >
+<html>
+
+
+
+
+<form id="fileupload" action="upload" method="POST" enctype="multipart/form-data">
+        <!-- Redirect browsers with JavaScript disabled to the origin page -->
+        <noscript><input type="hidden" name="redirect" value="http://blueimp.github.com/jQuery-File-Upload/"/></noscript>
+        <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+        <div class="row fileupload-buttonbar">
+            <div class="span7">
+                <!-- The fileinput-button span is used to style the file input field as button -->
+                <span class="btn btn-success fileinput-button">
+                    <i class="icon-plus icon-white"></i>
+                    <span>Add files...</span>
+                    <input type="file" name="files[]" multiple=""/>
+                </span>
+                <button type="submit" class="btn btn-primary start">
+                    <i class="icon-upload icon-white"></i>
+                    <span>Start upload</span>
+                </button>
+                <button type="reset" class="btn btn-warning cancel">
+                    <i class="icon-ban-circle icon-white"></i>
+                    <span>Cancel upload</span>
+                </button>
+                <button type="button" class="btn btn-danger delete">
+                    <i class="icon-trash icon-white"></i>
+                    <span>Delete</span>
+                </button>
+                <input type="checkbox" class="toggle"/>
+            </div>
+            <!-- The global progress information -->
+            <div class="span5 fileupload-progress fade">
+                <!-- The global progress bar -->
+                <div class="progress progress-success progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                    <div class="bar" style="width:0%;"></div>
+                </div>
+                <!-- The extended global progress information -->
+                <div class="progress-extended"></div>
+            </div>
+        </div>
+        <!-- The loading indicator is shown during file processing -->
+        <div class="fileupload-loading"></div>
+        <br/>
+        <!-- The table listing the files available for upload/download -->
+        <table role="presentation" class="table table-striped"><tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody></table>
+    </form>
+
+
+
+
+<!-- div id="dropbox"></div>
+<input id="multiple" type="file" multiple=""/-->
+
+
+
+
+</html>
+</div>		
+</window>
+</zk>

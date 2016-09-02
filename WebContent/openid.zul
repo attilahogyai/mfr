@@ -1,0 +1,13 @@
+<?page title="openid"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk >
+<zscript>
+<![CDATA[
+         import org.openid4java.message.ParameterList;
+         import org.openid4java.discovery.DiscoveryInformation;
+         import javax.servlet.http.HttpServletRequest;
+         HttpServletRequest request=(HttpServletRequest)this.desktop.getExecution().getNativeRequest();
+         userManager.verifyOpenID(request);
+         
+]]></zscript>
+</zk>

@@ -1,0 +1,68 @@
+<zk xmlns:n="native">
+<n:div if="${loggedIn}" class="fourcol dashboard" id="mainPanel">
+<n:h2>${c:l('myaccount')}</n:h2>
+<n:div if="${language=='HU'}">
+<n:a href="imagehandler.zul" zclass="link-font"><n:img src="${iconurl}upload2.png" class="button-image"></n:img></n:a>
+Képeket <n:a href="imagehandler.zul" zclass="link-font">itt tölthetsz fel</n:a>.<n:br>
+</n:br>
+<n:a href="album.zul" class="link-font"><n:img src="${iconurl}album.png" class="button-image"/></n:a>
+Albumaidat <a href="album.zul" zclass="link-font">itt rendezheted</a>.<n:br/>
+
+<n:a if="${user.hasPortfolio}" href="portfoliodata.zul" class="link-font"><n:img src="${iconurl}portfolio.png" class="button-image"/></n:a>
+<n:a if="${user.hasPortfolio}" href="portfoliodata.zul" class="link-font">${c:l('portfolio.setup')}</n:a>
+<n:div style="position:relative;padding:10px 0px;">
+<n:a href="accountdata.zul" class="link-font"><n:img src="${iconurl}user2.png" class="button-image"/></n:a>
+<n:a href="accountdata.zul" class="link-font">${c:l('mydata')}</n:a>
+</n:div>
+<a zclass="link-font" if="${isGoogleUser}"><attribute name="onClick" ><![CDATA[ googleDriveManager.handleSyncConfirm(); ]]></attribute>
+<image src="/img/icon2/drive.png" zclass="button-image"></image></a>
+<a zclass="link-font" if="${isGoogleUser}"><attribute name="onClick" ><![CDATA[ googleDriveManager.handleSyncConfirm(); ]]></attribute>Google Drive szinkronizáció</a>
+<n:a href="portfoliodata.zul" if="${not user.hasPortfolio and photoCount>0}" class="detail-link" style="position:relative;" id="advImgA"><n:img src="img/icon2/arrow_blue.png" id="advImg" /></n:a>
+<n:a href="imagehandler.zul" if="${photoCount==0}" class="detail-link" style="position:relative;" id="advImgA"><n:img src="img/icon2/image_upload_arrow.png" id="advImg" /></n:a>
+<n:hr/>
+Jelenleg <label zclass="colored-label">${photoCount}</label> fotód, és <label zclass="colored-label">${categoryCount}</label> albumod van.
+<!-- n:a href="_faq" class="link2" if="${language=='HU'}" style="width:120px;">Hogyan használd?</n:a-->
+</n:div>
+
+<n:div if="${language=='EN'}">
+<n:a href="imagehandler.zul" zclass="link-font"><n:img src="${iconurl}upload2.png" class="button-image"></n:img></n:a>
+You can <a href="imagehandler.zul" zclass="link-font">upload images here</a>.<n:br></n:br>
+<n:a href="album.zul" class="link-font"><n:img src="${iconurl}album.png" class="button-image"/></n:a> 
+Handle Your <a href="album.zul" zclass="link-font">albums here</a>.<n:br>
+<n:a href="portfoliodata.zul" class="link-font"><n:img src="${iconurl}portfolio.png" class="button-image"/></n:a>
+<n:a href="portfoliodata.zul" class="link-font">${c:l('portfolio.setup')}</n:a>
+<n:br />
+<n:br/>
+<n:a href="accountdata.zul" class="link-font"><n:img src="${iconurl}user2.png" class="button-image"/></n:a>
+<n:a href="accountdata.zul" class="link-font">${c:l('mydata')}</n:a><n:br/>
+</n:br>
+<!-- a zclass="link-font" if="${isGoogleUser}"><attribute name="onClick" ><![CDATA[ googleDriveManager.handleSyncConfirm(user); ]]></attribute>
+<image src="/img/icon2/drive.png" zclass="button-image"></image></a>
+<a zclass="link-font" if="${isGoogleUser}"><attribute name="onClick" ><![CDATA[ googleDriveManager.handleSyncConfirm(user); ]]></attribute>Google Drive synchronization</a-->
+<n:br></n:br>
+You have <label zclass="colored-label">${photoCount}</label>  photos and <label zclass="colored-label">${categoryCount}</label> albums.
+</n:div>
+
+<n:hr/>
+<n:div style="font-size: 12px;line-height: 14px;">
+<n:img src="img/icon2/storage.png" style="float:left;margin-right:5px;"/>
+${totalSpace}<n:br/>
+${usedSpace}
+</n:div>
+<n:br/>
+
+
+</n:div>
+
+
+<n:div class="fourcol dashboard displayDesktop" if="${loggedIn}" style="float:right;min-width:250px;margin: 3%;">
+<n:h2>${c:l('newest.albums')}</n:h2>
+<n:ul style="padding-left:10px;" class="accentuated">
+<n:li forEach="${privateCategories}">
+<a zclass="link-font" href="gallery.zul?albumid=${each.id}">${each.name}</a>
+</n:li>
+</n:ul>
+
+</n:div>
+
+</zk>

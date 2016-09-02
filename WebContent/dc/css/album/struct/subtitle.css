@@ -1,0 +1,14 @@
+#include("/dc/css/album/struct/gallery.css")
+.gallery li { 
+	margin:2px;
+	float: left;
+	width: 20%;
+	height: 130px;
+	width: 147px;
+	padding: 5px;
+	text-align: left;
+}
+.gallery li p{
+	font-size: 10px;
+}
+

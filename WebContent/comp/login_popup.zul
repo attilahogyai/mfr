@@ -1,0 +1,10 @@
+<?page title="comment"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<window id="loginPopup" border="none" sizable="false" 
+xmlns:n="http://www.zkoss.org/2005/zk/native"
+xmlns:w="http://www.zkoss.org/2005/zk/client"
+closable="true" zclass="popup">
+<include src="comp/popupheader.zul" windowName="loginPopup" label="${c:l('login')}"></include>
+<include src="comp/login.zul" windowName="commentPopup" label="${c:l('new.comment')}"></include>
+</window>

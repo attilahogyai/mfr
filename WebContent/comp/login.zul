@@ -1,0 +1,29 @@
+<?page id="login"?>
+<n:div id="loginBox" xmlns:wc="client" xmlns:w="client" apply="${loginComposer}" xmlns:n="http://www.zkoss.org/2005/zk/native">
+	<n:div>
+		<textbox placeholder="${c:l('loginname')}" id="loginName" style="width:217px;" constraint="/.+@.+\.[a-z]+/: ${labels.check.email}/" onCreate="self.focus()"/>
+	</n:div>
+	<n:div>
+		<textbox id="loginPassword" type="password" style="width:115px;" placeholder="${c:l('password')}"/>
+		<a label="${c:l('login')}" zclass="link1" id="loginButton" style="text-align:center;width:70px;float:right;"/>
+    </n:div>
+	<n:div><a onClick="createPasswordRememberWindow()" sclass="inset">${c:l('password.remainder')}</a></n:div>
+	<n:div><n:hr style="width:100%"/></n:div>
+	<n:div class="inset">${c:l('unregistered.user')}</n:div>
+	<n:div><n:a href="signup.zul" class="reg-button" style="text-align:center;">${c:l('signup')}</n:a></n:div>
+	<n:div><n:hr style="width:100%"/></n:div>
+	<n:div style="height:30px;"><a label="${c:l('google.login')}"  zclass="google-button" id="googleLogin" ></a>
+	<a label="${c:l('facebook.login')}"  zclass="facebook-button" id="facebookLogin"></a>
+	</n:div>
+<zscript>
+<![CDATA[
+         
+     	loginPassword.addForward("onOK",loginButton,"onClick");
+     	
+    	void createPasswordRememberWindow(){
+    	 	Component comp=Executions.createComponents("comp/passwordreminder.zul", null, null);
+    	 	passwordremember.doModal();
+    	}     
+]]>         
+</zscript>
+</n:div>

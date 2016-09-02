@@ -1,0 +1,109 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?taglib uri="/WEB-INF/tld/my.tld" prefix="my"?>
+<?component name="mfrimagelist" macroURI="comp/macro/imagelist.zul" class="org.mfr.zul.comp.ImageList"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?page title="${c:l2('search.result',$composer.searchString)}" id="searchresult"?>
+<?link rel="stylesheet" type="text/css" href="/dc/css/album/color/gray_frame.css"?>
+<?link rel="stylesheet" type="text/css" href="/dc/css/album/struct/subtitle.css"?>
+<?link rel="stylesheet" type="text/css" href="photoswipe/photoswipe.css"?>
+<?meta name="description" content="${pageDesc}"?>
+<?meta name="apple-mobile-web-app-capable" content="yes"?> 
+<zk xmlns:w="client" xmlns:n="http://www.zkoss.org/2005/zk/native" >
+<div id="galleryHidden" style="display:none"></div>
+<div id="maincontainer" apply="org.mfr.web.action.SearchComposer">
+<include src="photoswipe/code.zul" if="${$composer.countPhotos>0}" ></include>
+<n:script type="text/javascript">
+<![CDATA[
+var ulx=0;
+var lipozY=0;
+var ready=0;
+var resizeF=function(){   
+				if(ready==1) return;
+				if(ulx==0){
+					lipozY=$(this).position().top;
+				}
+				var t=$(this).position().top;
+				
+				if(lipozY==t){
+					ulx=ulx+$(this).outerWidth()+5;
+					lipozY=$(this).position().top;
+				}else{
+					ready=1;
+					if(ulx>810){
+						ulx=810;
+					}
+					if(ulx>0){
+						$(this).parent().css("max-width",ulx+"px");
+					}
+				}
+        };
+
+$(document).ready(function(){
+	ulx=0;
+	lipozY=0;		
+	ready=0;
+    $("#Gallery li").each( resizeF );
+});
+
+$(window).resize(function() {
+		ulx=0;
+		lipozY=0;
+		ready=0;
+		var ulw=$(".container").width();
+		$("#Gallery").css("max-width",ulw+"px");
+		$("#Gallery li").each( resizeF );
+});
+]]>
+</n:script>
+
+<include src="comp/header.zul" id="inc_header"></include>
+<div sclass="page-content" id="contentPage">
+<n:div class="container">
+<n:div class="row">
+<n:h1>${c:l2('search.result',$composer.searchString)}</n:h1>
+<tabbox id="tb">
+    <tabs id="tabs">
+        <tab id="pictures" label="${c:l('found.pictures')} (${$composer.countPhotos})" if="${$composer.countPhotos>0}"/>
+        <tab id="albums" label="${c:l('found.albums')} (${c:length($composer.categoriesData)})" if="${c:length($composer.categoriesData)>0}"/>
+    </tabs>
+    <tabpanels>
+<tabpanel if="${$composer.countPhotos>0}" >
+<space height="15px;"></space>
+
+<mfrimagelist imageData="${$composer.imageData}" showTitle="true" 
+style="text-align:center;" if="${not $composer.emptyData}" showAuthor="true"/>
+
+
+<div if="${c:length($composer.imagePageCount)>0}" zclass="galleryWidth" style="padding-top:10px;">
+<a href="_searchresult?p=${forEachStatus.index}" zclass="link3" forEach="${$composer.imagePageCount}" label="${forEachStatus.index+1}"></a>
+<a href="_searchresult?p=${$composer.lastPhotoPage+1}" zclass="link3" if="${c:length($composer.imagePageCount) > $composer.lastPhotoPage+1}">Next</a>
+</div>
+
+</tabpanel>
+<tabpanel if="${c:length($composer.categoriesData)>0}">
+<space height="15px;"></space>
+<n:ul class="gallery" style="max-width:810px;margin-left:auto;margin-right:auto;" xmlns:n="native">
+<n:li forEach="${$composer.categoriesData}">                               
+${hp.setImageAccessForPublic(each[1].id,each[1].name,each[1].path)}
+<n:a href="_gallery_album_${my:getAsUrl(each[0].name)}?albumid=${each[0].id}">
+<n:img src="${hp.getIT(each[1].id)}" title="${each[0].name}" class="thumb-img"/>
+</n:a>
+<n:p style="max-width:80px;overflow:hidden;float:left;font-style:bold;">${each[0].name}</n:p>
+<n:p style="max-width:60px;overflow:hidden;float:right;font-style:italic;">${each[0].useracc.name}</n:p>
+</n:li>
+</n:ul>
+
+
+
+</tabpanel>
+</tabpanels>
+</tabbox>
+
+
+</n:div>
+</n:div>
+<n:br/>
+</div>
+<include src="comp/bottom.zul" zclass="bottom-panel"></include>
+</div>
+</zk>

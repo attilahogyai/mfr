@@ -1,0 +1,87 @@
+<?page title="${c:l('style selector')}"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<window id="styleSelector" border="none" sizable="false" 
+xmlns:n="http://www.zkoss.org/2005/zk/native"
+xmlns:w="http://www.zkoss.org/2005/zk/client"
+apply="org.mfr.web.action.AccessDetailComposer"
+closable="true" zclass="popup" width="${popupwidth}px">
+<script type="text/JavaScript" ><![CDATA[
+function closeWindow(){
+	/*
+	var window=zk.Widget.$('emailaddress');
+	this.fire("onClose");
+	alert("- "+this);
+	jq('$newAlbum').close();	
+	var emailaddrr=jq('$accessDetail');
+	alert(emailaddrr.innerHTML);
+	emailaddrr.innerHTML="";
+	emailaddrr.fire('onClose');
+	 */
+}
+]]>
+</script>
+<radiogroup id="privtype" onCheck="switchType(self.selectedItem.value)" />
+<div sclass="categories-header">
+<label zclass="categories-header-text-msg" id="titleText" maxlength="35">${c:l('share')}</label>
+<a onClick='$composer.closeWindow()'>
+<image src="img/icon2/exit.png" align="right" style="padding-right:10px;float:right;" onClick="$composer.closeWindow()"></image>
+</a>
+</div>
+<div zclass="button-bar">
+${c:l('privacy.desc.email')}
+</div>
+<grid width="100%">
+		<rows>
+			<!-- row zclass="fr-row">
+			<radio id="privtype1" label="${c:l('email')}" value="1" radiogroup="privtype" checked="true"/>
+			<radio id="privtype2" label="${c:l('user')}" value="2" radiogroup="privtype" disabled="true" />
+			</row-->
+			<row zclass="fr-row" id="emailrow">
+				<combobox placeholder="${c:l('emailaddress')}" autodrop="true" buttonVisible="false" id="emailaddress" maxlength="255" width="95%" tabindex="1" onChanging="$composer.showHint(event)">
+				<attribute name="onSelect"><![CDATA[
+				String v=emailaddress.getValue();
+				int i=v.indexOf('<');
+				if(i>-1){
+					int ii=v.indexOf('>');
+					String email=v.substring(i+1,ii);
+					emailaddress.setValue(email);
+					String namev=v.substring(0,i);
+					name.setValue(namev);
+				}
+				]]></attribute>
+				</combobox>
+			</row>
+			<row zclass="fr-row" id="namerow">
+				<textbox id="name" placeholder="${c:l('recipient.name')}" cols="126" width="95%" constraint="/.+/: ${labels.check.noempty}" tabindex="2"/>
+			</row>
+			<row zclass="fr-row" id="descrow">
+				<textbox id="desc" placeholder="${c:l('recipient.desc')}" width="95%" rows="3" tabindex="3" height="90px"/>
+			</row>
+			
+			<row zclass="fr-row" id="userrow" visible="false" >
+				<label value="${c:l('user')}" />
+			</row>
+			<!-- row zclass="fr-row">
+				<div>
+				<checkbox id="uploadAccess" label="${c:l('privacy.upload.access')}"></checkbox>
+				</div>
+			</row-->												
+			<row zclass="fr-row">
+                    <a label="${c:l('send')}" zclass="link1" id="setAccess"/>
+            </row>			
+		</rows>
+	</grid>
+<div id="olderPermissions" style="margin:10px;">
+</div>	
+<template name="olderPermissions">
+<n:h2>${c:l('privacy.earlier')}</n:h2>
+<div forEach="${permissions}" class="permissionTable">
+<a href="" onClick="$composer.deletePermission(self)" >
+<custom-attributes pid="${each.id}"/>
+<image src="${iconurl}trash.png" tooltiptext="${c:l('imagehandler.desc')}" zclass="hand" id="upload_${each.id}"/></a>
+<span unless="${empty each.name}">${each.name} / ${each.sentTo}</span>
+<span if="${empty each.name}">${each.sentTo}</span>
+</div>
+</template>
+</window>

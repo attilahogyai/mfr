@@ -1,0 +1,16 @@
+<zk xmlns:n="http://www.zkoss.org/2005/zk/native">
+<script type="text/javascript" src="photoswipe/lib/klass.min.js"/>
+<script type="text/javascript" src="photoswipe/code.photoswipe.jquery-3.0.5.1.min.js"/>
+<script type="text/javascript" defer="true">
+		(function(window, $, PhotoSwipe){
+			$(document).ready(function(){
+				var options = {imageScaleMethod:'fitNoUpscale'};
+				$("#Gallery a").photoSwipe(options);
+				
+							
+			});
+			
+			
+		}(window, window.jQuery, window.Code.PhotoSwipe));
+</script>
+</zk>

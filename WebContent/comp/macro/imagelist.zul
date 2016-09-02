@@ -1,0 +1,15 @@
+<html>
+<n:ul id="Gallery" class="${arg.className} galleryWidth" xmlns:n="native" max="${c:length(arg.imageData)}">
+<div id="galleryHidden" style="display:none;"></div>
+<n:li forEach="${arg.imageData}" act="${1 + forEachStatus.index}">
+${hp.setImageAccessForPublic(each.id,each.imageName,each.imageRealPath)}
+<n:a href="${hp.getIM(each.id)}">
+<n:img src="${hp.getIT(each.id)}" alt="${each.imageName} - ${each.exifDataObject.imageWidth} x ${each.exifDataObject.imageHeight}, iso${each.exifDataObject.iso} f${each.exifDataObject.fnumber}, t${each.exifDataObject.exposureTime}" title="${each.imageName}" class="thumb-img"/>
+</n:a>
+<n:img src="img/icon2/download.png" if="${arg.allowDownload}" download="${hp.setZkImageOri(each,galleryHidden)}" 
+n:onClick="window.document.location.href='/download${each.zkImageOri.url}'" class="img-download-button" alt="Download" title="${c:l('download.original')}"/>
+<n:p if="${arg.showTitle}" style="overflow:hidden;float:left;">${each.imageName}</n:p>
+<n:p if="${arg.showAuthor}" style="max-width:60px;overflow:hidden;float:right;font-style:italic">${each.useracc.name}</n:p>
+</n:li>
+</n:ul>
+</html>

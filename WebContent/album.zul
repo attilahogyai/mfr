@@ -1,0 +1,72 @@
+<?page title="${c:l('manage.albums')}" id="album"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<zk xmlns:n="http://www.zkoss.org/2005/zk/native">
+<n:div id="main-container">
+<include src="template/head.zul"/>
+<script type="text/javascript" src="jquery-1.6.4.min.js"></script>
+<include src="comp/header.zul" id="inc_header"></include>    
+<div sclass="page-content" id="contentPage" apply="${albumComposer}">
+<zscript><![CDATA[
+List sites=$composer.getSites();                  
+]]></zscript>                  
+<template name="albumRow">
+<div>
+<a onClick='$composer.createAccessDetailWindow(self.getAttribute("cat"));' >
+<image src="${iconurl}share.png" tooltiptext="${c:l('privacy.button.desc')}" zclass="hand" id="share_${each.id}"/>
+<custom-attributes cat="${each}"/>
+</a>
+<a onClick='$composer.createAlbumDetailWindow(self.getAttribute("cat"));'>
+<custom-attributes cat="${each}"/>
+<image src="${iconurl}edit.png" unless="${each.isDefault}" id="edit_${each.id}" tooltiptext="${c:l('album.update.header')}" zclass="hand" onClick='$composer.createAlbumSetupWindow(self.getParent().getAttribute("cat"));'>
+</image>
+</a>
+<a href="imagehandler.zul?albumId=${each.id}" ><image src="${iconurl}upload_flat.png" tooltiptext="${c:l('imagehandler.desc')}" zclass="hand" id="upload_${each.id}"/></a>
+</div>
+<div zclass="tableDiv">
+<a href="gallery.zul?albumid=${each.id}" tooltiptext="${c:l('album.view')}" label="${each.displayName}">
+<attribute name="zclass" if="${ispublic==0}">detail-link</attribute>
+<attribute name="zclass" if="${ispublic==2}">link-font-public</attribute>
+</a>
+</div>
+<div zclass="tableDiv">${imageCount}</div>
+<div unless="${isPhone}" zclass="tableDiv">${viewed}</div>
+<div unless="${isPhone}" zclass="tableDiv">${each.description}</div>
+</template>
+<n:div class="container">
+<n:div class="row">
+<n:h1>${c:l('manage.albums')}</n:h1>
+<n:div width="100%" class="help-text">
+${c:l('album.info')}
+</n:div>
+<div class="spacingbutton-vertical">
+<a zclass="link1" onClick="$composer.createAlbumDetailWindow(null)">
+<image src="${iconurl}plus3.png" zclass="button-image"/>${c:l('album.new')}
+</a>
+<listbox mold="select" id="siteSelector" width="177px" onSelect="$composer.albumOnChange()">
+<listitem label="${c:l('select.portfolio')}" selected="true"/>
+<listitem forEach="${sites}" label="${each.name} - ${c:l('portfolio')}" value="${each.id}"/>
+</listbox>
+</div>
+</n:div>
+<grid id="albumGrid" xmlns:w="client" >
+       <columns>
+     	   <column >
+     	   <attribute name="width" if="${isPhone}">125px</attribute>
+     	   <attribute name="width" unless="${isPhone}">95px</attribute>
+     	   </column>	
+           <column >
+           <attribute name="hflex" if="${isPhone}">1</attribute>
+           <!-- attribute name="height" if="${isPhone}">40px</attribute-->
+           <attribute name="width" unless="${isPhone}">250px</attribute>${c:l('album.name')}</column>
+           <column width="60px">${c:l('album.image.cnt')}</column>
+           <column width="90px" unless="${isPhone}">${c:l('viewed')}</column>
+           <column hflex="1" unless="${isPhone}">${c:l('album.desc')}</column>
+       </columns>
+        </grid>
+</n:div>        
+<space height="25px"></space>
+</div>
+<include src="comp/bottom.zul" zclass="bottom-panel"></include>
+</n:div>
+</zk>

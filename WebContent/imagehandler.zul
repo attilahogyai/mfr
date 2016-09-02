@@ -1,0 +1,180 @@
+<?page title="${c:l('imagehandler')}" id="imagehandler"?>
+<?taglib uri="/WEB-INF/tld/my.tld" prefix="my"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?component name="mfrcheckbox" macroURI="comp/macro/checkbox.zul" class="org.mfr.zul.comp.CheckBox"?>
+<zk xmlns:n="http://www.zkoss.org/2005/zk/native">
+<include src="template/head.zul"/>
+
+
+
+<style>
+.threecol{
+	height: 110px;
+}
+.buttonbar{
+	background-image: url("/img/column-bg.png");
+	padding-top: 8px;
+	padding-bottom: 7px;
+	padding-left:4px;
+	padding-right:4px;
+	text-align: left;
+	height: 15px;
+	
+}
+.z-menu-body-text-img .z-menu-inner-m .z-menu-btn, 
+.z-menu-body-img .z-menu-inner-m .z-menu-btn{
+	padding-left:22px;
+	padding-bottom:4px;
+}
+</style>
+<div id="galleryHidden" style="display:none;">
+</div>
+    <script type="text/javascript">
+	function uploadEnd(){
+		var hiddenLink=zk.Widget.$(jq('$hiddenlink')[0]);
+		hiddenLink.fire('onClick');
+	}
+    </script>
+<a id="hiddenlink">
+<attribute name="onClick"><![CDATA[
+imageHandlerComposer.refresh();                      
+]]></attribute>                                   
+</a>    
+<include src="comp/header.zul" id="inc_header"></include>    
+<div sclass="page-content" id="contentPage" apply="${imageHandlerComposer}">
+<n:div class="container">
+<n:div class="row">
+<n:h1>${c:l('imagehandler')}</n:h1>
+<div width="100%" class="help-text" id="imgUploadText">
+<html>
+${c:l('imageupload.info')}
+</html>
+</div>
+
+<div zclass="action-menu-bg" id="mainMenu">
+<a id="uploadLink" zclass="focus-button"><attribute name="onClick">
+<![CDATA[
+Map arg=new HashMap();
+arg.put("imageHandlerComposer",imageHandlerComposer);
+Component comp=Executions.createComponents("upload/fileupload.zul", null, arg);
+uploadpopup.doModal();
+]]>
+</attribute>
+${c:l('upload.image')}<image src="${iconurl}upload3.png" zclass="button-image"/>
+</a>
+
+<a id="shareLink" zclass="link1"><attribute name="onClick">
+<![CDATA[
+imageHandlerComposer.createAlbumSetupWindow();
+]]>
+</attribute>
+${c:l('share')}<image src="img/icon2/share2.png" zclass="button-image"/>
+</a>
+
+
+<div id="albumSelector" zclass="albumselector">
+<div id="comboDiv">
+<a id="refreshButton" zclass="link1" tooltiptext="${c:l('refresh')}" style="vertical-align:top;"><image src="img/icon2/refresh2.png" zclass="button-image"/></a>
+<template name="comboTemplate">
+<listbox id="category" tooltiptext="${c:l('album.selector')}" onSelect="imageHandlerComposer.categoryOnChange()" mold="select" zclass="album-selector">
+<listitem forEach="${categoryList}" value="${each.id}">
+<attribute name="label">${each.name} (${each.photoCount} ${c:l('images')})</attribute>
+</listitem>
+</listbox>
+</template>
+</div>
+</div>
+
+</div>
+
+<div id="actionMenu" zclass="action-menu-bg">
+<a zclass="link1" id="moveToAlbum"><attribute name="onClick">
+<![CDATA[
+//movePhoto.doModal();
+imageHandlerComposer.setPhotoWindow(1);  
+]]>
+</attribute>
+${c:l('move.to.album')}<image src="img/icon2/move3.png" zclass="button-image"/>
+</a>
+
+<a zclass="link1" id="addToAlbum"><attribute name="onClick">
+<![CDATA[
+//movePhoto.doModal();
+imageHandlerComposer.setPhotoWindow(2);  
+]]>
+</attribute>
+${c:l('add.to.album')}<image src="img/icon2/add3.png" zclass="button-image"/>
+</a>
+<a zclass="link1" id="removeFromAlbum"><attribute name="onClick">
+<![CDATA[
+imageHandlerComposer.removeFromAlbum();
+]]>
+</attribute>
+${c:l('delete')}<image src="img/icon2/trash3.png" zclass="button-image"/>
+</a>
+</div>
+
+
+</n:div>
+
+
+</n:div>
+
+	<div id="simpleImageContainer" class="container">
+	<template name="simpleTemplate">
+	<div forEach="${imageDataArray}" id="${each.id}"
+	 onClick="imageHandlerComposer.switchSelection(self)"  xmlns:wa="http://www.zkoss.org/2005/zk/client/attribute">
+	 <attribute name="sclass" if="${empty my:getMapValue(imageHandlerComposer.selectedImagesMap,each.id)}" >deselected-img</attribute>
+	 <attribute name="sclass" unless="${empty my:getMapValue(imageHandlerComposer.selectedImagesMap,each.id)}" >selected-img</attribute>
+	<a href="">
+	 <attribute name="onClick">
+	 	String id=self.getParent().getId();
+		imageHandlerComposer.createImageDetailWindow(id);
+	 </attribute>
+	<image id="img-${each.id}" content="${each.imageThumb}" droppable="false" draggable="false"  onDrop="move(self, event.dragged)" style="max-width:147px;max-height:110px;"></image></a>	 
+	 <div zclass="actionbar" if="${each.isOwner()}">
+	 <mfrcheckbox id="check-${each.id}" selected="${not empty my:getMapValue(imageHandlerComposer.selectedImagesMap,each.id)}"/>
+	<a href="" zclass="rotate-left">
+	 <attribute name="onClick">
+	 	String id=self.getParent().getParent().getId();
+		imageHandlerComposer.rotate(self.getParent().getParent(),id,-90);
+	 </attribute>
+	</a>
+	<a href="" zclass="rotate-right">
+	<attribute name="onClick">
+	 	String id=self.getParent().getParent().getId();
+		imageHandlerComposer.rotate(self.getParent().getParent(),id,90);
+	 </attribute> 
+	</a>	 
+	 
+	 </div>
+	</div>
+	</template>
+	
+	
+	
+	</div>
+	<div class="container">
+	<div class="row">
+    <grid id="detailedImageGrid" xmlns:w="client" emptyMessage="${c:l('no.images')}">
+        <columns>
+        	<column width="35px" style="pt-row-inner"><checkbox id="switchAll"></checkbox> </column>
+            <column width="210px" style="pt-row-inner">${c:l('image')}</column>
+            <column width="210px" >${c:l('data')}</column>
+            <column hflex="1">${c:l('categories')}</column>
+        </columns>
+    </grid>
+    </div>
+    </div>
+	<template name="imageTemplate" xmlns:wa="http://www.zkoss.org/2005/zk/client/attribute">
+	<a href="${each.zkImagePreview.url}" wa:onClick="return hs.expand(this)" zclass="highslide"><image content="${each.imageThumb}" style="max-width:140px;max-height:105px;"></image></a>
+	</template>
+	    
+    <space height="50px"></space>
+
+
+</div>
+<include src="comp/photoAction.zul" id="moveInclude"></include>
+<include src="comp/bottom.zul" zclass="bottom-panel"></include>
+</zk>

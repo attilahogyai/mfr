@@ -1,0 +1,42 @@
+<?page id="movePhotoPage"?>
+<window id="photoAction" border="none" sizable="false" zclass="popup" 
+closable="true" xmlns:w="client" width="${popupwidth}px" visible="false" apply="${imageHandlerComposer}">
+<script type="text/JavaScript" ><![CDATA[
+function newAlbumType(textField){
+	var value=textField._node.value;
+	if(value!=null && value.length>0){
+		zk.Widget.$(jq('$moveCategory')[0])._node.disabled='disabled';
+	}else{
+		zk.Widget.$(jq('$moveCategory')[0])._node.disabled='';
+	}
+		
+}
+function closeWindow(){
+	 zk.Widget.$(jq('$name')[0])._node.value="";;
+	 newAlbumType(zk.Widget.$(jq('$name')[0]));
+}
+]]>
+</script>
+<div sclass="categories-header">
+<label zclass="categories-header-text-msg" id="titleText">${c:l('image.handling.action.header')}</label>
+<image src="img/icon2/exit.png" align="right" zclass="button-image2" style="padding-right:10px;" w:onClick='closeWindow()' onClick="photoAction.setVisible(false)" xmlns:w="client"></image>
+</div>
+<grid width="100%">
+		<rows>
+		<row zclass="fr-row">
+		<label id="expText">${c:l('image.handling.action.header')}</label>
+			</row>
+		<row zclass="fr-row">
+			<textbox id="name" maxlength="32" cols="32" placeholder="${c:l('new.album')}" w:onKeyUp='newAlbumType(this)' w:onChange='newAlbumType(this)' w:onBlur='newAlbumType(this)' xmlns:w="client"/>
+			</row>
+			<row zclass="fr-row">
+<listbox id="moveCategory" tooltiptext="${c:l('existing.album.selection')}" mold="select">
+<!-- <listitem value="-1" label="${c:l('existing.album.selection')}" selected="true"/> -->
+</listbox>
+			</row>
+			<row zclass="fr-row">
+			<button label="${c:l('done')}" zclass="button1" id="photoSaveButton" onClick="imageHandlerComposer.executePhotoAction()"/>                  
+            </row>			
+		</rows>
+	</grid>
+ </window>

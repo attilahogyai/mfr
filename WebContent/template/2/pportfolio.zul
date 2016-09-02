@@ -1,0 +1,45 @@
+<?component name="et" macroURI="/comp/macro/editabletext.zul" class="org.mfr.zul.comp.EditableText"?>
+<zk xmlns:w="client" xmlns:n="http://www.zkoss.org/2005/zk/native">
+<include src="template/p2_pheader.zul" id="inc_header"></include>
+<n:div class="container page-content" id="contentPage">
+<div class="row" apply="${portfolioPortfolioComposer}">
+<n:div class="twelvecol portfolio-bg" >
+<n:div class="page-title-bar">
+<et key="pgallery" hclass="dumy"/>
+</n:div>
+<div id="albums1" zclass="albums1" style="display:block;text-align:center;" >
+</div>
+<a zclass="action_button" onClick="$composer.createAlbumSelectorWindow(4,false)" if="${isEditable}">
+<n:img src="${iconurl}add.png" />
+</a>
+</n:div>
+
+<template name="albums1Template">
+<n:div class="albumcontainer">
+<html>
+<div class="polaroid">
+<a zclass="link-font" href="_pgallery_album_${my:getAsUrl(category.name)}?albumid=${category.id}">
+<div style="background-image: url(/mimg/prev/id/${each.id});" class="coverimage">
+<div>
+<p>${category.name}</p>
+<span>${category.description}</span>
+</div>
+</div>
+</a>
+</div>
+</html>
+<a zclass="action_button" onClick='$composer.removeCategoryFromSite(4,self.getAttribute("catid"));$composer.refreshImages()' if="${isEditable}">
+<n:img src="${iconurl}trash.png"/>
+<custom-attributes catid="${category.id}"/>
+</a>
+<a zclass="action_button2" onClick='$composer.createMainImageSelectorWindow(self.getAttribute("catid"));' if="${isEditable}">
+<n:img src="${iconurl}cover.png"/>
+<custom-attributes catid="${category.id}"/>
+</a>
+</n:div>
+</template>
+
+</div>
+</n:div>
+<include src="template/p2_pbottom.zul" ></include>
+</zk>

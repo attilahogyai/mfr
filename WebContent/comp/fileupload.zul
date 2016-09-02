@@ -1,0 +1,101 @@
+<?page title="File upload"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+<style src="swfupload/css/default.css"></style>
+<window id="fileupload" zclass="popup"  border="none" xmlns:wc="client"
+action="show: slideDown;hide: slideUp" xmlns:w="client">
+<zscript><![CDATA[
+void closeWindow(){
+	Events.postEvent("onClose",fileupload,null);
+}
+]]></zscript>
+
+<script>
+var swfu;
+</script>
+<script defer="true"><![CDATA[
+	var randomnumber=Math.floor(Math.random()*99999999)
+	swfu= new SWFUpload({
+				flash_url : "swfupload/swfupload.swf?q="+randomnumber,
+				upload_url: "upload",
+				post_params: {"session" : "${session.nativeSession.id}"},
+				file_size_limit : "10 MB",
+				file_types : "*.jpg",
+				file_types_description : "JPG Files",
+				file_upload_limit : 100,
+				file_queue_limit : 0,
+				custom_settings : {
+					progressTarget : "fsUploadProgress",
+					cancelButtonId : "btnCancel"
+				},
+				prevent_swf_caching: true,
+				debug: false,
+
+				// Button settings
+				button_image_url : "swfupload/images/SmallSpyGlassWithTransperancy_17x18.png",
+				button_width: "100",
+				button_height: "20",
+				button_placeholder_id: "spanButtonPlaceHolder",
+				button_text : '<span class="button">${c:l('fileupload.title')}</span>',				
+				button_text_style : '.button { font-family:Helvetica,Arial,Sans-Serif;font-size: 13px;color:#ffffff; } .buttonSmall { font-size: 10pt;color:#ffffff; }',
+				button_text_left_padding: 18,
+				button_text_top_padding: 0,
+				button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,
+				button_cursor: SWFUpload.CURSOR.HAND,
+				
+				
+				// The event handler functions are defined in handlers.js
+				file_queued_handler : fileQueued,
+				file_queue_error_handler : fileQueueError,
+				file_dialog_complete_handler : fileDialogComplete,
+				upload_start_handler : uploadStart,
+				upload_progress_handler : uploadProgress,
+				upload_error_handler : uploadError,
+				upload_success_handler : uploadSuccess,
+				upload_complete_handler : uploadComplete,
+				queue_complete_handler : uploadEnd,
+				//queue_complete_handler : queueComplete	// Queue plugin event
+			});
+	setTimeout('$("#uploadDiv").css("display","block"); $("#btnCancel").css("display","inline")',1000);
+]]></script>
+
+<attribute wc:name="onClose"><![CDATA[
+        event.stop();
+        var w = this;
+        jq(this).slideUp(600, function() {
+            w.sendAU_(event);
+            flowDown(event.target._left, event.target._top);
+        });
+    ]]></attribute>
+    <zscript><![CDATA[
+        int[] orderArray = new int[50];
+        for (int j = 0; j < 50; j++)
+            orderArray[j] = 456 + j;
+        void winClose() {
+            Clients.evalJavaScript("flowDown()");
+        }
+    ]]></zscript>
+
+<div sclass="categories-header">
+<label zclass="categories-header-text-msg">${c:l('fileupload.title')}</label>
+<image src="img/icon2/exit.png" align="right" zclass="button-image2" style="padding-right:10px;" onClick="closeWindow()"></image>
+</div>
+<div sclass="popup-content" >
+${c:l('fileupload.comment')}
+<n:form xmlns:n="http://www.zkoss.org/2005/zk/native" style="margin-top:10px;">
+<n:table width="100%"><n:tr><n:td>
+		<n:div class="link1" style="display:none;height:21px;padding:3px;width:100px;" id="uploadDiv">
+			<n:span id="spanButtonPlaceHolder">Upload</n:span>
+		</n:div>
+		</n:td><n:td align="right">
+		<n:input id="btnCancel" type="button" value="${c:l('fileupload.cancel')}" 
+		 style="display:none;" onclick="swfu.cancelQueue();" disabled="disabled" class="button1"/>
+		</n:td>
+		</n:tr>
+		</n:table>
+		<n:div id="fsUploadProgress" style="overflow:scroll;height:175px;overflow-x: hidden;">
+		</n:div>
+</n:form>
+</div>		
+</window>
+</zk>

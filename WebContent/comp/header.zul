@@ -1,0 +1,102 @@
+<?page id="header"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk xmlns:n="http://www.zkoss.org/2005/zk/native">
+
+<zscript><![CDATA[
+boolean normalUser=org.mfr.util.HttpHelper.isNormalUser();
+org.mfr.data.User user=org.mfr.util.HttpHelper.getUser();
+boolean hasUploadPermission=org.mfr.util.HttpHelper.hasUploadPermission();
+boolean portfolio=false;
+String portfolioLink=null;
+if(user!=null){
+	org.mfr.data.Site site=siteDao.getMainSiteForUseracc(user.getUserId());
+	if(site!=null){
+		portfolio=true;
+		portfolioLink="http://"+site.getUrl()+"."+org.mfr.web.action.GlobalVariableResolver.getDomain();
+	}
+	
+}
+String _lang=org.mfr.web.action.GlobalVariableResolver.getLang_();
+String [] menu=new String[]{"http://"+org.mfr.web.action.GlobalVariableResolver.getDomain()+"/"+_lang+"/_index","/"+_lang+"/_album","/"+_lang+"/_imagehandler",portfolioLink};
+String [] menuNames=new String[]{"mainpage","manage.albums","imagehandler","portfolio"};
+String [] menuClasses=new String[]{"","","","hiddenmobile"};
+
+Boolean [] access=new Boolean[]{true,normalUser,normalUser||hasUploadPermission,portfolio};
+
+String path=org.mfr.web.action.GlobalVariableResolver.getActualUri_();
+path=path.replaceAll("/","/_");
+path=path.replaceAll(".zul","");
+
+
+if(path.endsWith("_imagehandler") || path.endsWith("_album")){
+	org.mfr.util.ZkUtil.initUploaders(session,desktop);
+}
+
+]]></zscript>
+<n:div id="header">
+
+<n:div class="menu-header displayDesktop">
+<n:ul>
+<n:li id="logo"><a href="http://${domain}"><image src="img/fotoroom_blue2.png" style="padding-left:15px;padding-top:5px"/></a></n:li>
+<n:li id="account">
+${user.getUserName()}<a href="" id="logout" if="${loggedIn}" apply="org.mfr.web.action.LogoutComposer" ><n:img src="img/icon2/logout.png" style="vertical-align:middle;padding-left:5px;"/></a>
+</n:li>
+</n:ul>
+</n:div>
+</n:div>
+<n:div id="headerMobile" class="displayMobile">
+<n:img src="img/icon2/menu.png" id="menuButton"/>
+<a href="http://${domain}" >
+<n:img src="img/fotoroom_blue2.png" id="mobileLogo"/>
+</a>
+</n:div>
+<n:div id="menu">
+<n:div id="navigation" class="displayDesktop">
+<n:ul id="menuil">
+<n:li forEach="${menu}" if="${access[forEachStatus.index]}" class="${menuClasses[forEachStatus.index]}">
+<a href="${each}" id="menu_${forEachStatus.index}">
+<attribute name="zclass" if="${each.endsWith(path)}">active-menu</attribute>
+${c:l(menuNames[forEachStatus.index])}</a>
+</n:li>
+</n:ul>
+<n:div class="language-box">
+<label value="" id="uploaderLabel" sclass="upload-process" width="10%"/>
+<div class="searchinput" apply="org.mfr.web.action.SearchComposer">
+<textbox id="searchText" /><a href="javascript:;" id="search"><image src="/img/icon2/search.png"/></a>
+</div>
+<html id="lang">
+<n:a href="/hu/_index"  if="${language=='EN'}">HU</n:a>
+<n:a href="/en/_index"  if="${language=='HU'}">EN</n:a>
+</html>
+</n:div>
+</n:div>
+
+<n:div id="navigationMobile" class="displayMobile">
+<n:ul>
+<n:li forEach="${menu}" if="${access[forEachStatus.index]}" class="${menuClasses[forEachStatus.index]}">
+<n:a href="${each}">
+<attribute name="class" if="${path.endsWith(each)}">active-menu</attribute>
+${c:l(menuNames[forEachStatus.index])}</n:a>
+</n:li>
+<n:li>
+<n:a href="/hu/_index"  if="${language=='EN'}">HU</n:a>
+<n:a href="/en/_index"  if="${language=='HU'}">EN</n:a>
+</n:li>
+<n:li if="${loggedIn}">
+${user.getUserName()}
+</n:li>
+</n:ul>
+</n:div>
+</n:div>
+<script type="text/javascript" defer="true">
+<![CDATA[
+$(document).ready(function(){
+    $("#menuButton").click( function(){
+    	$("#navigationMobile").slideToggle();
+    } );
+});
+
+]]>
+</script>
+
+</zk>

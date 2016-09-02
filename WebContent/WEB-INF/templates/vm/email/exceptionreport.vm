@@ -1,0 +1,10 @@
+wfid: $wfid
+
+exception: $exception.getMessage()
+#foreach($ex in $exception.getStackTrace())
+$ex
+#end
+
+
+user:
+$user

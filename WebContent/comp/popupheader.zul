@@ -1,0 +1,12 @@
+<zk xmlns="http://www.zkoss.org/2005/zk/native">
+<h1 class="header">
+<script type="text/javascript">
+function onclose(){
+zAu.send(new zk.Event(zk.Widget.$('$${windowName}'), 'onClose', ''));
+return false;
+}
+</script>
+<span class="text">${label}</span>
+<a href="#" onclick="return onclose();"><img src="img/icon2/exit.png" zclass="button-image2" style="padding-right:10px;" onClick="return onclose();"/></a>
+</h1>
+</zk>

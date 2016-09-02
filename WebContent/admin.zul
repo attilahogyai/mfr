@@ -1,0 +1,14 @@
+<?page title="${c:l('contact')}"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk xmlns:n="http://www.zkoss.org/2005/zk/native">
+<include src="template/head.zul"/>
+<include src="comp/header.zul"></include>
+<div sclass="page-content" apply="org.mfr.web.action.AdminComposer">
+
+Command: <textbox id="command"></textbox><n:br/>
+Query: <textbox id="photoQuery" cols="100" rows="5"></textbox><n:br/>
+<button id="ok" label="OK"></button>
+
+</div>
+<include src="comp/bottom.zul" zclass="bottom-panel"></include>
+</zk>

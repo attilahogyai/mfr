@@ -1,0 +1,34 @@
+<zk xmlns:n="http://www.zkoss.org/2005/zk/native">
+<html>
+<script type="text/javascript">
+function onnewcomment(parent){
+zAu.send(new zk.Event(zk.Widget.$('$comment'), 'onNewComment', parent));
+return false;
+}
+function ondisablecomment(id){
+zAu.send(new zk.Event(zk.Widget.$('$comment'), 'onSwitchCommentState', id));
+return false;
+}
+function onshowhistory(id){
+zAu.send(new zk.Event(zk.Widget.$('$comment'), 'onShowHistory', id));
+return false;
+}
+</script>
+
+<h1 class="boxheader">
+<span class="text">
+<img src="img/icon2/comments.png" style="height:20px"/> ${c:length(comments)>0?c:length(comments):""} ${c:l("comment")}
+</span>
+<a class="link1" href="#" onclick="return onnewcomment(${empty parentId?null:parentId});">${c:l("new.comment")}</a>
+</h1>
+<div class="cm-box${forEachStatus.index % 2 !=1?'-even':''} ${each.status==0?'cm-hide':''}" forEach="${comments}">
+<p class="cm-user">${each.useracc.name}</p><p class="cm-date">&amp;nbsp;&amp;nbsp; ${hp.formatDate(each.createDt)} <a href="#" class="cm-disable-text" onclick="return ondisablecomment(${each.id});" if="${hp.isLoggedUser(each.category.useracc) and empty showHideButton}"></a>
+
+<a href="#" class="cm-comment-reply small-link" if="${user.useracc.id != each.useracc.id}" onclick="return onnewcomment(${not empty each.original?each.original.id:each.id});">${c:l("reply")}</a>
+
+</p>
+<p class="cm-comment">${hp.textHtmlFormatter(each.comment)}</p>
+<p class="cm-history" if="${not empty each.original and (empty hideHistory or hideHistory!='true')}"><a href="#" onclick="return onshowhistory(${each.original.id});" class="small-link">${c:l("history")}</a></p>
+</div>
+</html>
+</zk>

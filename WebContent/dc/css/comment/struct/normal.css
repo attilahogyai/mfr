@@ -1,0 +1,87 @@
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(/css/fonts/open-sans/open-sans-700.woff) format('woff');
+}
+
+.cm-box,.cm-box-even{
+	padding:3px 10px;
+	margin:15px 0px;
+	border-left:#CCCCCC;
+	border-left-style: solid;
+	border-left-width: 3px;
+}
+.cm-box-even{
+	background-color: rgba(255, 255, 255, 0.5);
+}
+.cm-user{
+	float:left;
+	font-weight:bold;
+    height: 24px;
+    line-height: 24px;
+    vertical-align: bottom; 	
+}
+.cm-date{
+	height:24px;
+	font-size:12px;
+	line-height: 24px;
+ 	border-bottom: 1px solid #CCCCCC;
+ 	vertical-align: bottom; 
+}
+.cm-history {
+	height:24px;
+	line-height: 24px;
+	padding: 5px 0px;
+ 	vertical-align: bottom;
+}
+.cm-comment {
+    width: 100%;
+    display: block;
+	font-family: inherit;
+	white-space: pre;
+}
+.cm-comment-reply {
+	height: 24px;
+	float:right;
+	padding: 0px 10px;
+}
+
+.cm-disable-text,.cm-enable-text{
+	width: 24px;
+	height: 24px;
+	float:right;
+	background-image: url(/img/icon2/show_text.png);
+	background-repeat: no-repeat;
+	display: block;
+}
+.cm-disable-text:hover{
+	background-image: url(/img/icon2/hide_text.png);	
+}
+.cm-enable-text{
+	background-image: url(/img/icon2/hide_text.png);
+}
+.cm-enable-text:hover{
+	background-image: url(/img/icon2/show_text.png);	
+}
+.cm-hide{
+	text-decoration: line-through; 
+}
+.cm-hide .cm-disable-text{
+	background-image: url(/img/icon2/hide_text.png);
+}
+h1.boxheader{
+	position:relative;
+	height:34px;
+	line-height:34px;
+}
+h1.boxheader span.text{
+	bottom:0px;
+	position: absolute;
+	font-family: inherit;
+	font-size: inherit;
+}
+
+h1.boxheader a,h1.header a{
+	float:right;
+}

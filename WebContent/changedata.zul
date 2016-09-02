@@ -1,0 +1,31 @@
+<?page title="${c:l('signup')}"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk xmlns:w="client">
+<zscript deferred="true"><![CDATA[
+]]></zscript>
+<script type="text/javascript" src="jquery-1.6.4.min.js"></script>
+<include src="header.zul"></include>
+<div sclass="page-content" id="contentPage" xmlns:n="http://www.zkoss.org/2005/zk/native">
+<div unless="${loggedIn}">
+<div id="registrationBox" xmlns:w="client">
+<div sclass="categories-header">
+<label zclass="categories-header-text">${c:l('signup')}</label>
+</div>
+<space style="height:30px;"></space>
+<grid style="width:500px;">
+   <rows>
+   	   <row zclass="fr-row"><label value="${c:l('username')}" width="70"/><textbox id="userName" cols="30" constraint="/.+/: ${labels.check.noempty}"/></row>
+       <row zclass="fr-row"><label value="${c:l('loginname')}" width="70"/><textbox id="loginName" cols="30" constraint="/.+@.+\.[a-z]+/: ${labels.check.email}"/></row>
+       <row zclass="fr-row"><label value="${c:l('password')}" width="70"/><textbox id="loginPassword" type="password" constraint="/.{6,12}/: ${labels.check.password}"/></row>
+       <row zclass="fr-row"><label value="${c:l('password.again')}" width="70"/><textbox id="loginPassword2" type="password" constraint="/.{6,12}/: ${labels.check.password}"/></row>
+       <row zclass="fr-row">
+       <space></space>
+       <button label="${c:l('signup')}" id="signUpButton" zclass="buttom-class"/>
+       </row>
+   </rows>
+</grid>
+</div>
+</div>
+</div>
+<include src="bottom.zul"></include>
+</zk>

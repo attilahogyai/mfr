@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+	Created by ZK Studio
+-->
+
+<zk>
+	<device-config>
+		<device-type>ajax</device-type>
+		<timeout-uri>/timeout.zul</timeout-uri><!-- An empty URL can cause the browser to reload the same URL -->
+	</device-config>
+	<desktop-config>
+	    <theme-uri>css/1140_23.css</theme-uri>
+	    <id-to-uuid-prefix>myprefix_${page}_</id-to-uuid-prefix>
+	    <!-- theme-uri>css/text-museo-and-sans.css</theme-uri-->
+	</desktop-config>
+	<system-config>
+	<disable-event-thread>false</disable-event-thread>
+	<crawlable>true</crawlable>
+	<id-generator-class>org.mfr.util.CustomIdGenerator</id-generator-class>
+	</system-config>
+	<listener>
+    <listener-class>org.mfr.web.action.GlobalVariableResolver</listener-class>
+	</listener>
+	<listener>
+    <listener-class>org.mfr.web.AppInit</listener-class>
+	</listener>    
+    <listener>
+    <listener-class>org.mfr.web.PageInitiator</listener-class>
+	</listener>
+<library-property>
+    <name>org.zkoss.util.logging.config.file</name>
+    <value>../webapps/ROOT/WEB-INF/classes/zk-logger.properties</value>
+</library-property>
+
+<library-property>
+ <name>org.zkoss.zul.progressbox.position</name>
+ <value>center</value>
+</library-property>
+
+<client-config>
+ <processing-prompt-delay>1</processing-prompt-delay>
+</client-config>
+
+</zk>

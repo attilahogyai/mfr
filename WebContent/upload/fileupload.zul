@@ -1,0 +1,27 @@
+<?page title="${c:l('upload')}"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<window id="uploadpopup" zclass="popup"  border="none" xmlns:wc="client"
+action="show: slideDown;hide: slideUp" xmlns:w="client" width="${popupwidth}px" height="400px">
+<zscript>
+<![CDATA[
+void closeWindow(){
+	uploadpopup.detach();
+	org.mfr.util.HttpHelper.getImageHandler().refresh();
+}
+]]>         
+</zscript>
+<div sclass="categories-header">
+<label zclass="categories-header-text-msg" id="titleText" maxlength="35">${c:l('fileupload.title')}</label>
+<a onClick='closeWindow()'>
+<image src="img/icon2/exit.png" align="right" style="padding-right:10px;float:right;" onClick="closeWindow()"></image>
+</a>
+</div>
+<div style="margin:10px;width:100%;">
+${c:l('fileupload.comment')}
+</div>
+<div zclass="dropBox">
+<iframe id="iframe" src="/upload/index.html?session=${session.nativeSession.id}" width="100%" height="100%" if="${language=='HU'}"/>
+<iframe id="iframe2" src="/upload/index_en.html?session=${session.nativeSession.id}" width="100%" height="100%" unless="${language=='HU'}"/>
+</div>
+</window>

@@ -1,0 +1,50 @@
+<?page title="${c:l('signup')}"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk xmlns:w="client" xmlns:n="native">
+<include src="template/head.zul"/>
+<zscript deferred="true"><![CDATA[
+void enableRegistration(){
+	if(licenseAgree.isChecked()){	
+		signUpButton.setDisabled(false);
+		signUpButton.setZclass("button1");
+	}else{
+		signUpButton.setDisabled(true);
+		signUpButton.setZclass("button1-disabled");
+	}
+}
+]]></zscript>
+<script type="text/javascript" src="jquery-1.6.4.min.js"></script>
+<include src="comp/header.zul"></include>
+<div sclass="page-content" id="contentPage" xmlns:n="http://www.zkoss.org/2005/zk/native">
+<n:div class="container">
+<n:div class="row" unless="${loggedIn}">
+<html><h1>${c:l('signup')}</h1></html>
+<div sclass="fivecol">
+<grid apply="${signupComposer}">
+   <rows>
+   	   <row zclass="fr-row"><label value="${c:l('username')}" width="70"/><textbox id="userName" cols="20" constraint="/.+/: ${labels.check.noempty}"/></row>
+       <row zclass="fr-row"><label value="${c:l('loginname')}" width="70"/><textbox id="loginName" cols="20" constraint="/.+@.+\.[a-z]+/: ${labels.check.email}"/></row>
+       <row zclass="fr-row"><label value="${c:l('newsletter')}" width="70"/><checkbox id="newsletter" /></row>
+       <row zclass="fr-row"><label value="${c:l('password')}" width="70"/><textbox id="signLoginPassword" type="password" constraint="/.{6,12}/: ${labels.check.password}"/></row>
+       <row zclass="fr-row"><label value="${c:l('password.again')}" width="70"/><textbox id="signLoginPassword2" type="password" constraint="/.{6,12}/: ${labels.check.password}"/></row>
+       <row zclass="fr-row"><a href="license.zul" zclass="link-font"><label value="${c:l('license.agree')}" width="70"/></a><checkbox id="licenseAgree" checked="false" onClick="enableRegistration()"></checkbox></row>       
+       <row zclass="fr-row">
+       <space></space>
+       <button label="${c:l('signup')}" id="signUpButton" zclass="button1-disabled" disabled="true" />
+       </row>
+   </rows>
+</grid>
+</div>
+<div sclass="fivecol">
+${c:l('signup.text')}
+</div>
+<div>  
+</div>
+
+
+</n:div>
+</n:div>
+<n:br/><n:br/>
+</div>
+<include src="comp/bottom.zul" zclass="bottom-panel"></include>
+</zk>

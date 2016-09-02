@@ -1,0 +1,11 @@
+<?variable-resolver class="org.mfr.web.action.portfolio.PortfolioVariableResolver"?>
+<?page title="${c:l2('portfolio.title',siteArray)}"?>
+<?taglib uri="/WEB-INF/tld/my.tld" prefix="my"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?meta name="description" content="${siteDesc}"?>
+<zk>
+<zscript><![CDATA[                  
+Component comp=Executions.createComponents(org.mfr.web.action.portfolio.PortfolioVariableResolver.resolveIndex(), null, null);               
+]]>
+</zscript>
+</zk>

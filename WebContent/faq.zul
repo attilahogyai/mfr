@@ -1,0 +1,112 @@
+<?page title="${c:l('faq')}"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk xmlns:n="http://www.zkoss.org/2005/zk/native">
+<style>
+.title{
+	font-size:16px;
+	font-weight:bold;
+	line-height:35px;
+}
+</style>
+<style>
+.subtitle{
+	font-size:14px;
+	font-weight:bold;
+	line-height:25px;
+}
+</style>
+
+<include src="template/head.zul"/>
+<include src="comp/header.zul"></include>
+<div sclass="page-content" >
+<n:div class="container">
+<n:div class="row">
+<html><h1>${c:l('faq')}</h1>
+<div style="text-align: justify;margin-top:5px;" zclass="advertisment" xmlns:n="http://www.zkoss.org/2005/zk/native">
+<label class="title">
+Hogyan kezd?
+</label>
+<br/>
+Először is 
+<a class="detail-link" href="_signup"> regisztrálj </a>, vagy használd <a class="detail-link" href="_index">Gmail(Google) fiókodat</a>! Légy felhasználó! 
+<br/>
+Teljesen ingyenes, csak email címet kell megadnod és jelszót választanod. A jelszavadat és nevedet bármikor megváltoztathatod a fiók adatokban.
+<br/> 
+<label class="title">
+Első lépés: hozz létre egy ALBUMOT!
+</label>
+<br/>
+Kezd azzal, hogy létrehozol egy albumot az 
+<label class="subtitle">
+Albumok
+</label>
+ menüpont alatt.
+<br/>
+Az album létrehozásánál megadhatod, hogy publikus legyen, bárki számára látható vagy nem. Ha csak néhány emberrel szeretnéd megosztani, nekik emailként küldheted el az albumod linkjét.
+<br/> <br/>
+<img src="img/faq/album.png" width="400px" style="float:left;padding-right:15px;"/>
+<img src="img/faq/album_szerk.png" width="227px" style="float:left;padding-right:15px;"/>
+<img src="img/faq/album_megoszt.png" width="240px"/>
+<br/> <br/>
+<label class="title">
+Második lépés: töltsd fel a KÉPEIDET!
+</label>
+<br/>
+A 
+<label class="subtitle">
+Képkezelő
+</label>
+ menüpont alatt válaszd ki az albumot, amelyikbe fel szeretnéd tölteni a képeidet, és kattints a képfeltöltésre.
+<br/>
+Képet bármikor törölhetsz, mozgathatsz albumok között. Lehetőséged van arra is, hogy szöveget írj a képekhez, ekkor az album létrehozásánál a blogszerű megjelenés opciót válaszd.
+<br/> <br/>
+<img src="img/faq/kepkezelo.png" width="700px"/>
+<br/> <br/>
+<label class="title">
+Harmadik lépés: PORTFÓLIÓ!
+</label>
+<br/>
+Ha már elég albumod összegyűlt ahhoz, hogy egyszerre mutatkozz meg velük, akkor érdemes a 
+<label class="subtitle">
+Portfóliót
+</label>
+ választani.
+<br/>
+Van egy bemutatkozó felülete (
+<label class="subtitle">
+Főoldal
+</label>
+), ahol egy főképpel jellemzed az oldalad és leírást is adhatsz meg magadról. Ízelítőképp néhány albumod is megjelenhet.
+A 
+<label class="subtitle">
+Galéria
+</label>
+ menüpontban pedig az albumaid lesznek láthatók.
+<br/>
+Albumot bármikor törölhetsz, újakat tölthetsz fel, borítóképet választhatsz nekik.
+<br/> <br/>
+<img src="img/faq/portfolio2.png" width="600px"/>
+<br/> 
+<label class="title">
+Mikor album és mikor portfólió?
+</label>
+<br/>
+Albumot akkor érdemes használnod, ha csak egy-két eseményt szeretnél bemutatni.(pl. farsangi képek, termékképek, szülinapi képek,...) 
+<br/>
+Ezeket megteheted úgy, hogy publikusnak megjelölve bárki láthatja a főoldalon, vagy csak emailben osztod meg az általad kiválasztott emberekkel.
+<br/>
+Portfóliót akkor érdemes létrehoznod, ha már sok albumod van, és mindet egyszerre szeretnéd bemutatni. A portfólió csak publikus lehet. Ha nem szeretnéd többet használni, egyszerűen törölheted, vagy inaktívvá teszed a portfólió beállításoknál.
+
+<br/>
+<br/>
+
+
+</div>
+</html>
+
+
+</n:div>
+</n:div>
+</div>
+<include src="comp/bottom.zul"></include>
+</zk>

@@ -1,0 +1,186 @@
+<?page title="${c:l('manage.albums')}" id="album"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<zk xmlns:n="http://www.zkoss.org/2005/zk/native">
+<n:div id="main-container">
+<include src="template/head.zul"/>
+<script type="text/javascript" src="jquery-1.6.4.min.js"></script>
+
+
+<zscript deferred="true"><![CDATA[
+    import org.zkoss.util.media.Media;
+ 	import org.mfr.data.ImageDataModel;
+ 	import org.zkoss.util.resource.Labels;
+ 	import javax.servlet.http.HttpSession;
+ 	import org.mfr.image.ImageTools;
+	import org.mfr.web.display.ImageTableRender;;
+	import org.mfr.manager.UploadHandler;
+	import org.mfr.data.Category;
+	import org.mfr.data.User;
+	import org.mfr.web.action.LoginComposer;
+	
+	org.mfr.util.UAgentInfo info=org.mfr.util.UAgentInfo.getUAgentInfo();
+	boolean isPhone=info.detectMobileLong();
+	isPhone=true;
+	public class AlbumTableRender implements RowRenderer {
+		public void render(Row row, Object data) throws Exception {
+			Category category = (Category) data;
+			Long imageCount=photoCategoryDao.countByCategoryId(category.getId());
+			
+			Div d=new Div();
+			row.appendChild(d);
+			d.setAlign("left");
+			
+			int viewed=category.getAccessCount()==null?0:category.getAccessCount();
+			Menubar mb=new Menubar();
+			Menu m= new Menu (Labels.getLabel("edit"));
+			mb.appendChild(m);
+			Menupopup mp=new Menupopup();
+			Menuitem share=new org.zkoss.zul.Menuitem(Labels.getLabel("share"));
+			share.setImage("img/icon/PNG-17/Profile.png");
+			share.setTooltiptext(Labels.getLabel("privacy.button.desc"));
+			share.addEventListener("onClick", new org.zkoss.zk.ui.event.EventListener(){
+				public void onEvent(Event event){
+					createAccessDetailWindow(category);
+				}
+			});
+			mp.appendChild(share);
+			Menuitem upload=new org.zkoss.zul.Menuitem(Labels.getLabel("upload.image"));
+			upload.setImage("img/icon/PNG-17/Load.png");
+			upload.setTooltiptext(Labels.getLabel("imagehandler.desc"));
+			upload.setHref("imagehandler.zul?albumId="+category.getId());
+			mp.appendChild(upload);
+			
+			Menuitem view=new org.zkoss.zul.Menuitem(Labels.getLabel("view"));
+			view.setImage("img/icon/PNG-17/Picture.png");
+			view.setHref("gallery.zul?albumid="+category.getId());
+			mp.appendChild(view);
+			
+			m.appendChild(mp);
+			d.appendChild(mb);
+
+			if(category.isDefault()){
+				A a=new A(Labels.getLabel("default.album"));
+				a.setZclass("link-font");
+				a.setHref("gallery.zul?albumid="+category.getId());
+				row.appendChild(a);
+				if(!isPhone){
+					row.appendChild(new Label(Long.toString(imageCount)));
+					row.appendChild(new Label(Long.toString(viewed)));
+					row.appendChild(new Label(Labels.getLabel("default.album.desc")));
+				}
+			}else{
+				Menuitem albumdata=new org.zkoss.zul.Menuitem(Labels.getLabel("data"));
+				albumdata.setImage("img/icon/PNG-17/Modify.png");
+				albumdata.addEventListener("onClick",new org.zkoss.zk.ui.event.EventListener(){
+					   public void onEvent(Event event){
+						   createAlbumDetailWindow(category);
+					   }
+				});
+				mp.appendChild(albumdata);
+				
+				/*
+				if(category.getIspublic()!=null && category.getIspublic()==1){
+					Image publicimage=new Image("img/icon2/24/public.png");
+					publicimage.setStyle("margin-right:15px;height:24px;width:24px;display:inline-block; vertical-align:middle;");
+					publicimage.setTooltip(Labels.getLabel("album.public.tooltip"));
+					d.appendChild(publicimage);
+				}				
+				*/
+				row.appendChild(d);
+				A a=new A(category.getDisplayName());
+				if(category.getIspublic()==2){
+					a.setZclass("link-font-public");
+					a.setTooltiptext(Labels.getLabel("album.view")+" "+Labels.getLabel("album.public.tooltip"));
+				}else if(category.getIspublic()==1){
+					a.setZclass("link-font-prepublic");
+					a.setTooltiptext(Labels.getLabel("album.prepublic"));
+					
+				}else{
+					a.setZclass("link-font");
+					a.setTooltiptext(Labels.getLabel("album.view"));
+				}
+				
+				a.setHref("gallery.zul?albumid="+category.getId());
+				row.appendChild(a);
+				if(!isPhone){
+					row.appendChild(new Label(Long.toString(imageCount)));
+					row.appendChild(new Label(Long.toString(viewed)));
+					row.appendChild(new Label(category.getDescription()));
+				}
+			}
+			
+		}
+		
+	}	
+ 	void refresh(){
+ 		List categoryList=null;
+ 		try{
+ 			User user=(User)session.getAttribute(org.mfr.manager.UserManager.USERSESSIONNAME);
+			categoryList=categoryDao.findByUserId(user.getUserId());
+		 	albumGrid.setModel(new ListModelList(categoryList));
+		 	albumGrid.setRowRenderer(new AlbumTableRender());
+ 		}catch(Exception e){
+ 			try{
+ 				org.mfr.util.ZkUtil.showProcessError(e);
+ 			}catch(InterruptedException e2){}
+ 		}
+ 		
+ 	}
+	void createAlbumDetailWindow(Category data){
+		Map arg=new HashMap();
+		arg.put("category",data);
+	 	Component comp=Executions.createComponents("comp/albumdetail.zul", null, arg);
+	 	newAlbum.addEventListener("onClose", new org.zkoss.zk.ui.event.EventListener(){
+	 		   public void onEvent(Event event){
+	 			   refresh();
+	 		   }
+	 	});
+	 	newAlbum.doModal();
+	}
+	void createAccessDetailWindow(Category data){
+		Component comp=Executions.createComponents("comp/accessdetail.zul", null, null);
+		accessDetail.addEventListener("onClose", new org.zkoss.zk.ui.event.EventListener(){
+	 		   public void onEvent(Event event){
+	 			   refresh();
+	 		   }
+	 	});
+		accessDetail.setAttribute("data",data);
+		accessDetail.doModal();
+	}
+]]></zscript>
+<include src="comp/header.zul" id="inc_header"></include>    
+<div sclass="page-content" id="contentPage">
+<n:div class="container">
+<n:div class="row">
+<html><![CDATA[<h1>${c:l('manage.albums')}</h1>]]></html>
+<div width="100%" align="left" style="padding-left:10px">
+${c:l('album.info')}
+<n:div class="fourcol spacingbutton-vertical">
+<a zclass="link1"><attribute name="onClick">
+<![CDATA[ createAlbumDetailWindow(null); ]]>
+</attribute>
+<image src="img/icon/PNG-24/Add.png" zclass="button-image"/>${c:l('album.new')}
+</a>
+</n:div>
+</div>
+
+</n:div>
+</n:div>
+
+<grid id="albumGrid" xmlns:w="client" onCreate="refresh();">
+       <columns>
+     	   <column width="120px"> </column>	
+           <column width="250px">${c:l('album.name')}</column>
+           <column width="60px" unless="${isPhone}">${c:l('album.image.cnt')}</column>
+           <column width="90px" unless="${isPhone}">${c:l('viewed')}</column>
+           <column hflex="1" unless="${isPhone}">${c:l('album.desc')}</column>
+       </columns>
+        </grid>
+<space height="25px"></space>
+
+        
+</div>
+<include src="comp/bottom.zul"></include>
+</n:div>
+</zk>

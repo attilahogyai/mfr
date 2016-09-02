@@ -1,0 +1,42 @@
+<?page title="Access result"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<zk xmlns:n="http://www.zkoss.org/2005/zk/native">
+<zscript>
+<![CDATA[
+         import org.openid4java.message.ParameterList;
+         import org.openid4java.discovery.DiscoveryInformation;
+         import javax.servlet.http.HttpServletRequest;
+         
+         HttpServletRequest request=(HttpServletRequest)this.desktop.getExecution().getNativeRequest();
+
+         boolean isError=false;
+         
+		 String requestToken=request.getParameter("code");
+		 String error=request.getParameter("error");
+	 	 if (requestToken!=null){
+	       	 if(!userManager.checkGoogleOAuth(requestToken)){
+	       		 error=org.zkoss.util.resource.Labels.getLabel("ext.login.error",new Object[]{"Google"});
+	       		 isError=true;
+	       	 }else{
+	       		 error=org.zkoss.util.resource.Labels.getLabel("ext.login.success",new Object[]{"Google"});
+	       	 }
+         }else{
+       	 	isError=true;
+       	 	error=org.zkoss.util.resource.Labels.getLabel("ext.login.error",new Object[]{"Google"})+" ("+error+")";
+         }
+]]></zscript>
+<include src="comp/header.zul"></include>    
+<div sclass="page-content" id="contentPage">
+<n:div class="container">
+<n:div class="row">
+<html><h1>${c:l('external.auth')}</h1></html>
+${error}
+<n:br/><n:br/>
+<a href="/signup.zul" zclass="link-font" if="${isError}">${c:l('ext.login.error.register')}</a>
+<n:br/><n:br/>
+</n:div>
+</n:div>
+</div>
+<include src="comp/bottom.zul" zclass="bottom-panel"></include>
+</zk>

@@ -1,0 +1,160 @@
+<?page title="${c:l('license')}"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk xmlns:n="http://www.zkoss.org/2005/zk/native">
+<style>
+.title{
+	font-size:16px;
+	font-weight:bold;
+	line-height:35px;
+}
+.subtitle{
+	font-size:14px;
+	font-weight:bold;
+	line-height:25px;
+}
+</style>
+
+<include src="template/head.zul"/>
+<include src="comp/header.zul"></include>
+<div sclass="page-content" >
+<n:div class="container">
+<n:div class="row">
+<html><h1>${c:l('license')}</h1></html>
+<div style="text-align: justify;margin-top:5px;" zclass="advertisment" xmlns:n="http://www.zkoss.org/2005/zk/native" if="${language=='HU'}">
+<label zclass="title">Üdvözöljük a myFotoRoom.com - on!</label>
+<n:br/>
+Reméljük, hogy kellemessé tehetjük itttartozkodását és szolgáltatásainkkal segítségére leszünk önnek!
+Regisztráció előtt kérjük olvassa el figyelmesen Felhasználási feltételeinket. A regisztrációval egyidőben Ön kijelenti, hogy egyetért és elfogadja a lent leírt feltételeket. 
+A myFotoRoom.com fenntartja a jogot, hogy változtassa a felhasználási feltételeket, kérjük időszakosan térjen vissza az oldalra és ellenőrizze.
+<n:br/><n:br/>
+<label zclass="title">
+Üzemeltetői adatok:
+</label>
+<n:ul>
+<n:li> 
+<label zclass="subtitle">
+A szolgáltató neve: 
+</label>
+Domostatic Bt. 
+</n:li>
+<n:li>
+<label zclass="subtitle"> 
+Elektronikus levelezési cím: 
+</label>
+info@myfotoroom.com  
+</n:li>
+<n:li> 
+<label zclass="subtitle">
+Cégjegyzékszám: 
+</label>
+01-06-747802 
+</n:li>
+<n:li> 
+<label zclass="subtitle">
+Adószám: 
+</label>
+21169531-3-43 
+</n:li>
+
+<n:li> 
+<label zclass="subtitle">
+Nyilvántartásban bejegyző hatóság neve: 
+</label>
+Fővárosi Bíróság Cégbírósága
+</n:li>
+<n:li> 
+<label zclass="subtitle">
+Telefonszám: 
+</label>
++36-204308879 
+</n:li>
+<n:li> 
+<label zclass="subtitle">
+Adatvédelmi nyilvántartási szám: 
+</label>
+NAIH-61104/2012. 
+</n:li>
+<n:li> 
+<label zclass="subtitle">
+A szerződés nyelve: 
+</label>
+magyar   
+</n:li>
+</n:ul>
+<label zclass="title">
+A Felhasználási Feltételek értelmében:
+</label>
+<n:br/>
+a Felhasználó által feltöltött tartalom nem tartalmazhat
+<n:ul>
+<n:li> 
+jogosulatlan vagy tisztességtelen piaci magatartás és versenykorlátozás tilalmáról szóló törvény által tiltott módon megszerzett adatokat,
+</n:li>
+<n:li> 
+vagy üzleti titkokat, szerzői jogokat sértő alkotóelemeket, mások személyiséghez fűződő jogait nem sértheti,
+</n:li>
+<n:li>  
+véleményeket vagy egyéb alkotóelemeket, amelyek alkalmasak kiskorúak szellemi, testi vagy erkölcsi fejlődésének hátrányos befolyásolására,
+</n:li>
+<n:li>   
+amelyek nincsenek tekintettel a társadalmi közfelfogásnak megfelelő értékítéletre és az emberi méltóságra súlyos vagy széleskörű ellenállást váltanak ki,
+</n:li>
+<n:li> 
+becsmérlők vagy megalázók, faji, nemzetiségi, vallási, nemi vagy politikai ellentéteket szítanak, egészségre ártalmas anyagok használatára bátorítanak,
+</n:li>
+<n:li> 
+bárkinek a magánéletét vagy nyugalmát indokolatlanul zavarják, bűncselekményre felbújtást,  
+</n:li>
+<n:li>  
+erőszakos vagy trágár tartalma miatt megbotránkozás vagy félelem keltésére alkalmas alkotóelemeket,
+</n:li>
+<n:li>  
+a gazdasági reklámtevékenységről szóló törvény hatálya alá tartozó reklámot.
+</n:li>
+</n:ul>
+A Szolgáltatás használatából eredő közvetlen, vagy közvetett bárminemű kárért a Szolgáltató nem tehető felelőssé.
+A feltöltő büntetőjogi feleőssége tudatában kijelenti, hogy a feltöltött tatalmakkal, képekkel szabadon rendelkezik, azzal senkinek a szerzői, vagy személyiségi jogait nem sérti. 
+A Felhasználó tudomásul veszi, hogy amennyiben bármiben megsérti a felhasználási feltételeket a Szolgáltató bármikor indoklás nélkül törölheti a Felhasználó regisztációját és feltöltött tartalmakat. 
+Tudomásul veszi, hogy sérelem esetén a feltöltött tartalom, kép törlésre kerül, és az ezzel okozott károkat meg kell térítenie, és a hatóságok előtt helyt kell állnia!
+<n:br/><n:br/>
+A Felhasználó elfogadja és magára nézve kötelezőnek tekinti a fenti Felhasználási Feltételeket!
+<n:br/>
+<n:br/>
+</div>
+
+
+<div style="text-align: justify;margin-top:5px;" xmlns:n="http://www.zkoss.org/2005/zk/native" zclass="advertisment" unless="${language=='HU'}">
+<label zclass="title">Welcome to myFotoRoom.com!</label><n:br/>
+We hope you enjoy your visit, and find that using our service is productive, easy and fun. 
+Before registration please read the following Terms of Service carefully. With registration will constitute a binding agreement between you and myFotoRoom.com!
+myFotoRoom.com reserves the right to change these Terms from time to time. Please visit to this site periodically for any changes. 
+<n:br/><n:br/>
+<label zclass="title">
+Under these Terms of Service:</label><n:br/>
+you may NOT place any of the following material or obtain any such material using the Service:
+<n:ul >
+<n:li>
+    Any threatening, obscene, pornographic or profane material or any other material that could give rise to any civil or criminal liability under applicable law. 
+</n:li>
+<n:li>    
+    Any material that could infringe rights of privacy, publicity or copyrights without the permission of the owner of these rights and the persons (or their parents or legal guardians, where applicable) who are shown in the material;
+</n:li>
+<n:li>    
+    Any material sent from an anonymous or false address.
+</n:li>
+</n:ul>
+myFotoRom.com is not responsible for any kind of loss due to use of service.
+myFotoRoom.com reserves the right to delete any content uploaded by the User, without warning. 
+User declares that freely disposes of the uploaded contents, and does not infringe any kind of copyright or privacy rights.
+User acknowledges that: the User is responsible according to laws for any infringe caused by the uploaded contents and these contents will be deleted.
+<n:br/><n:br/>
+User accept and subjects oneself to these Terms of Service!
+<n:br/>
+<n:br/>
+</div>
+
+</n:div>
+</n:div>
+</div>
+<include src="comp/bottom.zul" zclass="bottom-panel"></include>
+</zk>

@@ -1,0 +1,834 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg3351"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="button_bg.svg">
+  <defs
+     id="defs3353">
+    <linearGradient
+       id="linearGradient5865">
+      <stop
+         style="stop-color:#001298;stop-opacity:1;"
+         offset="0"
+         id="stop5867" />
+      <stop
+         style="stop-color:#9f3f00;stop-opacity:0.27083334;"
+         offset="1"
+         id="stop5869" />
+    </linearGradient>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective5813" />
+    <linearGradient
+       id="linearGradient5805">
+      <stop
+         id="stop5092"
+         offset="0"
+         style="stop-color:#556470;stop-opacity:1;" />
+      <stop
+         style="stop-color:#3f4b54;stop-opacity:0.62745098;"
+         offset="0.25"
+         id="stop5094" />
+      <stop
+         id="stop5090"
+         offset="0.5"
+         style="stop-color:#2a3238;stop-opacity:0.25490196;" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop5809" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient5793">
+      <stop
+         style="stop-color:#cf5300;stop-opacity:1;"
+         offset="0"
+         id="stop5795" />
+      <stop
+         style="stop-color:#d85700;stop-opacity:0;"
+         offset="1"
+         id="stop5797" />
+    </linearGradient>
+    <filter
+       color-interpolation-filters="sRGB"
+       x="0"
+       y="0"
+       width="1"
+       height="1"
+       inkscape:menu="Bumps"
+       inkscape:menu-tooltip="Emboss effect : Colors of the original images are preserved or modified by Blend"
+       inkscape:label="Emboss"
+       id="filter4170-1-8">
+      <feColorMatrix
+         type="luminanceToAlpha"
+         result="result2"
+         id="feColorMatrix4172-7-9" />
+      <feDiffuseLighting
+         surfaceScale="-10"
+         result="result1"
+         diffuseConstant="0.60000002"
+         id="feDiffuseLighting4174-4-27">
+        <feDistantLight
+           elevation="35"
+           azimuth="225"
+           id="feDistantLight4176-0-9" />
+      </feDiffuseLighting>
+      <feComposite
+         operator="arithmetic"
+         in="result1"
+         k1="1.5"
+         k3="0.5"
+         result="result3"
+         id="feComposite4178-9-5"
+         in2="SourceGraphic"
+         k2="0"
+         k4="0" />
+      <feComposite
+         in="result3"
+         operator="in"
+         result="result5"
+         id="feComposite4180-4-4"
+         in2="result3" />
+      <feBlend
+         in="result5"
+         mode="normal"
+         result="result6"
+         id="feBlend4182-8-3"
+         in2="result1" />
+      <feComposite
+         k2="1"
+         operator="arithmetic"
+         result="result7"
+         id="feComposite4184-8-12"
+         in2="result6"
+         k1="0"
+         k3="0"
+         k4="0" />
+      <feComposite
+         operator="in"
+         in="result7"
+         id="feComposite4186-2-3"
+         in2="SourceGraphic" />
+    </filter>
+    <filter
+       color-interpolation-filters="sRGB"
+       inkscape:menu-tooltip="Render in shades of gray by reducing saturation to zero"
+       inkscape:menu="Color"
+       height="1"
+       width="1"
+       y="0"
+       x="0"
+       inkscape:label="Desaturate"
+       id="filter5048">
+      <feColorMatrix
+         values="0"
+         type="saturate"
+         id="feColorMatrix5050" />
+    </filter>
+    <filter
+       color-interpolation-filters="sRGB"
+       inkscape:menu-tooltip="Soft, cushion-like bevel with matte highlights"
+       inkscape:menu="Bevels"
+       inkscape:label="Bloom"
+       id="filter6104">
+      <feGaussianBlur
+         stdDeviation="2.2"
+         in="SourceAlpha"
+         result="result1"
+         id="feGaussianBlur6106" />
+      <feSpecularLighting
+         surfaceScale="5"
+         specularConstant="2"
+         specularExponent="18.10000038"
+         result="result0"
+         id="feSpecularLighting6108">
+        <feDistantLight
+           elevation="24"
+           azimuth="225"
+           id="feDistantLight6110" />
+      </feSpecularLighting>
+      <feComposite
+         operator="in"
+         result="result6"
+         in2="SourceAlpha"
+         id="feComposite6112" />
+      <feMorphology
+         operator="dilate"
+         radius="5.7"
+         id="feMorphology6114" />
+      <feGaussianBlur
+         stdDeviation="5.7"
+         result="result11"
+         id="feGaussianBlur6116" />
+      <feDiffuseLighting
+         in="result1"
+         diffuseConstant="2"
+         result="result3"
+         surfaceScale="5"
+         id="feDiffuseLighting6118">
+        <feDistantLight
+           azimuth="225"
+           elevation="25"
+           id="feDistantLight6120" />
+      </feDiffuseLighting>
+      <feBlend
+         in="result3"
+         mode="multiply"
+         result="result7"
+         in2="SourceGraphic"
+         id="feBlend6122" />
+      <feComposite
+         result="result91"
+         operator="in"
+         in="result7"
+         in2="SourceAlpha"
+         id="feComposite6124" />
+      <feBlend
+         in="result6"
+         mode="lighten"
+         result="result9"
+         in2="result91"
+         id="feBlend6126" />
+      <feComposite
+         in="result11"
+         in2="result9"
+         id="feComposite6128" />
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5793"
+       id="linearGradient5803"
+       x1="48.792713"
+       y1="42.005039"
+       x2="184.77872"
+       y2="96.290756"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5805"
+       id="linearGradient5811"
+       x1="47.857143"
+       y1="69.147898"
+       x2="186.42857"
+       y2="69.147898"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5865"
+       id="linearGradient5871"
+       x1="216.42856"
+       y1="83.076469"
+       x2="215.71428"
+       y2="40.219326"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5805"
+       id="linearGradient6044"
+       x1="655.45111"
+       y1="453.44141"
+       x2="675.45111"
+       y2="453.44141"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(28.562482,0,0,0.01666534,-18373.63,156.28089)"
+       spreadMethod="pad" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5805-7"
+       id="linearGradient6044-1"
+       x1="655.45111"
+       y1="453.44141"
+       x2="675.45111"
+       y2="453.44141"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(14.997023,0,0,0.01666457,-9427.1165,154.8937)" />
+    <linearGradient
+       id="linearGradient5805-7">
+      <stop
+         style="stop-color:#757575;stop-opacity:0.51351351;"
+         offset="0"
+         id="stop5807-4" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop5809-0" />
+    </linearGradient>
+    <linearGradient
+       y2="453.44141"
+       x2="675.45111"
+       y1="453.44141"
+       x1="655.45111"
+       gradientTransform="matrix(1.899623,0,0,0.01666428,-413.86441,-184.27106)"
+       gradientUnits="userSpaceOnUse"
+       id="linearGradient3296"
+       xlink:href="#linearGradient5805-7"
+       inkscape:collect="always" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5805-4"
+       id="linearGradient6044-17"
+       x1="655.45111"
+       y1="453.44141"
+       x2="675.45111"
+       y2="453.44141"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(28.562482,0,0,0.01666534,-18373.63,156.28089)"
+       spreadMethod="pad" />
+    <linearGradient
+       id="linearGradient5805-4">
+      <stop
+         id="stop5092-0"
+         offset="0"
+         style="stop-color:#556470;stop-opacity:1;" />
+      <stop
+         style="stop-color:#3f4b54;stop-opacity:0.62745098;"
+         offset="0.25"
+         id="stop5094-9" />
+      <stop
+         id="stop5090-4"
+         offset="0.5"
+         style="stop-color:#2a3238;stop-opacity:0.25490196;" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop5809-8" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5805-45"
+       id="linearGradient6044-2"
+       x1="655.45111"
+       y1="453.44141"
+       x2="675.45111"
+       y2="453.44141"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(28.562482,0,0,0.01666534,-18373.63,156.28089)"
+       spreadMethod="pad" />
+    <linearGradient
+       id="linearGradient5805-45">
+      <stop
+         id="stop5092-5"
+         offset="0"
+         style="stop-color:#355662;stop-opacity:1;" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop5809-1" />
+    </linearGradient>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.0240635"
+     inkscape:cx="-142.94419"
+     inkscape:cy="434.47249"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1218"
+     inkscape:window-height="1002"
+     inkscape:window-x="1334"
+     inkscape:window-y="45"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata3356">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <flowRoot
+       transform="translate(403.35596,9.943928)"
+       xml:space="preserve"
+       id="flowRoot3021-1"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><flowRegion
+         id="flowRegion3023-7"><rect
+           id="rect3025-4"
+           width="265"
+           height="92.857147"
+           x="151.42857"
+           y="358.79074" /></flowRegion><flowPara
+         id="flowPara3031-4"
+         style="font-size:38.79999924px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:80.00000119%;writing-mode:lr-tb;text-anchor:start;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond">FOTO</flowPara><flowPara
+         id="flowPara3029-8"
+         style="font-size:38.79999924px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:80.00000119%;writing-mode:lr-tb;text-anchor:start;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond" /></flowRoot>    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Franklin Gothic Medium Cond;-inkscape-font-specification:Franklin Gothic Medium Cond"
+       x="555"
+       y="409.50504"
+       id="text3082"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3084"
+         x="555"
+         y="409.50504"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond">room</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:54.5673027px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="631.8797"
+       y="316.76315"
+       id="text3088"
+       sodipodi:linespacing="125%"
+       transform="scale(0.79711312,1.2545271)"><tspan
+         sodipodi:role="line"
+         id="tspan3090"
+         x="631.8797"
+         y="316.76315"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond">my</tspan></text>
+    <flowRoot
+       transform="translate(168.96003,135.23344)"
+       xml:space="preserve"
+       id="flowRoot3021-1-8"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><flowRegion
+         id="flowRegion3023-7-2"><rect
+           id="rect3025-4-4"
+           width="265"
+           height="92.857147"
+           x="151.42857"
+           y="358.79074" /></flowRegion><flowPara
+         id="flowPara3031-4-5"
+         style="font-size:38.79999924px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:80.00000119%;writing-mode:lr-tb;text-anchor:start;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond">FOTO</flowPara><flowPara
+         id="flowPara3029-8-5"
+         style="font-size:38.79999924px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:80.00000119%;writing-mode:lr-tb;text-anchor:start;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond" /></flowRoot>    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Franklin Gothic Medium Cond;-inkscape-font-specification:Franklin Gothic Medium Cond"
+       x="320.60406"
+       y="534.79456"
+       id="text3082-1"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3084-7"
+         x="320.60406"
+         y="534.79456"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond">room</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="279.17551"
+       y="520.50885"
+       id="text3088-1"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3090-1"
+         x="279.17551"
+         y="520.50885"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond">my</tspan></text>
+    <flowRoot
+       transform="matrix(1.3378509,0,0,1,254.77596,-168.774)"
+       xml:space="preserve"
+       id="flowRoot3021-1-5"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><flowRegion
+         id="flowRegion3023-7-27"><rect
+           id="rect3025-4-6"
+           width="265"
+           height="92.857147"
+           x="151.42857"
+           y="358.79074" /></flowRegion><flowPara
+         id="flowPara3031-4-1"
+         style="font-size:38.79999924px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:80.00000119%;writing-mode:lr-tb;text-anchor:start;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond">FOTO</flowPara><flowPara
+         id="flowPara3029-8-4"
+         style="font-size:38.79999924px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:80.00000119%;writing-mode:lr-tb;text-anchor:start;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond" /></flowRoot>    <text
+       xml:space="preserve"
+       style="font-size:46.26620102px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Franklin Gothic Medium Cond;-inkscape-font-specification:Franklin Gothic Medium Cond"
+       x="395.66946"
+       y="266.94107"
+       id="text3082-2"
+       sodipodi:linespacing="125%"
+       transform="scale(1.1566551,0.864562)"><tspan
+         sodipodi:role="line"
+         id="tspan3084-3"
+         x="395.66946"
+         y="266.94107"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond">room</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:63.11554718px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="430.82291"
+       y="200.9519"
+       id="text3088-2"
+       sodipodi:linespacing="125%"
+       transform="scale(0.92198491,1.0846164)"><tspan
+         sodipodi:role="line"
+         id="tspan3090-2"
+         x="430.82291"
+         y="200.9519"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond">my</tspan></text>
+    <flowRoot
+       transform="translate(88.794035,-98.334199)"
+       xml:space="preserve"
+       id="flowRoot3021-1-1"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><flowRegion
+         id="flowRegion3023-7-6"><rect
+           id="rect3025-4-8"
+           width="265"
+           height="92.857147"
+           x="151.42857"
+           y="358.79074" /></flowRegion><flowPara
+         id="flowPara3031-4-57"
+         style="font-size:38.79999924px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:80.00000119%;writing-mode:lr-tb;text-anchor:start;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond">FOTO</flowPara><flowPara
+         id="flowPara3029-8-6"
+         style="font-size:38.79999924px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:80.00000119%;writing-mode:lr-tb;text-anchor:start;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond" /></flowRoot>    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Franklin Gothic Medium Cond;-inkscape-font-specification:Franklin Gothic Medium Cond"
+       x="240.43805"
+       y="305.22693"
+       id="text3082-18"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3084-9"
+         x="240.43805"
+         y="305.22693"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond">room</tspan></text>
+    <rect
+       style="fill:#d85700;fill-opacity:1"
+       id="rect3218"
+       width="50.381359"
+       height="62.629459"
+       x="189.52988"
+       y="248.78583" />
+    <text
+       xml:space="preserve"
+       style="font-size:56.32124329px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="247.4689"
+       y="225.01328"
+       id="text3088-27"
+       sodipodi:linespacing="125%"
+       transform="scale(0.77228968,1.2948509)"><tspan
+         sodipodi:role="line"
+         id="tspan3090-9"
+         x="247.4689"
+         y="225.01328"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond">my</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.58635658;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect3220"
+       width="130.6089"
+       height="62.655338"
+       x="189.46988"
+       y="248.62038" />
+    <flowRoot
+       transform="translate(63.829405,-9.2882616)"
+       xml:space="preserve"
+       id="flowRoot3021-1-1-5"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><flowRegion
+         id="flowRegion3023-7-6-4"><rect
+           id="rect3025-4-8-3"
+           width="265"
+           height="92.857147"
+           x="151.42857"
+           y="358.79074" /></flowRegion><flowPara
+         id="flowPara3031-4-57-1"
+         style="font-size:38.79999924px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:80.00000119%;writing-mode:lr-tb;text-anchor:start;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond">FOTO</flowPara><flowPara
+         id="flowPara3029-8-6-2"
+         style="font-size:38.79999924px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:80.00000119%;writing-mode:lr-tb;text-anchor:start;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond" /></flowRoot>    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Franklin Gothic Medium Cond;-inkscape-font-specification:Franklin Gothic Medium Cond"
+       x="215.47343"
+       y="394.27289"
+       id="text3082-18-3"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3084-9-3"
+         x="215.47343"
+         y="394.27289"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond">room</tspan></text>
+    <path
+       style="fill:#d85700;fill-opacity:1"
+       d="M 164.5625 337.84375 L 164.5625 400.46875 L 214.9375 400.46875 L 214.9375 337.84375 L 164.5625 337.84375 z M 179.25 343.71875 C 181.7986 343.71879 183.33694 345.59295 183.875 349.34375 C 184.83779 345.59295 186.55634 343.71879 189.0625 343.71875 C 190.46421 343.71879 191.57793 344.14542 192.40625 345 C 193.23452 345.85466 193.83057 347.04757 194.15625 348.53125 C 194.48188 350.015 194.62497 352.79935 194.625 356.90625 L 194.625 380.40625 L 188.65625 380.40625 L 188.65625 357.9375 C 188.65623 355.25497 188.53902 353.49467 188.3125 352.6875 C 188.08593 351.88039 187.59122 351.50003 186.8125 351.5 C 185.87799 351.50003 185.28316 352.00612 185 353.0625 C 184.7168 354.11893 184.56248 356.26395 184.5625 359.46875 L 184.5625 380.40625 L 178.5625 380.40625 L 178.5625 357.625 C 178.56249 355.06116 178.46945 353.38469 178.25 352.625 C 178.03052 351.86537 177.52873 351.50003 176.75 351.5 C 175.78718 351.50003 175.16232 352.05239 174.84375 353.15625 C 174.52517 354.26016 174.34374 356.35891 174.34375 359.46875 L 174.34375 380.40625 L 168.375 380.40625 L 168.375 344.4375 L 174.03125 344.4375 L 174.03125 349.34375 C 175.05069 345.59295 176.80049 343.71879 179.25 343.71875 z M 195.96875 344.4375 L 201.96875 344.4375 L 204.84375 366.40625 L 207.625 344.4375 L 212.78125 344.4375 L 206.34375 380.96875 C 205.72075 384.45845 205.18892 386.91187 204.75 388.3125 C 204.31106 389.71312 203.6591 390.86727 202.78125 391.78125 C 201.90339 392.69521 200.76551 393.15624 199.40625 393.15625 C 198.57087 393.15624 197.7387 392.97357 196.875 392.59375 L 196.875 384.6875 C 197.46968 384.82993 198.00737 384.90625 198.53125 384.90625 C 199.69228 384.90625 200.50565 384.57846 200.9375 383.9375 C 201.36934 383.29653 201.77395 381.87904 202.15625 379.71875 L 195.96875 344.4375 z "
+       id="rect3218-4" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.58635658;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect3220-3"
+       width="130.6089"
+       height="62.655338"
+       x="164.50526"
+       y="337.66632" />
+    <g
+       id="g4204"
+       inkscape:export-filename="D:\install\c\photospot\WebContent\img\fotoroom.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         y="228.6895"
+         x="37.340321"
+         height="63.994392"
+         width="131.88954"
+         id="rect4129"
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.38215062;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <flowRoot
+         style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans"
+         id="flowRoot3021-1-1-9"
+         xml:space="preserve"
+         transform="translate(-62.692203,-117.62712)"><flowRegion
+           id="flowRegion3023-7-6-8"><rect
+             style="fill:#ffffff;fill-opacity:1"
+             y="358.79074"
+             x="151.42857"
+             height="92.857147"
+             width="265"
+             id="rect3025-4-8-6" /></flowRegion><flowPara
+           style="font-size:38.79999923999999800px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:80.00000119000000600%;writing-mode:lr-tb;text-anchor:start;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond;fill:#ffffff;fill-opacity:1"
+           id="flowPara3031-4-57-5">FOTO</flowPara><flowPara
+           style="font-size:38.79999923999999800px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:80.00000119000000600%;writing-mode:lr-tb;text-anchor:start;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond;fill:#ffffff;fill-opacity:1"
+           id="flowPara3029-8-6-0" /></flowRoot>      <text
+         sodipodi:linespacing="125%"
+         id="text3082-18-2"
+         y="285.93399"
+         x="88.951828"
+         style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Franklin Gothic Medium Cond;-inkscape-font-specification:Franklin Gothic Medium Cond"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond;fill:#ffffff;fill-opacity:1"
+           y="285.93399"
+           x="88.951828"
+           id="tspan3084-9-8"
+           sodipodi:role="line">room</tspan></text>
+      <rect
+         y="229.4929"
+         x="38.043659"
+         height="62.629459"
+         width="50.381359"
+         id="rect3218-6"
+         style="fill:#d85700;fill-opacity:1" />
+      <text
+         transform="scale(0.77228968,1.2948509)"
+         sodipodi:linespacing="125%"
+         id="text3088-27-0"
+         y="210.11354"
+         x="51.316814"
+         style="font-size:56.32124329px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond"
+           y="210.11354"
+           x="51.316814"
+           id="tspan3090-9-2"
+           sodipodi:role="line">my</tspan></text>
+      <rect
+         y="229.32747"
+         x="37.983662"
+         height="62.655338"
+         width="130.6089"
+         id="rect3220-4"
+         style="fill:none;stroke:#ffffff;stroke-width:0.986;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    </g>
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.579;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect4129-8"
+       width="166.42264"
+       height="116.42008"
+       x="-4.9244967"
+       y="355.23065" />
+    <flowRoot
+       transform="translate(-86.557061,37.557567)"
+       xml:space="preserve"
+       id="flowRoot3021-1-1-9-6"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans"><flowRegion
+         id="flowRegion3023-7-6-8-5"><rect
+           id="rect3025-4-8-6-0"
+           width="265"
+           height="92.857147"
+           x="151.42857"
+           y="358.79074"
+           style="fill:#ffffff;fill-opacity:1" /></flowRegion><flowPara
+         id="flowPara3031-4-57-5-9"
+         style="font-size:38.79999924px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:80.00000119%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond">FOTO</flowPara><flowPara
+         id="flowPara3029-8-6-0-0"
+         style="font-size:38.79999924px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:80.00000119%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond" /></flowRoot>    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Franklin Gothic Medium Cond;-inkscape-font-specification:Franklin Gothic Medium Cond"
+       x="65.08696"
+       y="441.11868"
+       id="text3082-18-2-0"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3084-9-8-6"
+         x="65.08696"
+         y="441.11868"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond">room</tspan></text>
+    <rect
+       style="fill:#d85700;fill-opacity:1"
+       id="rect3218-6-1"
+       width="50.381359"
+       height="62.629459"
+       x="14.178798"
+       y="384.67758" />
+    <text
+       xml:space="preserve"
+       style="font-size:56.32124328999999800px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans"
+       x="20.415384"
+       y="329.96106"
+       id="text3088-27-0-3"
+       sodipodi:linespacing="125%"
+       transform="scale(0.77228968,1.2948509)"><tspan
+         sodipodi:role="line"
+         id="tspan3090-9-2-8"
+         x="20.415384"
+         y="329.96106"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond;fill:#ffffff;fill-opacity:1">my</tspan></text>
+    <rect
+       style="fill:none;stroke:#ffffff;stroke-width:0.986;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect3220-4-9"
+       width="130.6089"
+       height="62.655338"
+       x="14.118808"
+       y="384.51215" />
+    <flowRoot
+       transform="translate(-151.00581,-48.287778)"
+       xml:space="preserve"
+       id="flowRoot3021-1-1-9-6-3"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       inkscape:export-filename="D:\install\c\photospot\WebContent\img\categories_en.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><flowRegion
+         id="flowRegion3023-7-6-8-5-4"><rect
+           id="rect3025-4-8-6-0-4"
+           width="265"
+           height="92.857147"
+           x="151.42857"
+           y="358.79074"
+           style="fill:#000000;fill-opacity:1" /></flowRegion><flowPara
+         id="flowPara3031-4-57-5-9-6"
+         style="font-size:38.79999924px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:80.00000119%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond">Categories</flowPara><flowPara
+         id="flowPara3029-8-6-0-0-0"
+         style="font-size:38.79999924px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:80.00000119%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond" /></flowRoot>    <flowRoot
+       transform="translate(-141.8793,-216.29202)"
+       xml:space="preserve"
+       id="flowRoot3021-1-1-9-6-3-6"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       inkscape:export-filename="D:\install\c\photospot\WebContent\img\login_en.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><flowRegion
+         id="flowRegion3023-7-6-8-5-4-6"><rect
+           id="rect3025-4-8-6-0-4-1"
+           width="265"
+           height="92.857147"
+           x="151.42857"
+           y="358.79074"
+           style="fill:#000000;fill-opacity:1" /></flowRegion><flowPara
+         id="flowPara3031-4-57-5-9-6-8"
+         style="font-size:38.79999924px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:80.00000119%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond">Login</flowPara><flowPara
+         id="flowPara3029-8-6-0-0-0-4"
+         style="font-size:38.79999924px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:80.00000119%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond" /></flowRoot>    <flowRoot
+       transform="translate(-73.266949,-298.56749)"
+       xml:space="preserve"
+       id="flowRoot3021-1-1-9-6-3-6-9"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       inkscape:export-filename="D:\install\c\photospot\WebContent\img\login_button_en.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><flowRegion
+         id="flowRegion3023-7-6-8-5-4-6-6"><rect
+           id="rect3025-4-8-6-0-4-1-3"
+           width="265"
+           height="92.857147"
+           x="151.42857"
+           y="358.79074"
+           style="fill:#000000;fill-opacity:1" /></flowRegion><flowPara
+         id="flowPara3031-4-57-5-9-6-8-7"
+         style="font-size:38.79999924px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:80.00000119%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond">Login</flowPara><flowPara
+         id="flowPara3029-8-6-0-0-0-4-8"
+         style="font-size:38.79999924px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:80.00000119%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;font-family:Franklin Gothic Demi Cond;-inkscape-font-specification:Franklin Gothic Demi Cond" /></flowRoot>    <rect
+       style="fill:url(#linearGradient5871);fill-opacity:1;fill-rule:nonzero;stroke:none;opacity:1"
+       id="rect5863"
+       width="22.857143"
+       height="64.285713"
+       x="215.71428"
+       y="40.219326"
+       inkscape:export-filename="D:\install\c\photospot\WebContent\img\button_bg.png"
+       inkscape:export-xdpi="359.79971"
+       inkscape:export-ydpi="359.79971" />
+    <rect
+       style="fill:url(#linearGradient6044);fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="rect5873"
+       width="571.25"
+       height="9.9992027"
+       x="347.6868"
+       y="158.83806"
+       transform="matrix(2.513325e-6,1,-0.99993611,-0.01130389,0,0)"
+       inkscape:export-filename="D:\install\c2\photospot\WebContent\img\bg3.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="fill:#b04700;fill-opacity:0.38297874;fill-rule:nonzero;stroke:none"
+       id="rect5873-1"
+       width="29.285715"
+       height="64.285713"
+       x="411.64151"
+       y="32.290138"
+       inkscape:export-filename="D:\install\c\photospot\WebContent\img\button_bg_disabled.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="fill:url(#linearGradient3296);fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="rect5873-9"
+       width="37.992481"
+       height="9.9985666"
+       x="831.24591"
+       y="-181.71408"
+       transform="matrix(3.7790025e-5,1,-0.99999972,-7.5184304e-4,0,0)"
+       inkscape:export-filename="D:\install\c\photospot\WebContent\img\bg_small.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="opacity:0.77876106;fill:#54636f;fill-opacity:0.98039215999999996;fill-rule:nonzero;stroke:none"
+       id="rect5873-8"
+       width="570.88702"
+       height="5.0005579"
+       x="-879.77045"
+       y="-307.22345"
+       transform="matrix(-1.2574615e-6,-1,0.99974483,0.0225891,0,0)"
+       inkscape:export-filename="D:\install\c2\photospot\WebContent\img\bg5.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="fill:#53616d;fill-opacity:0.96078432;fill-rule:nonzero;stroke:none"
+       id="rect5873-15"
+       width="37.992481"
+       height="9.9985676"
+       x="808.55939"
+       y="32.399837"
+       transform="matrix(3.7790026e-5,1,-0.99999972,-7.5184406e-4,0,0)"
+       inkscape:export-filename="D:\install\c2\photospot\WebContent\img\bg_simplehead.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="fill:#00cd33;fill-opacity:1;stroke:#ffffff;stroke-width:4.10474347999999980;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect3961"
+       width="19.895256"
+       height="19.895256"
+       x="-538.23871"
+       y="459.44641"
+       inkscape:export-filename="D:\install\c2\photospot\WebContent\img\bulet.png"
+       inkscape:export-xdpi="18.748331"
+       inkscape:export-ydpi="18.748331" />
+  </g>
+</svg>

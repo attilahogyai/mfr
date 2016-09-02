@@ -1,0 +1,33 @@
+<?page title="Download"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<window id="downloadPopup" border="none" sizable="false" zclass="popup" 
+width="300px" closable="true" xmlns:w="client" xmlns:n="http://www.zkoss.org/2005/zk/native" >
+<script type="text/JavaScript" defer="true" ><![CDATA[
+function closeWindow(){
+	var window=zk.Widget.$('newAlbum');
+	alert("- "+window);
+	jq('$newAlbum').close();
+}
+]]>
+</script>
+<div sclass="categories-header-tabs">
+<label zclass="categories-header-text-msg">${c:l("download.all.image")}</label>
+<a onClick='Events.postEvent("onClose",downloadPopup,null);'>
+<image src="img/icon2/exit.png" align="right" zclass="button-image2" style="padding-right:10px;" id="close"/>
+</a>
+</div>
+<n:div style="text-align:center;padding:10px;">
+<n:a href="/download/album/${arg.albumid}?s=thumb">${c:l("download.thumbs")}<n:img src="/img/icon2/download.png" style="vertical-align:middle;height:20px;margin-left:5px;"/></n:a>
+</n:div>
+<n:div style="text-align:center;padding:10px;">
+<n:a href="/download/album/${arg.albumid}?s=prev">${c:l("download.preview")}<n:img src="/img/icon2/download.png" style="vertical-align:middle;height:20px;margin-left:5px;"/></n:a>
+</n:div>
+<n:div style="text-align:center;padding:10px;">
+<n:a href="/download/album/${arg.albumid}?s=med">${c:l("download.medium")}<n:img src="/img/icon2/download.png" style="vertical-align:middle;height:20px;margin-left:5px;"/></n:a>
+</n:div>
+<div style="text-align:center;padding:10px;color:grey">
+${c:l("download.original")}
+</div>
+
+ </window>

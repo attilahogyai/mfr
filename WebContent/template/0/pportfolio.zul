@@ -1,0 +1,40 @@
+<zk xmlns:w="client" xmlns:n="http://www.zkoss.org/2005/zk/native">
+<include src="${headerPage}" id="inc_header"></include>
+<n:div class="page-content" id="contentPage">
+<n:div class="container">
+<div class="row" apply="${portfolioPortfolioComposer}">
+<div sclass="twelvecol" >
+<div id="albums1" style="display:block;text-align:center;">
+
+</div>
+<a zclass="action_button" onClick="$composer.createAlbumSelectorWindow(4,false)" if="${isEditable}">
+<n:img src="${iconurl}add.png" />
+</a>
+</div>
+<template name="albums1Template">
+<n:div class="albumcontainer">
+<html>
+<div class="polaroid">
+<a zclass="link-font" href="_pgallery_album_${my:getAsUrl(category.name)}?albumid=${category.id}">
+<p>${category.name}</p>
+<div style="background-image: url(/mimg/prev/id/${each.id});" class="coverimage"/>
+<span>${category.description}</span>
+</a>
+</div>
+</html>
+<a zclass="action_button" onClick='$composer.removeCategoryFromSite(4,self.getAttribute("catid"));$composer.refreshImages()' if="${isEditable}">
+<n:img src="${iconurl}trash.png"/>
+<custom-attributes catid="${category.id}"/>
+</a>
+<a zclass="action_button2" onClick='$composer.createMainImageSelectorWindow(self.getAttribute("catid"));' if="${isEditable}">
+<n:img src="${iconurl}cover.png"/>
+<custom-attributes catid="${category.id}"/>
+</a>
+</n:div>
+</template>
+
+</div>
+</n:div>
+</n:div>
+<include src="comp/bottom.zul"></include>
+</zk>

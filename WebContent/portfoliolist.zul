@@ -1,0 +1,52 @@
+<?page title="${c:l('portfolio.list')}" id="portfoliolist"?>
+<?taglib uri="/WEB-INF/tld/my.tld" prefix="my"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?meta name="description" content="${c:l('portfolio.list.desc')}" ?>
+<zk xmlns:w="client" xmlns:n="http://www.zkoss.org/2005/zk/native" >
+<include src="template/head.zul"/>
+<zscript><![CDATA[
+    import org.zkoss.util.media.Media;
+ 	import org.mfr.data.ImageDataModel;
+ 	import org.zkoss.util.resource.Labels;
+ 	import javax.servlet.http.HttpSession;
+ 	import org.mfr.image.ImageTools;
+ 	import org.mfr.image.NoHtmlOutZulImage;
+	import org.mfr.web.display.ImageTableRender;; 	
+	import org.zkoss.zul.Image;
+	import org.zkoss.zk.ui.*;
+	import java.util.List;
+	import org.mfr.manager.GoogleDriveManager;
+	
+	
+	String id=((HttpSession)Executions.getCurrent().getSession().getNativeSession()).getId();
+	List lastSites = siteDao.getLastSites(500);
+	
+]]></zscript>
+<include src="comp/header.zul" id="inc_header"></include>
+<n:div class="page-content" id="contentPage">
+<n:div class="container">
+<n:div class="row">
+
+<!-- CATEGORIES -->
+<n:div class="elevencol">
+<n:h1>${c:l('portfolio.list')}</n:h1>
+<n:div class="categories-panel">
+<html>
+<ul class="accentuated">
+<li forEach="${lastSites}">
+<a class="link-font" href="http://${each.url}.${domain}">${each.name}</a> <a class="link-font" href="http://${each.url}.${domain}">http://${each.url}.${domain}</a>
+</li>
+</ul>
+<br/>
+</html>
+</n:div>
+</n:div>
+
+
+
+
+</n:div>
+</n:div>
+</n:div>
+<include src="comp/bottom.zul" zclass="bottom-panel"></include>
+</zk>

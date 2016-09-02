@@ -1,0 +1,123 @@
+<?page title="${c:l('license')}"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk xmlns:n="http://www.zkoss.org/2005/zk/native">
+<style>
+.title{
+	font-size:16px;
+	font-weight:bold;
+	line-height:35px;
+}
+</style>
+
+<include src="template/head.zul"/>
+<include src="comp/header.zul"></include>
+<div sclass="page-content" >
+<n:div class="container">
+<n:div class="row">
+<html><h1>${c:l('adatvedelem')}</h1>
+<div style="text-align: justify;margin-top:5px;" zclass="advertisment" xmlns:n="http://www.zkoss.org/2005/zk/native">
+<br/>
+A myfotoroom.com üzemeltetője ezúton tájékoztatja a honlap látogatóit a személyes adatok kezelése körében követett gyakorlatáról, az adatok védelme érdekében megtett szervezési és technikai intézkedéseiről, valamint a látogatók ezzel kapcsolatos jogairól, és azok érvényesítésének lehetőségeiről.
+<br/>
+<label class="title">
+1. Az adatkezelő
+</label>
+<br/>
+Az adatok kezelője a Domostatic Bt.
+<br/>
+<label class="title">
+2. A kezelt adatok köre
+</label>
+<br/>
+A honlap megtekintése során automatikusan rögzítésre kerül a felhasználó látogatásának kezdő és befejező időpontja, illetve egyes esetekben - a felhasználó számítógépének beállításától függően - a böngésző és az operációs rendszer típusa. Ezen adatokból a rendszer automatikusan statisztikai adatokat generál. Az üzemeltető ezen adatokat nem kapcsolja össze személyes adatokkal. A weboldal bejelentkezés esetén session ID-t küld, ami az oldal elhagyásakor automatikusan törlődik.
+A weboldal használatához megadott adatok kezelése a felhasználó önkéntes hozzájárulásával történik.
+<br/>
+<label class="title">
+3. Az adatkezelés célja
+</label>
+<br/>
+Az adatkezelés céljai:
+<ul>
+<li> 
+a weboldal szolgáltatásait igénybevevő regisztrált felhasználók valamint az adatkezelő közötti folyamatos kapcsolattartás,
+</li>
+<li> 
+adott esetben bizonyos szolgáltatások személyre szabott nyújtása,
+</li>
+<li> 
+felvilágosítás nyújtása regisztrált felhasználók részére a szolgáltatás működésével kapcsolatban,
+</li>
+<li> 
+működési problémák elhárítása,
+</li>
+<li> 
+hírlevél-szolgáltatáshoz kapcsolódó komunikáció lehetővé tétele (hozzájárulás alapján, illetőleg annak visszavonásáig),
+</li>
+</ul>
+A látogatás időpontja, valamint a böngésző és operációs rendszer típusának felvétele és tárolása kizárólag statisztikai célokat szolgál,
+Az adatkezelő a megjelölt céloktól eltérő célra a személyes adatokat nem használja. Az így megadott adatok kezelése a felhasználó önkéntes hozzájárulásával történik. A felhasználó regisztrációjakor kifejezetten hozzájárul, hogy az Adatkezelő a regisztrációhoz kötelezően előírt adatait kezelje.
+A myfotoroom.com a felhasználókra vonatkozó valamennyi adatot és tényt bizalmasan kezel.
+<br/>
+<label class="title">
+4. Az adatkezelés időtartama
+</label>
+<br/>
+A session ID-k a weboldal elhagyásakor automatikusan törlődnek.
+A myfotoroom.com nem vállalja a felelősséget a már törölt, de az internetes keresőprogramok közreműködésével mégis archiválásra került, korábbi oldalaiért. Ezek eltávolításáról a keresőoldal működtetőjének kell gondoskodni.
+A felhasználó személyes adatatit megőrizzük, amíg nem kéri azok törlését a rendszerből.
+<br/>
+<label class="title">
+5. Az adatokhoz hozzáférők köre, adatfeldolgozók
+</label>
+<br/>
+A felhasználók által megadott személyes adatokhoz az adatkezelő munkatársai férhetnek hozzá.
+Személyes adatokat a megjelölteken kívül harmadik személyeknek az adatkezelő nem ad át. Ez nem vonatkozik az esetleges, törvényben előírt, kötelező adattovábbításokra, amelyekre csak rendkívüli esetekben kerülhet sor. Az adatkezelő az egyes hatósági adatkérések teljesítése előtt minden egyes adat tekintetében megvizsgálja, hogy valóban fennáll-e az adattovábbítás jogalapja.
+<br/>
+<label class="title">
+6. A felhasználók személyes adataik kezelésével kapcsolatos jogai, az adattörlés
+</label>
+<br/>
+A második pontban megjelölt adatok megadásáról a felhasználók döntenek. Az adatkezelés jogalapja a felhasználók önkéntes hozzájárulása.
+Személyes adataik kezeléséről a felhasználók tájékoztatást kérhetnek. Az adatkezelő kérésre tájékoztatást ad az érintettnek az általa kezelt adatairól, az adatkezelés céljáról, jogalapjáról, időtartamáról, az adatfeldolgozó nevéről, címéről és az adatkezeléssel összefüggő tevékenységéről, továbbá arról, hogy kik és milyen célból kapják vagy kapták meg az adatokat.
+A felhasználó kérheti személyes adatainak helyesbítését és törlését is.
+A honlap szolgáltatásainak nem megfelelő igénybevétele esetén, valamint a felhasználó saját kérésére a hozzá tartozó adatokat töröljük. A törlésre a törlési igény megkezdésétől számított következő munkanapot követő 24 órán belül kerül sor.
+<br/>
+<label class="title">
+7. Adatbiztonsági intézkedések
+</label>
+<br/>
+Cégünk a személyes adatokat a DOCLERWEB Kft. (1101 Budapest, Expo tér 5-7) szervererein tárolja, amelyek 24 órás személyi őrzéssel védettek, és a magyarországi internet gerinchálózaton találhatóak.
+A felhasználót kizárólagos felelősség terheli a személyes azonosítójuk és jelszavuk használatáért. Ebből kifolyólag javasolt ezeket az adatokat titokban tartani. Amennyiben a felhasználó ezeket az adatokat mégis felfedi egy harmadik személy számára, ennek következtében elveszítheti a Szolgáltatás keretében az üzemeltető által kezelt adatati feletti rendelkezési lehetőséget.
+<br/>
+<label class="title">
+8. Jogérvényesítési lehetőségek
+</label>
+<br/>
+Az a felhasználó, aki úgy érzi, hogy a myfotoroom.com tulajdonosa megsértette személyes adatok védelméhez való jogát, igényét polgári bíróság előtt érvényesítheti, vagy kérheti az adatvédelmi biztos segítségét is. Az erre, valamint az adatkezelő kötelezettségeire vonatkozó részletes törvényi rendelkezéseket a személyes adatok védelméről és a közérdekű adatok nyilvánosságáról szóló 1992. évi LXIII. törvény tartalmazza.
+Az adatvédelmi elvek kialakításakor az 1992. évi LXIII. számú - személyes adatok védelméről és a közérdekű adatok nyilvánosságáról szóló; illetve az 1998. évi VI. számú az egyének védelméről a személyes adatok gépi feldolgozása során - törvényt vettük alapul.
+<!-- ul>
+Adatvédelmi információk
+<li> 
+<a class="detail-link" href="">
+Adatvédelmi biztos
+</a>
+</li>
+<li>
+<a class="detail-link" href=""> 
+Hírközlési Fogyasztói Jogok képviselője
+</a>
+</li>
+</ul-->
+<br/>
+<br/>
+
+
+</div>
+</html>
+
+
+</n:div>
+</n:div>
+</div>
+<include src="comp/bottom.zul" zclass="bottom-panel"></include>
+</zk>

@@ -1,0 +1,12 @@
+<?page title="Auto Generated index.zul"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+<window id="loginWindow" width="390px" height="265px" border="none" xmlns:wc="client"
+closable="true" action="show: slideDown;hide: slideUp" xmlns:w="client">
+<div sclass="categories-header">
+<label zclass="categories-header-text">${c:l('login')}</label>
+<image src="img/icon2/exit.png"></image>
+</div>
+<include src="template/login.zul"></include>
+</window>
+</zk>

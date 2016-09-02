@@ -1,0 +1,201 @@
+<?page title="${c:l('index.title')}" id="index" automaticTimeout="false"?>
+<?taglib uri="/WEB-INF/tld/my.tld" prefix="my"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?meta name="description" content="${c:l('index.description')}" ?>
+<?init class="org.mfr.web.action.IndexComposer" ?>
+<zk xmlns:w="client" xmlns:n="http://www.zkoss.org/2005/zk/native">
+<style>
+.row .sixcol2,.row .sixcol{
+	width:45%;
+}
+.row{
+	padding-bottom: 20px;
+}
+
+.row{
+	padding-left:3%;
+	width:97%;
+}	
+.fourcol2,.sixcol2{
+	min-width:300px;
+	height:224px;
+}
+.sixcol{
+	min-width:300px;
+}
+.threecol2{
+	min-width:200px;
+	height:224px;
+}
+
+@media
+handheld, only screen and (max-width:720px){
+.row{
+	padding-left:none;
+	width:none;	
+}	
+.row .sixcol2,.row .fourcol2{
+	width: 91.35%;
+	height:auto;
+}
+
+}
+
+.row .hightAuto{
+	height:auto;
+}
+
+@media only screen and (max-width: 1000px) {
+.row .width100{
+	width: 91.35%;
+}
+}
+
+#advImgA img{
+	margin-top:8px;
+	max-width: none;
+}
+#adv {
+	margin-bottom:12px;
+}
+#advImgA{
+	display:block;
+}
+
+
+</style>
+<style unless="${loggedIn}">
+#advImgA{
+	position:relative;
+	left:-43px;
+}
+</style>
+<style if="${loggedIn}">
+#advImgA{
+	position:relative;
+	left:-54px;
+}
+
+</style>
+
+
+<include src="template/head.zul"/>
+
+<n:div id="galleryHidden" style="display:none;">
+</n:div>
+<script type="text/javascript" src="jquery-1.6.4.min.js"></script>
+<include src="comp/header.zul" id="inc_header"></include>
+<!-- html><![CDATA[
+<div class="fb-comments" data-href="http://example.com" data-width="470"></div>
+]]></html-->
+<n:div class="page-content" id="contentPage">
+
+<n:div id="mainImageContainer" >
+<div style="background-image: url(${mainImageUrl});" id="mainImage" zclass="main-image">
+<include id="loginBoxInclude" src="comp/login.zul" zclass="popup" unless="${loggedIn}"/>
+<html unless="${loggedIn}">
+<div id="mainTitle" class="displayDesktop">
+${c:l('main.title')}
+</div>
+<!--img src="img/${language}/offer.png" id="mainOffer"/-->
+<div id="mainText" class="displayDesktop">	
+${c:l('main.offer.text')}
+</div>
+
+</html>
+<include src="comp/maindashboard.zul"/>
+</div>
+</n:div>
+<n:div class="os_poll" data-path="/polls/2373131" style="width:95%;margin:auto;margin-top:2em;"></n:div>
+
+<include src="template/advertisment_${language}.html" unless="${loggedIn}" zclass="advertisment"/>
+
+<!-- CATEGORIES -->
+<n:div class="row" >
+<n:div class="sixcol">
+<html>
+<n:h1>${c:l('public.albums')}</n:h1>
+<n:div forEach="${topCategories}"  style="margin:0px;" >
+<a class="link-font" href="${my:getAlbumUrl(each.name)}?albumid=${each.id}">${each.name}</a> <label zclass="small-font">(${each.useracc.name})</label>
+</n:div>
+<n:div style="margin-top:5px;">
+<a class="detail-link" href="_publicalbums">${c:l('next.public.albums')}...</a>
+</n:div>
+</html>
+</n:div>
+
+<html>
+<div class="sixcol">
+<h1>Web ${c:l('private.gallery')}</h1>
+<ul class="accentuated">
+<li forEach="${topSites}">
+<a class="link-font" href="http://${each.url}.${domain}">${each.name}</a> <a class="link-font" href="http://${each.url}.${domain}">http://${each.url}.${domain}</a>
+</li>
+<li>
+<a class="detail-link" href="_portfoliolist">${c:l('next.public.portfolios')}...</a>
+</li>
+</ul>
+</div>
+</html>
+</n:div>
+
+
+
+
+<n:div class="row">
+
+<!-- CATEGORIES -->
+<!-- n:div class="sixcol">
+<html>
+<n:h1>${c:l('public.albums')}</n:h1>
+<n:div forEach="${topCategories}"  style="margin:0px;" >
+<a class="link-font" href="${my:getAlbumUrl(each.name)}?albumid=${each.id}">${each.name}</a> <label zclass="small-font">(${each.useracc.name})</label>
+</n:div>
+<n:div style="margin-top:5px;">
+<a class="detail-link" href="_publicalbums">${c:l('next.public.albums')}...</a>
+</n:div>
+</html>
+</n:div>
+
+<html>
+<div class="sixcol">
+<h1>${c:l('newest.gallery')}</h1>
+<ul class="accentuated">
+<li forEach="${lastSites}">
+<a class="link-font" href="http://${each.url}.${domain}">${each.name}</a> <a class="link-font" href="http://${each.url}.${domain}">http://${each.url}.${domain}</a>
+</li>
+<li>
+<a class="detail-link" href="_portfoliolist">${c:l('next.public.portfolios')}...</a>
+</li>
+
+</ul>
+</div>
+</html-->
+<html unless="${loggedIn}">
+<div class="elevencol main-bottom">
+<h2>${c:l('main.bottom.text')}</h2>
+<!-- div style="width:210px;margin:auto;padding-top:10px;"><a href="signup.zul" class="reg-button" style="text-align:center;">${c:l('signup')}</a></div-->
+</div>
+
+<script>
+  (function(d, s, id){
+    var js,
+        fjs = d.getElementsByTagName(s)[0],
+        p = (('https:' == d.location.protocol) ? 'https://' : 'http://'),
+        r = Math.floor(new Date().getTime() / 1000000);
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id; js.async=1;
+    js.src = p + "www.opinionstage.com/assets/loader.js?" + r;
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'os-widget-jssdk'));
+</script>
+
+
+</html>
+
+
+
+</n:div>
+</n:div>
+<include src="comp/bottom.zul" zclass="bottom-panel"></include>
+</zk>

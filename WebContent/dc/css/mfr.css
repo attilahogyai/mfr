@@ -1,0 +1,7 @@
+/**
+* $cssList
+**/
+#foreach($css in $cssList)
+/* Dynamic CSS : $css */
+#parse($css)
+#end

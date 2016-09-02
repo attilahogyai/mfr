@@ -1,0 +1,48 @@
+<?page title="${c:l('contact')}"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk xmlns:n="http://www.zkoss.org/2005/zk/native">
+<include src="template/head.zul"/>
+<include src="comp/header.zul"></include>
+<div sclass="page-content" >
+<n:div class="container">
+<n:div class="row">
+<html><![CDATA[<h1>${c:l('contact')}</h1>]]></html>
+<div sclass="sevencol">
+<grid apply="${contactComposer}" >
+   <columns>
+   <column width="150px"></column>
+   <column ></column>
+   </columns>
+   <rows>
+       <row zclass="fr-row"><label value="${c:l('subject')}"/>
+       <listbox width="300px" id="subject" mold="select">
+       <listitem label="${c:l('info.request')}" selected="true"/>
+       <listitem label="${c:l('error.report')}"/>
+       <listitem label="${c:l('other.comment')}"/>
+       </listbox>
+       </row>
+       <row zclass="fr-row"><label value="${c:l('my.email.address')}"/><textbox id="contactEmail" width="350px" constraint="/.+@.+\.[a-z]+/: ${labels.check.email}"/></row>
+       <row zclass="fr-row"><label value="${c:l('message')}"/><textbox id="message" rows="10" cols="46" style="height:10em;"/></row>
+       <row zclass="fr-row">
+       <space></space>
+       <button label="${c:l('send.message')}" id="sendmessage" zclass="button1"/>
+       </row>
+   </rows>
+</grid>
+</div>
+<div sclass="fourcol">
+${c:l('contact.desc')}<n:br></n:br><n:br></n:br>
+<label zclass="simple-header-album-title">
+myFotoRoom.com
+</label><n:br></n:br>
+email: info@myfotoroom.com
+<n:br></n:br>
+ 
+</div>
+
+</n:div>
+</n:div>
+<n:br/><n:br/>
+</div>
+<include src="comp/bottom.zul" zclass="bottom-panel"></include>
+</zk>

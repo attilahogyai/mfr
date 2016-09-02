@@ -1,0 +1,100 @@
+@import url(/css/fonts/squada-one/squada-one.css);
+@import url(/css/fonts/dosis/dosis600.css);
+@import url(/css/0/common.css);
+
+
+/* ----- NAVIGATION ----- */
+#navigation {
+	margin: 0;
+	padding: 0;
+	height: 35px;
+	list-style: none;
+	max-width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	border-bottom: 1px;
+	border-bottom-color: #666666;
+	border-bottom-style: solid;
+	background: none;
+}
+
+#navigation li {
+	float: left;
+	clear: none;
+	list-style: none;
+	padding: 0px 18px;
+}
+
+.polaroid {
+	position: relative;
+	display: block;
+	float: left;
+}
+
+.polaroid div {
+	display: block;
+	position: relative;
+	height: 110px;
+	width: 147px;
+	/*background-position: center center;*/
+	background-repeat: no-repeat;
+	border-left: 1px solid #dddddd;
+	border-right: 1px solid #dddddd;
+	border-bottom: 1px solid #dddddd;
+	border-top: 1px solid #dddddd;
+}
+
+
+h1,.polaroid span,.polaroid p,.description {
+	display: block;
+	text-align: left;
+	width: 100%;
+}
+
+h1,.polaroid p {
+	font-family: 'Dosis', sans-serif;
+	font-weight: 600;
+	font-size: 20px;
+	overflow: hidden;
+	text-transform: uppercase;
+	height: 50px;
+	vertical-align: bottom;
+	color: #666666;
+}
+.menu-header {
+	padding-right: 0px;
+	padding-top: 10px;
+	padding-left: 0px;
+	height: 70px;
+	max-width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	border-top:7px solid gray;
+	border-bottom:1px solid gray;
+	background: repeat scroll 0 0 white;
+}
+
+
+#navigation li a {
+	display: block;
+	text-decoration: none;
+	padding-bottom: 5px;
+	padding-top: 13px;
+	height: 15px;
+	text-transform: uppercase;
+}
+
+#navigation li a:hover,.active-menu {
+	color: #bbbbbb;
+	border-bottom: 3px;
+	border-bottom-style: solid;
+	border-bottom-color: #dddddd;
+}
+
+h2 {
+	font: 14px/16px Georgia, serif;
+	font-weight: bold;
+	padding-bottom: 5px;
+}
+
+

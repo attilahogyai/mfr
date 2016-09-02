@@ -1,0 +1,23 @@
+<?page id="bottom"?>
+<zk xmlns:n="http://www.zkoss.org/2005/zk/native">
+<n:div class="simple-bottom-panel">
+<n:div id="footer" >
+<n:div forEach="${similarList}">
+<a href="http://www.myfotoroom.com/gallery.zul?ticket=${each.permission.ticket}">${each.category.name}</a>
+</n:div>
+<n:div style="margin-top:10px;">
+<n:ul>
+<n:li>
+ <a href="contact.zul">${c:l('contact')}</a>
+</n:li>
+<n:li>
+<a href="license.zul">${c:l('license')}</a>
+</n:li>
+<n:li>
+<label zclass="small-font">© 2012 myFotoRoom.com, version 1.4</label> <label zclass="small-font">${weakBandwith}</label>
+</n:li>
+</n:ul>
+</n:div> 
+</n:div> 
+</n:div>
+</zk>

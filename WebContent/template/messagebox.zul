@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?page title="window" language="xul/html"?>
+<!--
+messagebox.zul
+
+	Purpose:
+		
+	Description:
+
+	History:
+		Wed Jul 7 12:00:12     2010, Created by simon
+
+Copyright (C) 2010 Potix Corporation. All Rights Reserved.
+-->
+<window sclass="z-messagebox-window" zclass="popup" border="none" width="250pt" closable="false"
+use="org.zkoss.zul.impl.MessageboxDlg" xmlns:w="http://www.zkoss.org/2005/zk/client">
+<zscript deferred="true"><![CDATA[
+void closeWindow(){
+	
+	//org.zkoss.zul.Window win=org.mfr.util.ZkUtil.findComponentByType(spaceOwner.getFellows(),org.zkoss.zul.Window.class);
+	
+	Events.postEvent("onClose",(Component)spaceOwner,null);
+}
+]]>
+</zscript>
+
+<div sclass="categories-header">
+<label zclass="categories-header-text-msg" id="titleText">${arg.title}</label>
+<image src="img/icon2/exit.png" align="right" style="padding-right:10px;" onClick="closeWindow()"></image>
+</div>
+	<hbox style="padding-left:10px;padding-right:10px;">
+		<div sclass="${arg.icon}"/>
+		<separator spacing="13px" />
+		<div sclass="z-messagebox">
+			<!-- label value="${arg.message}" multiline="true" >
+				<attribute w:name="onBind">
+					var node = this.$n(),
+						tr = node.parentNode.parentNode.parentNode,
+						width = node.offsetWidth + tr.cells[0].offsetWidth,
+						win = this.$o(),
+						cave = win.$n('cave'),
+						outer = win.$n();
+					width += zk(cave).padBorderWidth()
+						+ zk((cave = cave.parentNode)).padBorderWidth()
+						+ zk((cave = cave.parentNode)).padBorderWidth()
+						+ zk((cave = cave.parentNode)).padBorderWidth();
+				
+					outer.style.width = jq.px0(Math.min(Math.max(width, 330), jq.innerWidth() - 20));
+					zk(outer).center();
+					var top = zk.parseInt(outer.style.top), y = jq.innerY();
+					if (y) {
+						var y1 = top - y;
+						if (y1 > 100) outer.style.top = jq.px0(top - (y1 - 100));
+					} else if (top > 100)
+						outer.style.top = "100px";
+					win.onSize();
+				</attribute>
+				
+			</label-->
+			<html>${arg.message}</html>
+		</div>
+	</hbox>
+	<separator spacing="15px"/>
+	<hbox style="margin-left:auto; margin-right:auto;padding-bottom:10px;" id="buttons">
+	</hbox>
+	<hbox style="margin-left:auto; margin-right:auto;padding-bottom:10px;">
+	<button id="btn1" identity="${arg.OK}" zclass="button1" use="org.zkoss.zul.impl.MessageboxDlg$Button"
+		if="${!empty arg.OK}"/>
+	<button identity="${arg.CANCEL}" zclass="button1" use="org.zkoss.zul.impl.MessageboxDlg$Button"
+		if="${!empty arg.CANCEL}"/>
+	<button identity="${arg.YES}" zclass="button1" use="org.zkoss.zul.impl.MessageboxDlg$Button"
+		if="${!empty arg.YES}"/>
+	<button identity="${arg.NO}" zclass="button1" use="org.zkoss.zul.impl.MessageboxDlg$Button"
+		if="${!empty arg.NO}"/>
+	<button identity="${arg.RETRY}" zclass="button1" use="org.zkoss.zul.impl.MessageboxDlg$Button"
+		if="${!empty arg.RETRY}"/>
+	<button identity="${arg.ABORT}" zclass="button1" use="org.zkoss.zul.impl.MessageboxDlg$Button"
+		if="${!empty arg.ABORT}"/>
+	<button identity="${arg.IGNORE}" zclass="button1" use="org.zkoss.zul.impl.MessageboxDlg$Button"
+		if="${!empty arg.IGNORE}"/>
+	</hbox>
+</window>

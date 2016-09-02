@@ -1,0 +1,59 @@
+<?page title="${c:l('album.selector')}"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<window id="albumselector" border="none" sizable="false" zclass="popup" 
+width="250px" closable="true" apply="${albumSelectorComposer}" xmlns:w="client" xmlns:n="http://www.zkoss.org/2005/zk/native" >
+<script type="text/JavaScript" defer="true" ><![CDATA[
+function closeWindow(){
+	var window=zk.Widget.$('newAlbum');
+	alert("- "+window);
+	jq('$newAlbum').close();
+}
+]]>
+</script>
+<div sclass="categories-header">
+<label zclass="categories-header-text-msg" id="titleText">${c:l('album.selector')}</label>
+<a onClick='Events.postEvent("onClose",albumselector,null);'>
+<image src="img/icon2/exit.png" align="right" zclass="button-image2" style="padding-right:10px;"></image>
+</a>
+</div>
+<grid id="albumGrid" width="100%" >
+       <columns visible="false" >
+     	   <column height="31px" width="40px"/>
+           <column  />
+       </columns>
+        </grid>
+        
+	<template name="rowTemplate" xmlns:wa="http://www.zkoss.org/2005/zk/client/attribute">
+	<image src="${iconurl}select.png" zclass="action_button" id="${each.id}" onClick="$composer.updateSelection(self.getId());" unless="${selectImage}"/>
+	<image src="${iconurl}select.png" zclass="action_button" id="${each.id}" onClick="$composer.selectAlbum(self.getId());" if="${selectImage}"/>
+	<a href="#" unless="${selectImage}">
+	<attribute name="onClick">$composer.updateSelection(self.getAttribute("pid"));</attribute>
+	<custom-attributes pid="${each.id}"/>${each.getName()}</a>
+	<a href="#" if="${selectImage}">
+	<attribute name="onClick">$composer.selectAlbum(self.getAttribute("pid").toString());</attribute>
+	<custom-attributes pid="${each.id}"/>${each.getName()}</a>
+	</template>
+	<template name="imageRowTemplate" xmlns:wa="http://www.zkoss.org/2005/zk/client/attribute">
+	<image src="${iconurl}up.png" zclass="action_button" if="${index == 0}" onClick="$composer.selectAlbum(null);"></image>
+	<label value="[..]" if="${index == 0}" onClick="$composer.selectAlbum(null);" sclass="hand"></label>
+	
+	<image src="${iconurl}select.png" zclass="action_button" if="${index > 0}" onClick='$composer.updateSelection(self.getAttribute("iid"));' >
+	<custom-attributes iid="${photo.id}" if="${index > 0}"/>
+	</image>
+	<image content="${photo.imageThumb}" id="${photo.id}" tooltip="${photo.imageName}" onClick='$composer.updateSelection(self.getAttribute("iid"));' if="${index > 0}"  zclass="action_button">
+	<custom-attributes iid="${photo.id}" if="${index > 0}"/>
+	</image>	
+	</template>
+
+	<template name="mainImageRowTemplate" xmlns:wa="http://www.zkoss.org/2005/zk/client/attribute">
+	<image src="${iconurl}select.png" zclass="action_button" onClick='$composer.updateSelection(self.getAttribute("iid"));' >
+	<custom-attributes iid="${photo.id}"/>
+	</image>
+	<image content="${photo.imageThumb}" id="${photo.id}" tooltip="${photo.imageName}" onClick='$composer.updateSelection(self.getAttribute("iid"));' zclass="action_button" >
+	<custom-attributes iid="${photo.id}" />
+	</image>	
+	</template>
+
+        
+ </window>

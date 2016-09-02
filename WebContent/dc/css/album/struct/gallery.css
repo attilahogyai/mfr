@@ -1,0 +1,43 @@
+.ps-carousel-content{
+	background: black;
+}
+.thumb-img { 
+	display: block; 
+	max-height: 110px; 
+	margin: auto;
+	position: relative;
+	z-index: 1;
+	max-width: 300px;
+}
+.thumb-img:hover {
+	z-index: 0;
+}
+.img-download-button{
+	position:relative;
+	top:-30px;
+	z-index:0;
+}
+.img-download-button:hover{
+	z-index:1;
+}
+
+/*** album list styles ***/  
+.gallery { list-style: none; padding: 0; margin: auto; }
+.gallery:after { clear: both; content: "."; display: block; height: 0; visibility: hidden; }
+.gallery li a{ 
+	display: block; 
+	border: 0px solid #3c3c3c;
+	overflow: hidden;
+	
+}
+
+@media handheld, only screen and (max-width: 500px) {
+.gallery li { 
+	float: left;
+	width: 33.33333333%;
+	height: 80px;
+	width: 90px;
+}
+	
+}
+

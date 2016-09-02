@@ -1,0 +1,21 @@
+<zk>
+GCM teszt                             
+<label id="display"></label>
+<zscript><![CDATA[
+import org.apache.commons.logging.LogFactory;
+import org.apache.commons.logging.Log;
+Log log=LogFactory.getLog(org.mfr.manager.CategoryManager.class);
+javax.servlet.http.HttpServletRequest servletRequest=((javax.servlet.http.HttpServletRequest)execution.getNativeRequest());
+java.util.Enumeration paramNames=servletRequest.getParameterNames();
+log.info("start gcm");
+display.setValue("GCM display");
+while(paramNames.hasMoreElements()){
+	String name=(String)paramNames.nextElement();
+	String value=servletRequest.getParameter(name);
+	log.info("gcm parameter:["+name+"="+value+"]");
+	display.setValue(display.getValue()+"["+name+"="+value+"] ");
+}
+
+]]></zscript>     
+
+</zk>

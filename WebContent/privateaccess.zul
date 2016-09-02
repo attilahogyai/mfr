@@ -1,0 +1,120 @@
+<?page title="${c:l('private.content')}" id="privatecontent" automaticTimeout="false"?>
+<?taglib uri="/WEB-INF/tld/my.tld" prefix="my"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?meta name="description" content="${c:l('private.content')}" ?>
+<zk xmlns:w="client" xmlns:n="http://www.zkoss.org/2005/zk/native" >
+<style>
+.row .sixcol2,.row .sixcol{
+	width:45%;
+}
+.row{
+	padding-bottom: 20px;
+}
+
+.row{
+	padding-left:3%;
+	width:97%;
+}	
+.fourcol2,.sixcol2{
+	min-width:300px;
+	height:224px;
+}
+.sixcol{
+	min-width:300px;
+}
+.threecol2{
+	min-width:200px;
+	height:224px;
+}
+
+@media
+handheld, only screen and (max-width:720px){
+.row{
+	padding-left:none;
+	width:none;	
+}	
+.row .sixcol2,.row .fourcol2{
+	width: 91.35%;
+	height:auto;
+}
+
+}
+
+.row .hightAuto{
+	height:auto;
+}
+
+@media only screen and (max-width: 1000px) {
+.row .width100{
+	width: 91.35%;
+}
+}
+
+#advImgA img{
+	margin-top:8px;
+	max-width: none;
+}
+#adv {
+	margin-bottom:12px;
+}
+#advImgA{
+	display:block;
+}
+
+
+</style>
+
+<style unless="${loggedIn}">
+#advImgA{
+	position:relative;
+	left:-43px;
+}
+</style>
+<style if="${loggedIn}">
+#advImgA{
+	position:relative;
+	left:-63px;
+}
+</style>
+<zscript><![CDATA[
+String mainImageUrl =org.mfr.web.action.GlobalVariableResolver.mainImageUrl;
+]]></zscript>
+<include src="template/head.zul"/>
+<script type="text/javascript" src="jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="js/fadeslideshow.js"/>
+<include src="comp/header.zul" id="inc_header"></include>
+<n:div class="page-content" id="contentPage">
+
+
+<n:div id="mainImageContainer" >
+<div style="background-image: url(${mainImageUrl});" id="mainImage" zclass="main-image">
+
+<n:div id="loginBoxInclude_1" unless="${loggedIn}" style="margin: 4%;" class="popup">
+<div id="loginBox" xmlns:wc="client" xmlns:w="client" apply="org.mfr.web.action.SiteAccessComposer" xmlns:n="http://www.zkoss.org/2005/zk/native">
+	<n:div><label id="dispayMessage" value="${c:l('private.access.password')}"></label></n:div>
+	<n:div><n:hr style="width:100%"/></n:div>
+	<n:div>
+		<textbox id="password" type="password" style="width:217px;"
+		placeholder="${c:l('password')}" onCreate="self.focus()"/>
+	</n:div>
+	<n:div><a label="${c:l('login')}" zclass="link1" id="setPassword"/></n:div>
+<zscript>
+<![CDATA[
+        password.addForward("onOK",setPassword,"onClick");
+]]>         
+</zscript>
+</div>
+</n:div>
+
+<html unless="${loggedIn}">
+<div id="mainTitle" class="displayDesktop">
+${c:l('private.access.required')}
+</div>
+<img src="img/icon2/private.png" id="mainOffer"/>
+</html>
+</div>
+</n:div>
+<include src="template/advertisment_${language}.html" unless="${loggedIn}" zclass="advertisment"/>
+</n:div>
+<include src="comp/bottom.zul" zclass="bottom-panel"></include>
+</zk>

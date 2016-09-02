@@ -1,0 +1,20 @@
+<?page title="comment"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<window id="commentListPopup" border="none" sizable="false" 
+xmlns:n="http://www.zkoss.org/2005/zk/native"
+xmlns:w="http://www.zkoss.org/2005/zk/client"
+apply="org.mfr.web.action.CommentComposer"
+closable="true" zclass="popup" width="${popupwidth}px">
+<include src="comp/popupheader.zul" windowName="commentPopup" label="${c:l('new.comment')}"></include>
+<grid width="100%">
+		<rows>
+		<row zclass="fr-row" id="descrow">
+			<textbox id="commentText" placeholder="${c:l('write.new.comment')}" width="95%" rows="3" height="90px" />
+		</row>
+		<row zclass="fr-row">
+			<a label="${c:l('send')}" zclass="link1" id="sendComment"/>
+		</row>
+		</rows>
+	</grid>
+</window>

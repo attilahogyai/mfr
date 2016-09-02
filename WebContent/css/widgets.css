@@ -1,0 +1,124 @@
+
+/******* desktop ********/
+.check-box-selected {
+	background-image: url("/img/icon2/selected.png");
+	width: 24px;
+	height: 24px;
+	margin: 0px;
+	padding: 0px;
+}
+
+.check-box {
+	background-image: url("/img/icon2/unselected.png");
+	width: 24px;
+	height: 24px;
+	margin: 0px;
+	padding: 0px;
+}
+
+.check-box:HOVER {
+	background-image: url("/img/icon2/unselected-hover.png");
+}
+
+.editicon {
+	background-image: url("/img/icon2/edit.png");
+	width: 24px;
+	height: 24px;
+	margin: 0px;
+	padding: 0px;
+	display: block;
+}
+
+
+
+.rotate-right,.rotate-left{
+	width: 24px;
+	height: 24px;
+	margin: 0px;
+	padding: 0px;
+	display: block;
+	position:absolute;
+}
+.rotate-left{
+	background-image: url("/img/icon2/rotate_left_inactive.png");
+	bottom: 26px;
+}
+.rotate-left:hover{
+	background-image: url("/img/icon2/rotate_left_hover.png");
+	bottom: 26px;
+}
+.selected-img .rotate-left{
+	background-image: url("/img/icon2/rotate_left_selected.png");
+	bottom: 26px;
+}
+.rotate-right{
+	background-image: url("/img/icon2/rotate_right_inactive.png");
+	bottom: 0px;
+}
+.rotate-right:hover{
+	background-image: url("/img/icon2/rotate_right_hover.png");
+	bottom: 0px;
+}
+
+.selected-img .rotate-right{
+	background-image: url("/img/icon2/rotate_right_selected.png");
+	bottom: 0px;
+}
+/**********************/
+@media handheld , only screen and (max-width:720px) {
+	.check-box-selected {
+        background-image: url("/img/icon2/mobile/selected.png");
+        background-repeat: no-repeat;
+        width: 32px;
+        height: 32px;
+        margin: 0px;
+        padding: 0px;
+    }
+    .check-box {
+        background-image: url("/img/icon2/mobile/unselected.png");
+        background-repeat: no-repeat;
+        width: 32px;
+        height: 32px;
+        margin: 0px;
+        padding: 0px;
+    }
+    .check-box:HOVER {
+        background-image: url("/img/icon2/mobile/unselected-hover.png");
+    }
+    
+ 
+	.rotate-right,.rotate-left{
+		width: 32px;
+		height: 32px;
+		margin: 0px;
+		padding: 0px;
+		display: block;
+		position:absolute;
+	}
+	.rotate-left{
+		background-image: url("/img/icon2/mobile/rotate_left_inactive.png");
+		bottom: 39px;
+	}
+	.rotate-left:hover{
+		background-image: url("/img/icon2/mobile/rotate_left_hover.png");
+		bottom: 39px;
+	}
+	.selected-img .rotate-left{
+		background-image: url("/img/icon2/mobile/rotate_left_selected.png");
+		bottom: 39px;
+	}
+	.rotate-right{
+		background-image: url("/img/icon2/mobile/rotate_right_inactive.png");
+		bottom: 0px;
+	}
+	.rotate-right:hover{
+		background-image: url("/img/icon2/mobile/rotate_right_hover.png");
+		bottom: 0px;
+	}
+	
+	.selected-img .rotate-right{
+		background-image: url("/img/icon2/mobile/rotate_right_selected.png");
+		bottom: 0px;
+	}   
+		
+}

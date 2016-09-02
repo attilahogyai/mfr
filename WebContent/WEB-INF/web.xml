@@ -1,0 +1,274 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+      version="3.0"> 
+  <display-name>myFotoRoom</display-name>
+<description><![CDATA[Photo upload and share Web application]]></description>
+
+  <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/mfrDB</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+  </resource-ref>
+
+
+<context-param>
+  <param-name>contextConfigLocation</param-name>
+  <param-value>/WEB-INF/application-context.xml</param-value>
+</context-param>
+  
+<listener>
+<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+</listener>
+
+	
+<listener>
+    <listener-class>org.zkoss.spring.web.context.CoreContextListener</listener-class>
+</listener>
+
+
+<listener>
+<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+</listener>
+
+<listener>
+  <listener-class>org.apache.commons.fileupload.servlet.FileCleanerCleanup</listener-class>
+</listener>
+  <listener>
+  	<description>
+  	Used to cleanup when a session is destroyed</description>
+  	<display-name>ZK Session cleaner</display-name>
+  	<listener-class>org.zkoss.zk.ui.http.HttpSessionListener</listener-class>
+  </listener>
+
+
+
+<servlet>
+<servlet-name>dyna</servlet-name>
+<servlet-class>org.mfr.web.DynaServlet</servlet-class>
+  	<init-param>
+  		<param-name>org.apache.velocity.tools</param-name>
+  		<param-value>/WEB-INF/mfrtools.xml</param-value>
+  	</init-param>
+	<init-param>
+  		<param-name>org.apache.velocity.tools.loadDefaults</param-name>
+  		<param-value>false</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>org.apache.velocity.tools.cleanConfiguration</param-name>
+  		<param-value>true</param-value>
+  	</init-param>
+
+ <load-on-startup>1</load-on-startup>  
+</servlet>  
+
+
+<servlet>
+<servlet-name>rest</servlet-name>
+<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+<load-on-startup>1</load-on-startup>
+</servlet>
+<servlet-mapping>
+<servlet-name>rest</servlet-name>
+<url-pattern>*.json</url-pattern>
+</servlet-mapping>
+
+
+  <servlet>
+  	<description>
+  	The ZK loader for ZUML pages</description>
+  	<servlet-name>zkLoader</servlet-name>
+  	<servlet-class>org.zkoss.zk.ui.http.DHtmlLayoutServlet</servlet-class>
+  	<init-param>
+  		<param-name>update-uri</param-name>
+  		<param-value>/zkau</param-value>
+  	</init-param>
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+  	<description>
+  	The asynchronous update engine for ZK</description>
+  	<servlet-name>auEngine</servlet-name>
+  	<servlet-class>org.zkoss.zk.au.http.DHtmlUpdateServlet</servlet-class>
+	<!-- [Optional] Specifies whether to compress the output
+		of the ZK loader. It speeds up the transmission over slow Internet.
+		However, if your server will do the compression, you might have to disable it.
+
+		Default: true
+		<init-param>
+			<param-name>compress</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		-->
+		<!-- [Optional] Specifies the AU extension for particular prefix.
+		<init-param>
+			<param-name>extension0</param-name>
+			<param-value>/upload=com.my.MyUploader</param-value>
+		</init-param>
+		-->  	
+  </servlet>
+  
+ 
+ 
+<servlet>
+    <description><![CDATA[The servlet loads the DSP pages.]]></description>
+    <servlet-name>dspLoader</servlet-name>
+    <servlet-class>org.zkoss.web.servlet.dsp.InterpreterServlet</servlet-class>
+    <!-- Specify class-resource, if you want to access TLD defined in jar files -->
+    <init-param>
+        <param-name>class-resource</param-name>
+        <param-value>true</param-value>
+    </init-param>
+</servlet>
+<servlet-mapping>
+    <servlet-name>dspLoader</servlet-name>
+    <url-pattern>*.dsp</url-pattern>
+</servlet-mapping> 
+ 
+  
+  <servlet>
+     <servlet-name>UploadServlet</servlet-name>
+     <servlet-class>org.mfr.web.UploadServlet</servlet-class>
+  </servlet> 
+  
+  
+  <servlet-mapping>
+  	<servlet-name>UploadServlet</servlet-name>
+  	<url-pattern>/upload</url-pattern>
+  </servlet-mapping> 
+  <servlet-mapping>
+  	<servlet-name>zkLoader</servlet-name>
+  	<url-pattern>*.zul</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>zkLoader</servlet-name>
+  	<url-pattern>*.zhtml</url-pattern>
+  </servlet-mapping>
+  <!-- servlet-mapping>
+  	<servlet-name>zkLoader</servlet-name>
+  	<url-pattern>*.html</url-pattern>
+  </servlet-mapping-->  
+  <servlet-mapping>
+  	<servlet-name>auEngine</servlet-name>
+  	<url-pattern>/zkau/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+	<servlet-name>dyna</servlet-name>
+	<url-pattern>/dc/*</url-pattern>
+  </servlet-mapping>
+
+
+
+<filter>
+    <filter-name>SiteFilter</filter-name>
+    <filter-class>org.mfr.web.SiteFilter</filter-class> 
+</filter>
+  <filter-mapping>
+   <filter-name>SiteFilter</filter-name>
+   <url-pattern>/*</url-pattern>
+   <dispatcher>REQUEST</dispatcher>
+   <dispatcher>FORWARD</dispatcher>
+  </filter-mapping>  
+
+
+	<filter> 
+	    <filter-name>AccessFilter</filter-name>
+	    <filter-class>org.mfr.web.PrivateContentAccessManager</filter-class> 
+	  </filter>   
+  
+  
+       <!--filter>
+                <filter-name>monitoring</filter-name>
+                <filter-class>net.bull.javamelody.MonitoringFilter</filter-class>
+        </filter>
+        <filter-mapping>
+                <filter-name>monitoring</filter-name>
+                <url-pattern>/*</url-pattern>
+        </filter-mapping>
+        <listener>
+                <listener-class>net.bull.javamelody.SessionListener</listener-class>
+        </listener-->  
+  
+  
+ <filter-mapping>
+  <filter-name>AccessFilter</filter-name>
+  <url-pattern>*.zul</url-pattern>
+  <dispatcher>FORWARD</dispatcher>
+  <dispatcher>REQUEST</dispatcher>
+ </filter-mapping>
+	<filter>
+	    <filter-name>BandWithFilter</filter-name>
+	    <filter-class>org.mfr.web.BandWithFilter</filter-class> 
+	</filter>
+	  <filter-mapping>
+	   <filter-name>BandWithFilter</filter-name>
+	   <url-pattern>/*</url-pattern>
+   <dispatcher>FORWARD</dispatcher>
+   <dispatcher>REQUEST</dispatcher>
+	  </filter-mapping>
+
+	<filter>
+	    <filter-name>ImgFilter</filter-name>
+	    <filter-class>org.mfr.web.ImgFilter</filter-class> 
+	</filter>
+	<filter-mapping>
+		<filter-name>ImgFilter</filter-name>
+		<url-pattern>/mimg/*</url-pattern>
+		<!-- dispatcher>FORWARD</dispatcher-->
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+
+	    
+	<!-- error-page>
+		<error-code>404</error-code>
+		<location>/error500.zul</location>
+	</error-page>
+	<error-page>
+		<error-code>410</error-code>
+		<location>/error500.zul</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error500.zul</location>
+	</error-page>
+	<error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>/error500.zul</location>
+	</error-page-->
+    
+
+
+	<!-- [Optional]
+	Uncomment if you want to use the ZK filter to post process the HTML output
+	generated by other technology, such as JSP and velocity.
+	<filter>
+		<filter-name>zkFilter</filter-name>
+		<filter-class>org.zkoss.zk.ui.http.DHtmlLayoutFilter</filter-class>
+		<init-param>
+			<param-name>extension</param-name>
+			<param-value>html</param-value>
+		</init-param>
+		<init-param>
+			<param-name>compress</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>zkFilter</filter-name>
+		<url-pattern>your URI pattern</url-pattern>
+	</filter-mapping>
+	-->
+	<!-- [Optional] Session timeout -->
+	<session-config>
+		<session-timeout>240</session-timeout>
+		<tracking-mode>COOKIE</tracking-mode>
+	</session-config>	
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.zul</welcome-file>
+    <welcome-file>index.zhtml</welcome-file>
+  </welcome-file-list>
+</web-app>

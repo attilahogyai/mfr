@@ -1,0 +1,65 @@
+<?page title="${c:l('portfolio.setup')}"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk xmlns:w="client"  xmlns:n="http://www.zkoss.org/2005/zk/native">
+<zscript deferred="true"><![CDATA[
+void enableRegistration(){
+	if(licenseAgree.isChecked()){	
+		signUpButton.setDisabled(false);
+		signUpButton.setZclass("buttom-class");
+	}else{
+		signUpButton.setDisabled(true);
+		signUpButton.setZclass("buttom-class-disabled");
+	}
+}
+
+]]></zscript>
+<include src="comp/header.zul"></include>
+<div sclass="page-content" id="contentPage">
+<n:div class="container">
+<n:div class="row" if="${loggedIn}">
+<html><h1>${c:l('portfolio.setup')}</h1></html>
+<div sclass="sevencol">
+<grid apply="org.mfr.web.action.SiteUpdateComposer" zclass="specgrid">
+   <rows>
+   	   <row valign="top" zclass="fr-row"><label value="${c:l('site.config.title.1')}" unless="${user.hasPortfolio}"/><label value="${c:l('site.config.title')}" if="${user.hasPortfolio}"/></row>
+   	   <row valign="top" zclass="fr-row"><div><textbox id="sitename" type="text" placeholder="${c:l('sitename')}"/> ${c:l('portfolio.name.desc')}</div></row>
+   	   <row valign="top" zclass="fr-row"><div><textbox id="sitedesc" type="text" placeholder="${c:l('sitedesc')}" width="100%" height="60px" multiline="true"/>(${c:l('sitedesc')})</div></row>
+	   <row valign="top" zclass="fr-row"><div><label zclass="focused-text">http://</label><textbox id="siteurl" placeholder="${c:l('siteurl')}" type="text" zclass="focused-textbox" constraint="/[a-z|0-9]*|/: ${url.check}" /><label zclass="focused-text">.myfotoroom.com</label><n:br/>(${c:l('portfolio.url.desc')})</div></row>
+	   
+	   <row valign="top" zclass="fr-row-title" ><label value="${c:l('style.settings')}"/></row>
+	   <row valign="top" zclass="fr-row" >
+	   <div>
+	   <radiogroup id="style">
+	   <div forEach="${$composer.styleConfigList}" zclass="style_selector">
+	   <image src="/img/portfolios/${each.code}.png"/>
+	   <radio label="${each.name}" if="${language=='HU'}" value="${each.code}"/>
+	   <radio label="${each.nameEn}" unless="${language=='HU'}" value="${each.code}"/>
+	   </div>
+	   </radiogroup>
+	   </div>
+	   </row>
+	   
+	   <row valign="top" zclass="fr-row-title" ><label value="${c:l('privacy.settings')}"/></row>
+	   <row valign="top" zclass="fr-row"><checkbox id="sitestate" label="${c:l('sitestate.public')}"/></row>
+	   <row valign="top" zclass="fr-row"><checkbox id="sitelisted" label="${c:l('sitestate.listed')}"/></row>
+	   <row valign="top" zclass="fr-row" id="passwordSetup"><div><textbox id="sitePassword" placeholder="${c:l('password')}"/><checkbox id="sitePasswordCheck" label="${c:l('site.password.comment')}"/><n:br/>(${c:l('portfolio.password.desc')})</div></row>
+	   <!-- row valign="top" zclass="fr-row"><label value="${c:l('siteadminemail')}" width="50"/><div><textbox id="siteadminemail" type="text" constraint="/.+@.+\.[a-z]+|/: ${labels.check.email}"/><n:br/>${c:l('site.admin.email.comment')}</div></row>
+	   <row valign="top" zclass="fr-row"><label value="${c:l('enable.about')}" width="50"/><div><checkbox id="enableabout" > </checkbox><n:br/>${c:l('enable.about.comment')}</div></row>
+	   <row valign="top" zclass="fr-row"><label value="${c:l('enable.contact')}" width="50"/><div><checkbox id="enablecontact" > </checkbox><n:br/>${c:l('enable.contact.comment')}</div></row-->       
+       <row valign="top" zclass="fr-row">
+       <button label="${c:l('update.data')}" id="updateSiteButton" zclass="button1"/>
+       </row>
+       <row valign="top" zclass="fr-row">
+       <button label="${c:l('delete')}" id="deleteSiteButton" zclass="button1" if="${$composer.isSiteExists()}"/>
+       </row>
+       
+   </rows>
+</grid>
+</div>
+</n:div>
+</n:div>
+
+
+</div>
+<include src="comp/bottom.zul" zclass="bottom-panel"></include>
+</zk>

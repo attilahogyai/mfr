@@ -1,0 +1,6 @@
+@font-face {
+  font-family: 'Dosis';
+  font-style: normal;
+  font-weight: 200;
+  src: local('Dosis ExtraLight'), local('Dosis-ExtraLight'), url(/css/fonts/dosis/200.woff) format('woff');
+}

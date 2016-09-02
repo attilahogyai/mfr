@@ -1,0 +1,13 @@
+<?page title="Page not found"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<zk xmlns:n="http://www.zkoss.org/2005/zk/native">
+<include src="comp/header.zul"></include>    
+<div sclass="page-content" id="contentPage">
+<div sclass="categories-header">
+<label zclass="categories-header-text">${c:l('general.error.title')}</label>
+</div>
+${c:l('general.error.message')}
+</div>
+<include src="comp/bottom.zul"></include>
+</zk>
